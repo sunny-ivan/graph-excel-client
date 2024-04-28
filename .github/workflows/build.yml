@@ -128,7 +128,7 @@ jobs:
           fi
 
     outputs:
-      remote_sha: ${{ steps.remote_workflow_sha.outputs.remote_workflow_sha }}
+      remote_workflow_sha: ${{ steps.remote_workflow_sha.outputs.remote_workflow_sha }}
       previous_apisha: ${{ steps.local_apisha.outputs.local_apisha }}
       remote_apisha: ${{ steps.remote_apisha.outputs.remote_apisha }}
       remote_kiota_ver: ${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}
@@ -155,7 +155,7 @@ jobs:
             echo "${{ needs.check_updates.outputs.remote_apisha }}" > openapi.sha
           fi
           echo "${{ needs.check_updates.outputs.remote_kiota_ver }}" > kiota.ver
-          echo "${{ needs.check_updates.outputs.remote_sha }}" > build.workflow.sha
+          echo "${{ needs.check_updates.outputs.remote_workflow_sha }}" > build.workflow.sha
           cd ..
 
       - name: Setup Node.js environment
