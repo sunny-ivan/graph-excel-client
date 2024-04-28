@@ -222,8 +222,10 @@ jobs:
           # git config --global user.name "$GITHUB_ACTOR"
           # git config --global user.email "$GITHUB_ACTOR_ID+$GITHUB_ACTOR@users.noreply.github.com"
           git config --global user.name "github-actions[bot]"
-          git config --global user.email "$(gh api users/github-actions[bot] --jq '"\(.id)+\(.login)"')@users.noreply.github.com"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           echo Commit as "$(git config user.name) <$(git config user.email)>"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Build package
         run: |
