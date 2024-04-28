@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     paths:
-      - '.github/workflows/build.yml'
+      - ".github/workflows/build.yml"
   schedule:
     - cron: "0 0 * * 1" # This cron schedule runs the workflow every Monday at midnight
 
@@ -19,39 +19,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Get sha of current workflow file
-        id: remote_action_sha
+      - name: Check if the workflow file has been updated
         run: |
-          remote_sha="$GITHUB_WORKFLOW_SHA"
-          echo "remote_sha=$remote_sha" >> $GITHUB_OUTPUT
-          echo "$remote_sha"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Get sha of last workflow file
-        id: local_action_sha
-        run: |
-          LOCAL_FILE="data/build.workflow.sha"
-          local_sha="empty"
-          if test -f $LOCAL_FILE; then
-          local_sha=$(cat $LOCAL_FILE)
-            echo "local_sha=$local_sha" >> $GITHUB_OUTPUT
-          else
-            echo "SHA file does not exist, it will be created later."
-          fi
-          echo "$local_sha"
-
-      - name: Compare workflow file
-        run: |
-          if [ "${{ steps.remote_action_sha.outputs.remote_sha }}" == "${{ steps.local_action_sha.outputs.local_sha }}" ]; then
-            echo "Local Graph metadata is the latest version"
-            echo "WORKFLOW_UPDATED=0" >> $GITHUB_ENV
-          else
-            echo "Local workflow  is not the latest version"
+          if [ "${{ github.event_name }}" == "push" && "${{ github.event_path }}" == ".github/workflows/build.yml"]; then
+            echo "Workflow file update detected."
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
-            mkdir -p data && cd data
-            echo "${{ steps.remote_action_sha.outputs.remote_sha }}" > build.workflow.sha
-            cd ..
+          else
+            echo "Nope."
+            echo "WORKFLOW_UPDATED=0" >> $GITHUB_ENV
           fi
 
       - name: Get sha of remote Graph metadata
@@ -209,7 +184,7 @@ jobs:
 
       - name: Install dependencies
         run: yarn install
-  
+
       - name: Set identity
         run: |
           # git config --global user.name "$GITHUB_ACTOR"
