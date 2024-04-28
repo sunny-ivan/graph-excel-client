@@ -5,13 +5,188 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
+"@azure/abort-controller@npm:^2.0.0":
+  version: 2.1.2
+  resolution: "@azure/abort-controller@npm:2.1.2"
+  dependencies:
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/3771b6820e33ebb56e79c7c68e2288296b8c2529556fbd29cf4cf2fbff7776e7ce1120072972d8df9f1bf50e2c3224d71a7565362b589595563f710b8c3d7b79
+  languageName: node
+  linkType: hard
+
+"@azure/core-auth@npm:^1.5.0":
+  version: 1.7.2
+  resolution: "@azure/core-auth@npm:1.7.2"
+  dependencies:
+    "@azure/abort-controller": "npm:^2.0.0"
+    "@azure/core-util": "npm:^1.1.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/2b4c489855308cea46363dc8f216eeb63cb85aea08f1ab7cff0a6e47604eed2b0fc46415d7f6d71da0aa7922b81c631920d05698eb14454b65be07825c5c599a
+  languageName: node
+  linkType: hard
+
+"@azure/core-util@npm:^1.1.0":
+  version: 1.9.0
+  resolution: "@azure/core-util@npm:1.9.0"
+  dependencies:
+    "@azure/abort-controller": "npm:^2.0.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/6eb6efc8b8401fd6e3b56631e8e9a1dbc23a0048ae3bf498d10163624f805032a7730905465b2ebe95c840e5e939e66bf320448de8df50f66346e89b1295f9e7
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-abstractions@npm:1.0.0-preview.50":
+  version: 1.0.0-preview.50
+  resolution: "@microsoft/kiota-abstractions@npm:1.0.0-preview.50"
+  dependencies:
+    "@opentelemetry/api": "npm:^1.7.0"
+    "@std-uritemplate/std-uritemplate": "npm:^0.0.55"
+    guid-typescript: "npm:^1.0.9"
+    tinyduration: "npm:^3.3.0"
+    tslib: "npm:^2.6.2"
+    uuid: "npm:^9.0.1"
+  checksum: 10c0/e0dce7171e0ae39154e9c7001e6f850fc30ffac50b5cbce3d94cfcf023185552dad7d9d2f5c2c21a131743a2c91f628a4c08365434fcbf99af4af1d67467d8d4
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-abstractions@npm:^1.0.0-preview.49, @microsoft/kiota-abstractions@npm:^1.0.0-preview.50":
+  version: 1.0.0-preview.51
+  resolution: "@microsoft/kiota-abstractions@npm:1.0.0-preview.51"
+  dependencies:
+    "@opentelemetry/api": "npm:^1.7.0"
+    "@std-uritemplate/std-uritemplate": "npm:^0.0.57"
+    guid-typescript: "npm:^1.0.9"
+    tinyduration: "npm:^3.3.0"
+    tslib: "npm:^2.6.2"
+    uuid: "npm:^9.0.1"
+  checksum: 10c0/aa7e9e7f4100c5bb4b2e44b8154e382bbb7ed550ea4a05b67614fc2210ea7c79817cbb111b367011d486523a782f7ac215243fadcf790c19439ff6d9122bc899
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-authentication-azure@npm:1.0.0-preview.45":
+  version: 1.0.0-preview.45
+  resolution: "@microsoft/kiota-authentication-azure@npm:1.0.0-preview.45"
+  dependencies:
+    "@azure/core-auth": "npm:^1.5.0"
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.50"
+    "@opentelemetry/api": "npm:^1.7.0"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/735b8cffb45223644bb0c0be3cdb793f6564926070d5bb12b471e89ae8f2254f0f41b1c5e44b73a56e1095db244d920cb9967c90eef4827a016adadb75cc64cf
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-http-fetchlibrary@npm:1.0.0-preview.49":
+  version: 1.0.0-preview.49
+  resolution: "@microsoft/kiota-http-fetchlibrary@npm:1.0.0-preview.49"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.50"
+    "@opentelemetry/api": "npm:^1.7.0"
+    guid-typescript: "npm:^1.0.9"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/4c471187885a86bbe8b5ff54e54070cd6354340da8c2a9a75fac30f15f31748bd78a97b33d842b8c50b43045423b5608a0f1f7614a20b7ec1e4f9535fd0bffc9
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-form@npm:1.0.0-preview.39":
+  version: 1.0.0-preview.39
+  resolution: "@microsoft/kiota-serialization-form@npm:1.0.0-preview.39"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.50"
+    guid-typescript: "npm:^1.0.9"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/b43a924c0ee3087eb7751c929ded2af36c1edfb15a146dcf6aee10790b96a54bb5fea069da01d9993a6ec189b6690744bf254d7deb9f46906777eb6e79eac363
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-json@npm:1.0.0-preview.50":
+  version: 1.0.0-preview.50
+  resolution: "@microsoft/kiota-serialization-json@npm:1.0.0-preview.50"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.50"
+    guid-typescript: "npm:^1.0.9"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/a8352ddb3a7c7665c4436c323bdc91682f0705e810dc9bc6c846424b0af0ca3d108ebe3842a0b5314f1e72fa9ca1040909d7c0b6f28b9fd4db8f15bd1f477720
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-multipart@npm:1.0.0-preview.28":
+  version: 1.0.0-preview.28
+  resolution: "@microsoft/kiota-serialization-multipart@npm:1.0.0-preview.28"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.49"
+    guid-typescript: "npm:^1.0.9"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/afae051ec45d5979fdd75871c7c93d2e565727a8cc1b7e9922dd8dab809634dcfde3ad81692e7d502a83f7dc3044868ea5bf5aaf05cec3e409258bd623d1e8a2
+  languageName: node
+  linkType: hard
+
+"@microsoft/kiota-serialization-text@npm:1.0.0-preview.47":
+  version: 1.0.0-preview.47
+  resolution: "@microsoft/kiota-serialization-text@npm:1.0.0-preview.47"
+  dependencies:
+    "@microsoft/kiota-abstractions": "npm:^1.0.0-preview.50"
+    guid-typescript: "npm:^1.0.9"
+    tslib: "npm:^2.6.2"
+  checksum: 10c0/61d3f229e00c1fd201f4513ad8281b3977afe87ad8f15d6413ae9cc30806e6e0fe422ac0cf08a307bd8659d061c7d0c02d83988d14f741b8c964103651f9d3bd
+  languageName: node
+  linkType: hard
+
+"@opentelemetry/api@npm:^1.7.0":
+  version: 1.8.0
+  resolution: "@opentelemetry/api@npm:1.8.0"
+  checksum: 10c0/66d5504bfbf9c19a14ea549f5fca975a73a5e1e8a1e40a6dc2d662893c942b9ba66c009262816dee2b9ffd0267acd707ec692eba20db11a09d4ee114c00dc161
+  languageName: node
+  linkType: hard
+
+"@std-uritemplate/std-uritemplate@npm:^0.0.55":
+  version: 0.0.55
+  resolution: "@std-uritemplate/std-uritemplate@npm:0.0.55"
+  checksum: 10c0/dd9b7e1ba487f4b018540ea5182fc273f729cd1622ff660f29a75c1f4e0d41a2ac9c54e9f2abb8056d5649f7829c9f1c22d95358f20955ed848248e4e361cbe8
+  languageName: node
+  linkType: hard
+
+"@std-uritemplate/std-uritemplate@npm:^0.0.57":
+  version: 0.0.57
+  resolution: "@std-uritemplate/std-uritemplate@npm:0.0.57"
+  checksum: 10c0/5aed0bbcb8c5492bb4c8211deebe6731539aa0656a2e8270cbd7ac046de85aa1d58ae6389a6dd80417599ddc8e010ae464eb4e081c8d3ab4f085cf060673eb23
+  languageName: node
+  linkType: hard
+
 "graph-excel-kit@workspace:.":
   version: 0.0.0-use.local
   resolution: "graph-excel-kit@workspace:."
   dependencies:
+    "@microsoft/kiota-abstractions": "npm:1.0.0-preview.50"
+    "@microsoft/kiota-authentication-azure": "npm:1.0.0-preview.45"
+    "@microsoft/kiota-http-fetchlibrary": "npm:1.0.0-preview.49"
+    "@microsoft/kiota-serialization-form": "npm:1.0.0-preview.39"
+    "@microsoft/kiota-serialization-json": "npm:1.0.0-preview.50"
+    "@microsoft/kiota-serialization-multipart": "npm:1.0.0-preview.28"
+    "@microsoft/kiota-serialization-text": "npm:1.0.0-preview.47"
     typescript: "npm:^5.4.5"
   languageName: unknown
   linkType: soft
+
+"guid-typescript@npm:^1.0.9":
+  version: 1.0.9
+  resolution: "guid-typescript@npm:1.0.9"
+  checksum: 10c0/fa0a2b2b4e06e0976a81c947b74e114b92f6647e84b52e24ab0981d2fdbaa1a640641d8fd269004dd7c581baebeb4f9d9782b74391e717e47c9b822bea4b3be6
+  languageName: node
+  linkType: hard
+
+"tinyduration@npm:^3.3.0":
+  version: 3.3.0
+  resolution: "tinyduration@npm:3.3.0"
+  checksum: 10c0/3cae2580bba3596c73fd93db1b2703d898155e00e910a7c04e93f9487d063efa46cfb543c9573cfdeb9c8b942a71847e3a7694ab05836783c364bdd5fd48d459
+  languageName: node
+  linkType: hard
+
+"tslib@npm:^2.6.2":
+  version: 2.6.2
+  resolution: "tslib@npm:2.6.2"
+  checksum: 10c0/e03a8a4271152c8b26604ed45535954c0a45296e32445b4b87f8a5abdb2421f40b59b4ca437c4346af0f28179780d604094eb64546bee2019d903d01c6c19bdb
+  languageName: node
+  linkType: hard
 
 "typescript@npm:^5.4.5":
   version: 5.4.5
@@ -30,5 +205,14 @@ __metadata:
     tsc: bin/tsc
     tsserver: bin/tsserver
   checksum: 10c0/db2ad2a16ca829f50427eeb1da155e7a45e598eec7b086d8b4e8ba44e5a235f758e606d681c66992230d3fc3b8995865e5fd0b22a2c95486d0b3200f83072ec9
+  languageName: node
+  linkType: hard
+
+"uuid@npm:^9.0.1":
+  version: 9.0.1
+  resolution: "uuid@npm:9.0.1"
+  bin:
+    uuid: dist/bin/uuid
+  checksum: 10c0/1607dd32ac7fc22f2d8f77051e6a64845c9bce5cd3dd8aa0070c074ec73e666a1f63c7b4e0f4bf2bc8b9d59dc85a15e17807446d9d2b17c8485fbc2147b27f9b
   languageName: node
   linkType: hard
