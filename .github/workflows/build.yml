@@ -116,19 +116,6 @@ jobs:
             echo "KIOTA_UPDATED=1" >> $GITHUB_ENV
           fi
 
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.2
-        with:
-          node-version: "latest"
-
-      - name: Setup Yarn Package Manager
-        run: |
-          npm install -g corepack & corepack enable
-          curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-          yarn_version=$(grep -o '"packageManager": "yarn@[0-9.]*"' package.json | cut -d '"' -f 4 | cut -d '@' -f 2)
-          echo "Installing $yarn_version"
-          yarn set version "$yarn_version"
-
       - name: Check before building
         id: should_build
         run: |
@@ -157,6 +144,9 @@ jobs:
       contents: write
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
       - name: Write version mark
         run: |
           mkdir -p data && cd data
@@ -167,6 +157,19 @@ jobs:
           echo "${{ needs.check_updates.outputs.remote_kiota_ver }}" > kiota.ver
           echo "${{ needs.check_updates.outputs.remote_sha }}" > build.workflow.sha
           cd ..
+
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: "latest"
+
+      - name: Setup Yarn Package Manager
+        run: |
+          npm install -g corepack & corepack enable
+          curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+          yarn_version=$(grep -o '"packageManager": "yarn@[0-9.]*"' package.json | cut -d '"' -f 4 | cut -d '@' -f 2)
+          echo "Installing $yarn_version"
+          yarn set version "$yarn_version"
 
       - name: Setup Kiota
         id: setup_kiota
