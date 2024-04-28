@@ -18,14 +18,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Get sha of current workflow file
-        id: remote_workflow_sha
+        id: cur_ymlsha
         run: |
-          remote_workflow_sha="${{ github.workflow_sha }}"
-          echo "remote_workflow_sha=$remote_workflow_sha" >> $GITHUB_OUTPUT
-          echo "$remote_workflow_sha"
+          cur_ymlsha="${{ github.workflow_sha }}"
+          echo "cur_ymlsha=$cur_ymlsha" >> $GITHUB_OUTPUT
+          echo "$cur_ymlsha"
 
       - name: Get sha of last workflow file
-        id: last_workflow_sha
+        id: last_ymlsha
         run: |
           LOCAL_FILE="data/build.workflow.sha"
           local_sha="empty"
@@ -39,7 +39,7 @@ jobs:
 
       - name: Check if the workflow file has been updated
         run: |
-          if [ "${{ steps.remote_workflow_sha.outputs.remote_sha }}" != "${{ steps.last_workflow_sha.outputs.local_sha }}" ]; then
+          if [ "${{ steps.cur_ymlsha.outputs.remote_sha }}" != "${{ steps.last_ymlsha.outputs.local_sha }}" ]; then
             echo "Workflow file update detected."
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
           else
@@ -126,7 +126,7 @@ jobs:
           fi
 
     outputs:
-      remote_workflow_sha: ${{ steps.remote_workflow_sha.outputs.remote_workflow_sha }}
+      cur_ymlsha: ${{ steps.cur_ymlsha.outputs.cur_ymlsha }}
       previous_apisha: ${{ steps.local_apisha.outputs.local_apisha }}
       remote_apisha: ${{ steps.remote_apisha.outputs.remote_apisha }}
       remote_kiota_ver: ${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}
@@ -153,7 +153,7 @@ jobs:
             echo "${{ needs.check_updates.outputs.remote_apisha }}" > openapi.sha
           fi
           echo "${{ needs.check_updates.outputs.remote_kiota_ver }}" > kiota.ver
-          echo "${{ needs.check_updates.outputs.remote_workflow_sha }}" > build.workflow.sha
+          echo "${{ needs.check_updates.outputs.cur_ymlsha }}" > build.workflow.sha
           cd ..
 
       - name: Setup Node.js environment
