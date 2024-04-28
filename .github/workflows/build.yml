@@ -151,6 +151,9 @@ jobs:
 
       - name: Install dependencies of Kiota generated client
         run: |
+          if [ "$NO_BUILDING" = "1" ]; then
+            exit 0
+          fi
           client_info="$("${{ steps.setup_kiota.outputs.installed_path }}/kiota" info -d "data/openapi.yaml" -l TypeScript)"
           echo Client information
           echo "$client_info"
@@ -209,6 +212,9 @@ jobs:
 
       - name: Build package
         run: |
+          if [ "$NO_BUILDING" = "1" ]; then
+            exit 0
+          fi
           if [ "$NO_BUILDING" = "1" ]; then
             exit 0
           fi
