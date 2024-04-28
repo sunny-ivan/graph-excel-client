@@ -41,13 +41,12 @@ jobs:
 
       - name: Check if the workflow file has been updated
         run: |
-          if [ "${{ steps.remote_workflow_sha.outputs.remote_sha }}" == "${{ steps.last_workflow_sha.outputs.local_sha }}" ]; then
+          if [ "${{ steps.remote_workflow_sha.outputs.remote_sha }}" != "${{ steps.last_workflow_sha.outputs.local_sha }}" ]; then
             echo "Workflow file update detected."
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
           else
             echo "Nope."
             echo "WORKFLOW_UPDATED=0" >> $GITHUB_ENV
-            cd ..
           fi
 
       - name: Get sha of remote Graph metadata
