@@ -1,0 +1,50 @@
+name: Generate SDK Nightly
+
+on:
+  schedule:
+    - cron: "0 0 * * 1" # This cron schedule runs the workflow every Monday at midnight
+
+jobs:
+  generate_sdk:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Get sha of remote files
+        id: remote_apisha
+        run: |
+          remote_apisha=$( gh api microsoftgraph/msgraph-metadata/raw/master/openapi/v1.0/openapi.yaml | \
+          python3 -c "import sys, json; print(json.load(sys.stdin)[0]['sha'])")
+          echo "::set-output name=remote_apisha::$remote_apisha"
+
+      # - name: Get sha of local file
+      #   id: local_apisha
+      #   run: |
+      #     LOCAL_FILE="openapi.sha1"
+      #     local_apisha=$(cat $LOCAL_FILE)
+      #     echo "::set-output name=local_apisha::$local_apisha"
+
+      # - name: Compare files
+      #   run: |
+      #     if [ "${{ steps.remote_apisha.outputs.remote_apisha }}" == "${{ steps.local_apisha.outputs.local_apisha }}" ]; then
+      #       echo "Local file is the latest version"
+      #     else
+      #       echo "Local file is not the latest version"
+      #       # Take necessary actions here
+      #     fi
+
+      # - name: Setup Node.js environment
+      #   uses: actions/setup-node@v4.0.2
+      #   with:
+      #     node-version: "latest"
+
+      # - name: Generate SDK
+      #   run: bash generate_sdk.sh
+
+      - name: Commit changes
+        run: |
+          git add .
+          git commit -m "Automatic SDK generation"
+          git push https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git HEAD:main
