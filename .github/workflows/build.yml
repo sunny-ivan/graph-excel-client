@@ -20,7 +20,7 @@ jobs:
       - name: Get sha of current workflow file
         id: remote_workflow_sha
         run: |
-          remote_workflow_sha="$GITHUB_WORKFLOW_SHA"
+          remote_workflow_sha="${{ github.workflow_sha }}"
           echo "remote_workflow_sha=$remote_workflow_sha" >> $GITHUB_OUTPUT
           echo "$remote_workflow_sha"
         env:
