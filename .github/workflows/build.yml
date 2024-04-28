@@ -17,14 +17,37 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Get sha of current workflow file
+        id: remote_workflow_sha
+        run: |
+          remote_sha="$GITHUB_WORKFLOW_SHA"
+          echo "remote_sha=$remote_sha" >> $GITHUB_OUTPUT
+          echo "$remote_sha"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Get sha of last workflow file
+        id: last_workflow_sha
+        run: |
+          LOCAL_FILE="data/build.workflow.sha"
+          local_sha="empty"
+          if test -f $LOCAL_FILE; then
+          local_sha=$(cat $LOCAL_FILE)
+            echo "local_sha=$local_sha" >> $GITHUB_OUTPUT
+          else
+            echo "SHA file does not exist, it will be created later."
+          fi
+          echo "$local_sha"
+
       - name: Check if the workflow file has been updated
         run: |
-          if git diff --name-only ${{ github.sha }} | grep -q ".github/workflows/build.yml"; then
+          if [ "${{ steps.remote_workflow_sha.outputs.remote_sha }}" == "${{ steps.last_workflow_sha.outputs.local_sha }}" ]; then
             echo "Workflow file update detected."
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
           else
             echo "Nope."
             echo "WORKFLOW_UPDATED=0" >> $GITHUB_ENV
+            cd ..
           fi
 
       - name: Get sha of remote Graph metadata
@@ -119,6 +142,7 @@ jobs:
           fi
 
     outputs:
+      remote_sha: ${{ steps.remote_workflow_sha.outputs.remote_workflow_sha }}
       previous_apisha: ${{ steps.local_apisha.outputs.local_apisha }}
       remote_apisha: ${{ steps.remote_apisha.outputs.remote_apisha }}
       remote_kiota_ver: ${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}
@@ -142,6 +166,7 @@ jobs:
             echo "${{ needs.check_updates.outputs.remote_apisha }}" > openapi.sha
           fi
           echo "${{ needs.check_updates.outputs.remote_kiota_ver }}" > kiota.ver
+          echo "${{ needs.check_updates.outputs.remote_sha }}" > build.workflow.sha
           cd ..
 
       - name: Setup Kiota
