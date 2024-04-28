@@ -1,4 +1,4 @@
-name: Generate SDK Nightly
+name: Generate SDK Weekly
 
 on:
   workflow_dispatch:
