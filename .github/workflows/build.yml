@@ -132,6 +132,7 @@ jobs:
 
       - name: Setup Yarn Package Manager
         run: |
+          npm install -g corepack & corepack enable
           curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
           yarn_version=$(grep -o '"packageManager": "yarn@[0-9.]*"' package.json | cut -d '"' -f 4)
           echo Installing $yarn_version
