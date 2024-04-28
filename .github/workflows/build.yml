@@ -208,6 +208,14 @@ jobs:
 
       - name: Commit changes
         run: |
-          git add .
-          git commit -m "Automatic SDK generation"
-          git push https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git HEAD:main
+          # Check if there are any changes to commit and push
+          if [[ -n $(git status -s) ]]; then
+              # Changes exist, proceed with the commit and push
+              git add .
+              git commit -m "Automatic SDK generation"
+              git push https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git HEAD:main
+          else
+              # No changes to commit
+              echo "No changes to commit.""
+              echo "Skipping push."
+          fi
