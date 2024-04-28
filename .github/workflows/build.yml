@@ -284,10 +284,14 @@ jobs:
         id: create_zip
         if: ${{ steps.check_dist_sha1.outputs.should_tag == '1' }}
         run: |
-          dist_zip=$(mktemp -d)/dist.zip
-          dist_sha1=$(mktemp -d)/dist.sha1
+          tempd=$(mktemp -d)
+          workd=$(pwd)
+          dist_zip=$tempd/dist.zip
+          dist_sha1=$tempd/dist.sha1
           zip -r $dist_zip dist LICENSE package.json README.md yarn.lock 
-          sha1sum dist.zip | cut -d ' ' -f1 >> $GITHUB_OUTPUT
+          cd $tempd
+          sha1sum dist.zip | cut -d ' ' -f1 >> $dist_sha1
+          cd $workd
           echo "zip=$dist_zip" >> $GITHUB_OUTPUT
           echo "sha1=$dist_sha1" >> $GITHUB_OUTPUT
 
@@ -298,8 +302,8 @@ jobs:
           tag_name: ${{ steps.check_dist_sha1.outputs.ver }}
           name: Release ${{ steps.check_dist_sha1.outputs.ver }}
           files: |
-            ${{ steps.create_zip.outputs.dist_zip }}
-            ${{ steps.create_zip.outputs.dist_sha1 }}
+            ${{ steps.create_zip.outputs.zip }}
+            ${{ steps.create_zip.outputs.sha1 }}
 
       - name: NPM Publish
         if: ${{ steps.check_dist_sha1.outputs.should_tag == '1' }}
