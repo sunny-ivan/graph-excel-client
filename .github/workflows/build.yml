@@ -130,6 +130,13 @@ jobs:
         with:
           node-version: "latest"
 
+      - name: Setup Yarn Package Manager
+        run: |
+          curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
+          yarn_version=$(grep -o '"packageManager": "yarn@[0-9.]*"' package.json | cut -d '"' -f 4)
+          echo Installing $yarn_version
+          yarn set version "$yarn_version"
+
       - name: Check before building
         run: |
           if [ "$WORKFLOW_UPDATED" = "1" ] || [ "$METADATA_UPDATED" = "1" ] || [ "$KIOTA_UPDATED" = "1"]; then
