@@ -23,22 +23,30 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # - name: Get sha of local file
-      #   id: local_apisha
-      #   run: |
-      #     LOCAL_FILE="openapi.sha1"
-      #     local_apisha=$(cat $LOCAL_FILE)
-      #     echo "local_apisha=$local_apisha" >> $GITHUB_OUTPUT
-      #     echo "$local_apisha"
+      - name: Get sha of local file
+        id: local_apisha
+        run: |
+          LOCAL_FILE="data/openapi.sha"
+          local_apisha = empty
+          if test -f $LOCAL_FILE; then
+            local_apisha=$(cat $LOCAL_FILE)
+            echo "local_apisha=$local_apisha" >> $GITHUB_OUTPUT
+          else
+            echo "SHA file does not exist, it will be created later."
+          fi
+          echo "$local_apisha"
 
-      # - name: Compare files
-      #   run: |
-      #     if [ "${{ steps.remote_apisha.outputs.remote_apisha }}" == "${{ steps.local_apisha.outputs.local_apisha }}" ]; then
-      #       echo "Local file is the latest version"
-      #     else
-      #       echo "Local file is not the latest version"
-      #       # Take necessary actions here
-      #     fi
+      - name: Compare files
+        run: |
+          if [ "${{ steps.remote_apisha.outputs.remote_apisha }}" == "${{ steps.local_apisha.outputs.local_apisha }}" ]; then
+            echo "Local file is the latest version"
+          else
+            echo "Local file is not the latest version"
+            mkdir -p data && cd data
+            curl --location --output openapi.yaml https://aka.ms/graph/v1.0/openapi.yaml
+            echo "${{ steps.remote_apisha.outputs.remote_apisha }}" >> openapi.sha
+            cd ..
+          fi
 
       # - name: Setup Node.js environment
       #   uses: actions/setup-node@v4.0.2
@@ -47,6 +55,12 @@ jobs:
 
       # - name: Generate SDK
       #   run: bash generate_sdk.sh
+
+      - name: Set identity
+        run: |
+          git config --global user.name "$GITHUB_ACTOR"
+          git config --global user.email "$GITHUB_ACTOR_ID+$GITHUB_ACTOR@example.com"
+          echo Commit as "$GITHUB_ACTOR <$GITHUB_ACTOR_ID+$GITHUB_ACTOR@example.com>"
 
       - name: Commit changes
         run: |
