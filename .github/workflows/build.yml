@@ -207,13 +207,6 @@ jobs:
       - name: Install dependencies
         run: yarn install
   
-      - name: Build package
-        run: |
-          if [ "$NO_BUILDING" = "1" ]; then
-            exit 0
-          fi
-          yarn build
-
       - name: Set identity
         run: |
           git config --global user.name "$GITHUB_ACTOR"
@@ -227,6 +220,27 @@ jobs:
               # Changes exist, proceed with the commit and push
               git add .
               git commit -m "Automatic SDK generation"
+              git push https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git HEAD:main
+          else
+              # No changes to commit
+              echo "No changes to commit."
+              echo "Skipping push."
+          fi
+
+      - name: Build package
+        run: |
+          if [ "$NO_BUILDING" = "1" ]; then
+            exit 0
+          fi
+          yarn build
+
+      - name: Commit changes
+        run: |
+          # Check if there are any changes to commit and push
+          if [[ -n $(git status -s) ]]; then
+              # Changes exist, proceed with the commit and push
+              git add .
+              git commit -m "Automatic SDK building"
               git push https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git HEAD:main
           else
               # No changes to commit
