@@ -186,7 +186,11 @@ jobs:
       #     echo $ver
 
       - name: Install dependencies
-        run: yarn install
+        run: |
+          if [ "$NO_BUILDING" = "1" ]; then
+            exit 0
+          fi
+          yarn install
 
       - name: Set identity
         run: |
