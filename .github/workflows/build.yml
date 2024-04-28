@@ -61,6 +61,8 @@ jobs:
           remote_kiota_ver=${version_v#v} # 1.13.0
           echo "remote_kiota_ver=$remote_kiota_ver" >> $GITHUB_OUTPUT
           echo "$remote_kiota_ver"
+        env:
+          GH_TOKEN: ${{ github.token }}
 
       - name: Local Kiota's version
         id: local_kiota_ver
