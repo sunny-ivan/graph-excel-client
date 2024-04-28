@@ -135,7 +135,7 @@ jobs:
 
       - name: Check before building
         run: |
-          if [ "$WORKFLOW_UPDATED" = "1" ] || [ "$METADATA_UPDATED" = "1" ] || [ "$KIOTA_UPDATED" = "1"; then
+          if [ "$WORKFLOW_UPDATED" = "1" ] || [ "$METADATA_UPDATED" = "1" ] || [ "$KIOTA_UPDATED" = "1"]; then
             echo "At least one updated."
             echo "NO_BUILDING=0" >> $GITHUB_ENV
           else
