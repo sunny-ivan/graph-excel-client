@@ -40,14 +40,14 @@ jobs:
 
       - name: Compare workflow file
         run: |
-          if [ "${{ steps.local_action_sha.outputs.remote_apisha }}" == "${{ steps.local_action_sha.outputs.local_apisha }}" ]; then
+          if [ "${{ steps.local_action_sha.outputs.local_sha }}" == "${{ steps.local_action_sha.outputs.local_sha }}" ]; then
             echo "Local Graph metadata is the latest version"
             echo "WORKFLOW_UPDATED=0" >> $GITHUB_ENV
           else
             echo "Local workflow  is not the latest version"
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
             mkdir -p data && cd data
-            echo "${{ steps.local_action_sha.outputs.remote_apisha }}" >> openapi.sha
+            echo "${{ steps.local_action_sha.outputs.local_sha }}" >> openapi.sha
             cd ..
           fi
 
