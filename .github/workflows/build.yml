@@ -253,7 +253,9 @@ jobs:
             cd ..
             echo "should_tag=1" >> $GITHUB_OUTPUT
           fi
-          echo "ver=$(npm pkg get version)" >> $GITHUB_OUTPUT
+          ver=$(npm pkg get version)
+          ver=${ver//\"/}
+          echo "ver=$ver" >> $GITHUB_OUTPUT
 
       - name: Commit changes
         run: |
