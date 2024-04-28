@@ -125,13 +125,10 @@ jobs:
             cd ..
           fi
 
-      # - name: Setup Node.js environment
-      #   uses: actions/setup-node@v4.0.2
-      #   with:
-      #     node-version: "latest"
-
-      # - name: Generate SDK
-      #   run: bash generate_sdk.sh
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+        with:
+          node-version: "latest"
 
       - name: Check before building
         run: |
