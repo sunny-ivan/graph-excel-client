@@ -1,6 +1,7 @@
 name: Generate SDK Nightly
 
 on:
+  workflow_dispatch:
   schedule:
     - cron: "0 0 * * 1" # This cron schedule runs the workflow every Monday at midnight
 
