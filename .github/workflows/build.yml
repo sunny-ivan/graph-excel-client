@@ -21,7 +21,7 @@ jobs:
 
       - name: Check if the workflow file has been updated
         run: |
-          if [ "${{ github.event_name }}" == "push" && "${{ github.event_path }}" == ".github/workflows/build.yml"]; then
+          if [ "${{ github.event_name }}" == "push" ] && [ "${{ github.event_path }}" == ".github/workflows/build.yml"]; then
             echo "Workflow file update detected."
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
           else
