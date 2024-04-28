@@ -23,8 +23,6 @@ jobs:
           remote_workflow_sha="${{ github.workflow_sha }}"
           echo "remote_workflow_sha=$remote_workflow_sha" >> $GITHUB_OUTPUT
           echo "$remote_workflow_sha"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Get sha of last workflow file
         id: last_workflow_sha
