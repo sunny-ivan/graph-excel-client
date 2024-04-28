@@ -115,7 +115,7 @@ jobs:
           if [ "$NO_BUILDING" = "1" ]; then
             exit 0
           fi
-          $work_folder=$(pwd)
+          work_folder=$(pwd)
           cd $(mktemp -d)
           curl --location --output linux-x64.zip https://aka.ms/get/kiota/latest/linux-x64.zip
           unzip linux-x64.zip
@@ -123,7 +123,7 @@ jobs:
           echo "installed_path=$installed_path" >> $GITHUB_OUTPUT
           echo Kiota installed at $installed_path
           ls -lR
-          cd $(work_folder)
+          cd $work_folder
 
       - name: Generate client with Kiota
         run: |
