@@ -2,6 +2,9 @@ name: Generate SDK Weekly
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/build.yml'
   schedule:
     - cron: "0 0 * * 1" # This cron schedule runs the workflow every Monday at midnight
 
