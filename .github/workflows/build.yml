@@ -192,17 +192,17 @@ jobs:
           echo "ver=$ver" >> $GITHUB_OUTPUT
           echo $ver
 
-      - name: Set version
-        id: next_ver
-        run: |
-          if [ "$NO_BUILDING" = "1" ]; then
-            exit 0
-          fi
-          python3 -m pip install semantic-version
-          ver="$(python3 -c "import semantic_version; kiota_v = semantic_version.Version('${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}'); local_v = semantic_version.Version('${{ steps.pervious_package_ver.outputs.ver }}'); print(local_v.next_patch() if kiota_v.major==local_v.major and kiota_v.minor==local_v.minor else kiota_v)")"
-          npm pkg set version=$ver
-          echo "ver=$ver" >> $GITHUB_OUTPUT
-          echo $ver
+      # - name: Set version
+      #   id: next_ver
+      #   run: |
+      #     if [ "$NO_BUILDING" = "1" ]; then
+      #       exit 0
+      #     fi
+      #     python3 -m pip install semantic-version
+      #     ver="$(python3 -c "import semantic_version; kiota_v = semantic_version.Version('${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}'); local_v = semantic_version.Version('${{ steps.pervious_package_ver.outputs.ver }}'); print(local_v.next_patch() if kiota_v.major==local_v.major and kiota_v.minor==local_v.minor else kiota_v)")"
+      #     npm pkg set version=$ver
+      #     echo "ver=$ver" >> $GITHUB_OUTPUT
+      #     echo $ver
 
       - name: Install dependencies
         run: yarn install
