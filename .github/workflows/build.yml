@@ -28,18 +28,18 @@ jobs:
         id: last_ymlsha
         run: |
           LOCAL_FILE="data/build.workflow.sha"
-          local_sha="empty"
+          last_ymlsha="empty"
           if test -f $LOCAL_FILE; then
-          local_sha=$(cat $LOCAL_FILE)
-            echo "local_sha=$local_sha" >> $GITHUB_OUTPUT
+          last_ymlsha=$(cat $LOCAL_FILE)
+            echo "last_ymlsha=$last_ymlsha" >> $GITHUB_OUTPUT
           else
             echo "SHA file does not exist, it will be created later."
           fi
-          echo "$local_sha"
+          echo "$last_ymlsha"
 
       - name: Check if the workflow file has been updated
         run: |
-          if [ "${{ steps.cur_ymlsha.outputs.remote_sha }}" != "${{ steps.last_ymlsha.outputs.local_sha }}" ]; then
+          if [ "${{ steps.cur_ymlsha.outputs.cur_ymlsha }}" != "${{ steps.last_ymlsha.outputs.last_ymlsha }}" ]; then
             echo "Workflow file update detected."
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
           else
