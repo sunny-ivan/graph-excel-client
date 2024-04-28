@@ -127,7 +127,7 @@ jobs:
 
       - name: Generate client with Kiota
         run: |
-          rm -rf './src' & "./${{ steps.setup_kiota.outputs.installed_path }}/kiota" generate --language TypeScript --output src --class-name GraphExcelClient --openapi data/openapi.yaml --include-path '/drives/**/work**'
+          rm -rf './src' & "${{ steps.setup_kiota.outputs.installed_path }}/kiota" generate --language TypeScript --output src --class-name GraphExcelClient --openapi data/openapi.yaml --include-path '/drives/**/work**'
 
       - name: Prevent committing to GitHub
         run: |
