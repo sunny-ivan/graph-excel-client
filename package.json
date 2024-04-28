@@ -6,7 +6,7 @@
     "type": "git",
     "url": "https://github.com/sunny-ivan/graph-excel-kit.git"
   },
-  "version": "0.0.0",
+  "version": "1.13.0",
   "description": "",
   "scripts": {
     "build": "tsc",
