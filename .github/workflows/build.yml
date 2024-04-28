@@ -55,9 +55,10 @@ jobs:
           if [ "${{ steps.remote_apisha.outputs.remote_apisha }}" == "${{ steps.local_apisha.outputs.local_apisha }}" ]; then
             echo "Local Graph metadata is the latest version"
             echo "METADATA_UPDATED=0" >> $GITHUB_ENV
-            else
+          else
             echo "Local Graph metadata is not the latest version"
             echo "METADATA_UPDATED=1" >> $GITHUB_ENV
+          fi
 
       - name: Remote Kiota's version
         id: remote_kiota_ver
