@@ -27,7 +27,7 @@ jobs:
         id: local_apisha
         run: |
           LOCAL_FILE="data/openapi.sha"
-          local_apisha = empty
+          local_apisha="empty"
           if test -f $LOCAL_FILE; then
             local_apisha=$(cat $LOCAL_FILE)
             echo "local_apisha=$local_apisha" >> $GITHUB_OUTPUT
