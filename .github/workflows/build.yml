@@ -216,6 +216,6 @@ jobs:
               git push https://$GITHUB_ACTOR:$GITHUB_TOKEN@github.com/$GITHUB_REPOSITORY.git HEAD:main
           else
               # No changes to commit
-              echo "No changes to commit.""
+              echo "No changes to commit."
               echo "Skipping push."
           fi
