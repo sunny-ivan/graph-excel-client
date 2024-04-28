@@ -47,7 +47,7 @@ jobs:
             echo "Local workflow  is not the latest version"
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
             mkdir -p data && cd data
-            echo "${{ steps.remote_action_sha.outputs.local_sha }}" >> openapi.sha
+            echo "${{ steps.remote_action_sha.outputs.local_sha }}" >> build.workflow.sha
             cd ..
           fi
 
