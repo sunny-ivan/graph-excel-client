@@ -19,6 +19,8 @@ jobs:
           remote_apisha=$( gh api microsoftgraph/msgraph-metadata/raw/master/openapi/v1.0/openapi.yaml | \
           python3 -c "import sys, json; print(json.load(sys.stdin)[0]['sha'])")
           echo "::set-output name=remote_apisha::$remote_apisha"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
       # - name: Get sha of local file
       #   id: local_apisha
