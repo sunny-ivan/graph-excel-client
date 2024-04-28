@@ -1,4 +1,4 @@
-# graph-excel-kit
+# graph-excel-client
 
 Unofficial Excel workbooks and charts SDK
 
