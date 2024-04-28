@@ -165,7 +165,6 @@ jobs:
             exit 0
           fi
           rm -rf './src' & "${{ steps.setup_kiota.outputs.installed_path }}/kiota" generate --language TypeScript --output src --class-name GraphExcelClient --openapi data/openapi.yaml --include-path '/drives/**/work**'
-          ls -lR src
           client_info="$(kiota info -d "data/openapi.yaml" -l TypeScript | tee /dev/tty)"
           install_packages="$(echo "$client_info" | python3 -c "import sys;print(' && '.join([line.strip().replace('npm install','yarn add').replace('-SE','--exact') for line in sys.stdin if line.strip().startswith('npm install')]))" | tee /dev/tty)"
           eval $install_packages
