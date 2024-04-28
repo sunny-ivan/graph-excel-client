@@ -47,7 +47,7 @@ jobs:
             echo "Local workflow  is not the latest version"
             echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
             mkdir -p data && cd data
-            echo "${{ steps.remote_action_sha.outputs.remote_sha }}" >> build.workflow.sha
+            echo "${{ steps.remote_action_sha.outputs.remote_sha }}" > build.workflow.sha
             cd ..
           fi
 
@@ -84,7 +84,7 @@ jobs:
             echo "METADATA_UPDATED=1" >> $GITHUB_ENV
             mkdir -p data && cd data
             curl --location --output openapi.yaml https://aka.ms/graph/v1.0/openapi.yaml
-            echo "${{ steps.remote_apisha.outputs.remote_apisha }}" >> openapi.sha
+            echo "${{ steps.remote_apisha.outputs.remote_apisha }}" > openapi.sha
             cd ..
           fi
 
@@ -99,29 +99,29 @@ jobs:
         env:
           GH_TOKEN: ${{ github.token }}
 
-      - name: Local Kiota's version
-        id: local_kiota_ver
+      - name: Last Kiota's version
+        id: last_kiota_ver
         run: |
           LOCAL_FILE="data/kiota.ver"
-          local_kiota_ver="empty"
+          last_kiota_ver="empty"
           if test -f $LOCAL_FILE; then
-            local_kiota_ver=$(cat $LOCAL_FILE)
-            echo "local_kiota_ver=$local_kiota_ver" >> $GITHUB_OUTPUT
+            last_kiota_ver=$(cat $LOCAL_FILE)
+            echo "last_kiota_ver=$last_kiota_ver" >> $GITHUB_OUTPUT
           else
             echo "kiota.ver does not exist, it will be created later."
           fi
-          echo "$local_kiota_ver"
+          echo "$last_kiota_ver"
 
       - name: Compare Kiota's version
         run: |
-          if [ "${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}" == "${{ steps.local_kiota_ver.outputs.local_kiota_ver }}" ]; then
+          if [ "${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}" == "${{ steps.last_kiota_ver.outputs.last_kiota_ver }}" ]; then
             echo "Local Kiota is the latest version"
             echo "KIOTA_UPDATED=0" >> $GITHUB_ENV
           else
             echo "Local Kiota is not the latest version"
             echo "KIOTA_UPDATED=1" >> $GITHUB_ENV
             mkdir -p data && cd data
-            echo "${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}" >> kiota.ver
+            echo "${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}" > kiota.ver
             cd ..
           fi
 
