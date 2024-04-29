@@ -4,6 +4,8 @@
 // @ts-ignore
 import { DrivesRequestBuilderNavigationMetadata, type DrivesRequestBuilder } from './drives/';
 // @ts-ignore
+import { MeRequestBuilderRequestsMetadata, type MeRequestBuilder } from './me/';
+// @ts-ignore
 import { apiClientProxifier, registerDefaultDeserializer, registerDefaultSerializer, type BaseRequestBuilder, type KeysToExcludeForNavigationMetadata, type NavigationMetadata, type RequestAdapter } from '@microsoft/kiota-abstractions';
 // @ts-ignore
 import { FormParseNodeFactory, FormSerializationWriterFactory } from '@microsoft/kiota-serialization-form';
@@ -42,6 +44,10 @@ export interface GraphExcelClient extends BaseRequestBuilder<GraphExcelClient> {
      * The drives property
      */
     get drives(): DrivesRequestBuilder;
+    /**
+     * Provides operations to manage the user singleton.
+     */
+    get me(): MeRequestBuilder;
 }
 /**
  * Uri template for the request builder.
@@ -53,6 +59,9 @@ export const GraphExcelClientUriTemplate = "{+baseurl}";
 export const GraphExcelClientNavigationMetadata: Record<Exclude<keyof GraphExcelClient, KeysToExcludeForNavigationMetadata>, NavigationMetadata> = {
     drives: {
         navigationMetadata: DrivesRequestBuilderNavigationMetadata,
+    },
+    me: {
+        requestsMetadata: MeRequestBuilderRequestsMetadata,
     },
 };
 /* tslint:enable */

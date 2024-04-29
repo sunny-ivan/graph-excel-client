@@ -1,5 +1,5 @@
 {
-  "descriptionHash": "E710D47077AB3EA72D82005E4F60568ECBED6CF02A6D469B7E6001BFC637D0D162EA613CF9BBA560E83AE08354EEDF27348C969AF10E4086DA23E3574DAB2A94",
+  "descriptionHash": "B8EC38C7FB974450485018622960C0A97E390F6957F9B01CD9D2097A928AC4F823472E8302287E3EE74423E69120FA1FCD2F087EE937802F3B8F14433B507B59",
   "descriptionLocation": "../data/openapi.yaml",
   "lockFileVersion": "1.0.0",
   "kiotaVersion": "1.13.0",
@@ -27,7 +27,9 @@
     "multipart/form-data;q=0.1"
   ],
   "includePatterns": [
-    "/drives/**/work**"
+    "/me#GET",
+    "/drives/**/workbook",
+    "/drives/**/workbook/**"
   ],
   "excludePatterns": [],
   "disabledValidationRules": []
