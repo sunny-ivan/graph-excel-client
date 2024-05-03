@@ -1,6 +1,5 @@
 {
   "name": "graph-excel-client",
-  "packageManager": "yarn@4.1.1",
   "license": "MIT",
   "main": "dist/graphExcelClient.js",
   "repository": {
