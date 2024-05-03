@@ -2,7 +2,7 @@
   "descriptionHash": "43D2CFFCAE69343C6D66E7A905564D62391B4F76BD10C2D5CAA137FF9C35EBE795F75CD070EFD5870702AAD1C9A18AAEF3BA911D3C062919B56EA20D8E07BD98",
   "descriptionLocation": "../data/openapi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.13.0",
+  "kiotaVersion": "1.14.0",
   "clientClassName": "GraphExcelClient",
   "clientNamespaceName": "ApiSdk",
   "language": "TypeScript",

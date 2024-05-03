@@ -22,7 +22,7 @@ export function createErf_PrecisePostRequestBodyFromDiscriminatorValue(parseNode
  */
 export function deserializeIntoErf_PrecisePostRequestBody(erf_PrecisePostRequestBody: Partial<Erf_PrecisePostRequestBody> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
-        "x": n => { erf_PrecisePostRequestBody.x = n.getObjectValue<Json>(createJsonFromDiscriminatorValue); },
+        "X": n => { erf_PrecisePostRequestBody.x = n.getObjectValue<Json>(createJsonFromDiscriminatorValue); },
     }
 }
 export interface Erf_PrecisePostRequestBody extends AdditionalDataHolder, Parsable {
