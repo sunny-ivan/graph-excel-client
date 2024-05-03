@@ -31,7 +31,7 @@ jobs:
         id: generate
         uses: sunny-ivan/generate-kiota-typescript@main
         with:
-          kiota_generate_options: --include-path '/drives/**/workbook' --include-path '/drives/**/workbook/**'
+          kiota_generate_options: --class-name GraphExcelClient --include-path '/drives/**/workbook' --include-path '/drives/**/workbook/**'
 
       - name: Set version
         run: |
