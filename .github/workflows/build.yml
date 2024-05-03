@@ -9,213 +9,13 @@ on:
     - cron: "0 0 * * 1" # This cron schedule runs the workflow every Monday at midnight
 
 jobs:
-  check_updates:
+  build:
     name: Check updates
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Get sha of current workflow file
-        id: cur_ymlsha
-        run: |
-          cur_ymlsha="${{ github.workflow_sha }}"
-          echo "cur_ymlsha=$cur_ymlsha" >> $GITHUB_OUTPUT
-          echo "$cur_ymlsha"
-
-      - name: Get sha of last workflow file
-        id: last_ymlsha
-        run: |
-          LOCAL_FILE="data/build.workflow.sha"
-          last_ymlsha="empty"
-          if test -f $LOCAL_FILE; then
-          last_ymlsha=$(cat $LOCAL_FILE)
-            echo "last_ymlsha=$last_ymlsha" >> $GITHUB_OUTPUT
-          else
-            echo "SHA file does not exist, it will be created later."
-          fi
-          echo "$last_ymlsha"
-
-      - name: Check if the workflow file has been updated
-        run: |
-          if [ "${{ steps.cur_ymlsha.outputs.cur_ymlsha }}" != "${{ steps.last_ymlsha.outputs.last_ymlsha }}" ]; then
-            echo "Workflow file update detected."
-            echo "WORKFLOW_UPDATED=1" >> $GITHUB_ENV
-          else
-            echo "Nope."
-            echo "WORKFLOW_UPDATED=0" >> $GITHUB_ENV
-          fi
-
-      - name: Get sha of remote Graph metadata
-        id: remote_apisha
-        run: |
-          remote_apisha=$( gh api repos/microsoftgraph/msgraph-metadata/commits?path=/openapi/v1.0/openapi.yaml | \
-          python3 -c "import sys, json; print(json.load(sys.stdin)[0]['sha'])")
-          echo "remote_apisha=$remote_apisha" >> $GITHUB_OUTPUT
-          echo "$remote_apisha"
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Get sha of local Graph metadata
-        id: local_apisha
-        run: |
-          LOCAL_FILE="data/openapi.sha"
-          local_apisha="empty"
-          if test -f $LOCAL_FILE; then
-            local_apisha=$(cat $LOCAL_FILE)
-            echo "local_apisha=$local_apisha" >> $GITHUB_OUTPUT
-          else
-            echo "SHA file does not exist, it will be created later."
-          fi
-          echo "$local_apisha"
-
-      - name: Compare Graph metadata
-        run: |
-          if [ "${{ steps.remote_apisha.outputs.remote_apisha }}" == "${{ steps.local_apisha.outputs.local_apisha }}" ]; then
-            echo "Local Graph metadata is the latest version"
-            echo "METADATA_UPDATED=0" >> $GITHUB_ENV
-          else
-            echo "Local Graph metadata is not the latest version"
-            echo "METADATA_UPDATED=1" >> $GITHUB_ENV
-          fi
-
-      - name: Remote Kiota's version
-        id: remote_kiota_ver
-        run: |
-          version_v=$( gh api repos/microsoft/kiota/releases/latest | \
-          python3 -c "import sys, json; print(json.load(sys.stdin)['name'])") # v1.13.0
-          remote_kiota_ver=${version_v#v} # 1.13.0
-          echo "remote_kiota_ver=$remote_kiota_ver" >> $GITHUB_OUTPUT
-          echo "$remote_kiota_ver"
-        env:
-          GH_TOKEN: ${{ github.token }}
-
-      - name: Last Kiota's version
-        id: last_kiota_ver
-        run: |
-          LOCAL_FILE="data/kiota.ver"
-          last_kiota_ver="empty"
-          if test -f $LOCAL_FILE; then
-            last_kiota_ver=$(cat $LOCAL_FILE)
-            echo "last_kiota_ver=$last_kiota_ver" >> $GITHUB_OUTPUT
-          else
-            echo "kiota.ver does not exist, it will be created later."
-          fi
-          echo "$last_kiota_ver"
-
-      - name: Compare Kiota's version
-        run: |
-          if [ "${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}" == "${{ steps.last_kiota_ver.outputs.last_kiota_ver }}" ]; then
-            echo "Local Kiota is the latest version"
-            echo "KIOTA_UPDATED=0" >> $GITHUB_ENV
-          else
-            echo "Local Kiota is not the latest version"
-            echo "KIOTA_UPDATED=1" >> $GITHUB_ENV
-          fi
-
-      - name: Check before building
-        id: should_build
-        run: |
-          if [ "$WORKFLOW_UPDATED" = "1" ] || [ "$METADATA_UPDATED" = "1" ] || [ "$KIOTA_UPDATED" = "1"]; then
-            echo "At least one updated."
-            echo "should_build=1" >> $GITHUB_OUTPUT
-          else
-            echo "Everything is the same as before."
-            echo "should_build=0" >> $GITHUB_OUTPUT
-          fi
-
-    outputs:
-      cur_ymlsha: ${{ steps.cur_ymlsha.outputs.cur_ymlsha }}
-      previous_apisha: ${{ steps.local_apisha.outputs.local_apisha }}
-      remote_apisha: ${{ steps.remote_apisha.outputs.remote_apisha }}
-      remote_kiota_ver: ${{ steps.remote_kiota_ver.outputs.remote_kiota_ver }}
-      should_build: ${{ steps.should_build.outputs.should_build }}
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    needs: check_updates
-    if: ${{ needs.check_updates.outputs.should_build == '1' }}
-
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Write version mark
-        run: |
-          mkdir -p data && cd data
-          if [ "${{ needs.check_updates.outputs.remote_apisha }}" != "${{ needs.check_updates.outputs.previous_apisha }}" ]; then
-            curl --location --output openapi.yaml https://aka.ms/graph/v1.0/openapi.yaml
-            echo "${{ needs.check_updates.outputs.remote_apisha }}" > openapi.sha
-          fi
-          echo "${{ needs.check_updates.outputs.remote_kiota_ver }}" > kiota.ver
-          echo "${{ needs.check_updates.outputs.cur_ymlsha }}" > build.workflow.sha
-          cd ..
-
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4
-        with:
-          node-version: "latest"
-
-      - name: Setup Yarn Package Manager
-        run: |
-          npm install -g corepack & corepack enable
-          curl --compressed -o- -L https://yarnpkg.com/install.sh | bash
-          yarn_version=$(grep -o '"packageManager": "yarn@[0-9.]*"' package.json | cut -d '"' -f 4 | cut -d '@' -f 2)
-          echo "Installing $yarn_version"
-          yarn set version "$yarn_version"
-
-      - name: Setup Kiota
-        id: setup_kiota
-        run: |
-          work_folder=$(pwd)
-          cd $(mktemp -d)
-          curl --location --output linux-x64.zip https://aka.ms/get/kiota/latest/linux-x64.zip
-          unzip linux-x64.zip
-          installed_path=$(pwd)
-          echo "installed_path=$installed_path" >> $GITHUB_OUTPUT
-          echo Kiota installed at $installed_path
-          ls -lR
-          cd $work_folder
-
-      - name: Generate client with Kiota
-        run: |
-          rm -rf './src' & "${{ steps.setup_kiota.outputs.installed_path }}/kiota" generate --language TypeScript --output src --class-name GraphExcelClient --openapi data/openapi.yaml --include-path '/me#GET' --include-path '/drives/**/workbook' --include-path '/drives/**/workbook/**'
-
-      - name: Install dependencies of Kiota generated client
-        run: |
-          client_info="$("${{ steps.setup_kiota.outputs.installed_path }}/kiota" info -d "data/openapi.yaml" -l TypeScript)"
-          echo Client information
-          echo "$client_info"
-          install_packages="$(echo "$client_info" | python3 -c "import sys;print(' && '.join([line.strip().replace('npm install','yarn add').replace('-SE','--exact') for line in sys.stdin if line.strip().startswith('npm install')]))")"
-          echo Dependencies will be installed
-          echo $install_packages
-          eval $install_packages
-
-      - name: Local package version
-        id: previous_package_ver
-        run: |
-          str=$(npm pkg get version)
-          ver=${str//\"/}
-          echo "ver=$ver" >> $GITHUB_OUTPUT
-          echo $ver
-
-      - name: Set version
-        id: next_ver
-        run: |
-          python3 -m pip install semantic-version
-          ver="$(python3 -c "import semantic_version; kiota_v = semantic_version.Version('${{ needs.check_updates.outputs.remote_kiota_ver }}'); local_v = semantic_version.Version('${{ steps.previous_package_ver.outputs.ver }}'); print(local_v.next_patch() if kiota_v.major==local_v.major and kiota_v.minor==local_v.minor else kiota_v)")"
-          npm pkg set version=$ver
-          echo "ver=$ver" >> $GITHUB_OUTPUT
-          echo $ver
-
-      - name: Install dependencies
-        run: |
-          yarn install
 
       - name: Set identity
         run: |
@@ -225,37 +25,11 @@ jobs:
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           echo Commit as "$(git config user.name) <$(git config user.email)>"
 
-      - name: Build package
-        run: |
-          yarn build
-
-      - name: Check SHA-1 of distribution
-        id: check_dist_sha1
-        run: |
-          cur_sha1=$(find dist -type f -exec sha1sum {} + | sha1sum | cut -d ' ' -f1)
-          LOCAL_FILE="data/dist.sha1"
-          last_sha1="empty"
-          if test -f $LOCAL_FILE; then
-            last_sha1=$(cat $LOCAL_FILE)
-            echo "last_sha1=$last_sha1" >> $GITHUB_OUTPUT
-          else
-            echo "dist.sha1 does not exist, it will be created later."
-          fi
-          echo "$last_sha1"
-          if [ "$cur_sha1" == "$last_sha1" ]; then
-            echo "Same as previous building."
-            npm pkg set version=${{ steps.previous_package_ver.outputs.ver }}
-            echo "should_tag=0" >> $GITHUB_OUTPUT
-          else
-            echo "This is a new version."
-            mkdir -p data && cd data
-            echo "$cur_sha1" > dist.sha1
-            cd ..
-            echo "should_tag=1" >> $GITHUB_OUTPUT
-          fi
-          ver=$(npm pkg get version)
-          ver=${ver//\"/}
-          echo "ver=$ver" >> $GITHUB_OUTPUT
+      - name: Check for updates, generate code and build package
+        id: generate
+        uses: sunny-ivan/generate-kiota-typescript
+        with:
+          kiota_generate_options: --include-path '/drives/**/workbook' --include-path '/drives/**/workbook/**'
 
       - name: Commit changes
         run: |
@@ -273,14 +47,14 @@ jobs:
 
       - name: Create tag
         id: create_tag
-        if: ${{ steps.check_dist_sha1.outputs.should_tag == '1' }}
+        if: ${{ steps.generate.outputs.should_tag == '1' }}
         run: |
-          git tag ${{ steps.check_dist_sha1.outputs.ver }}
+          git tag v${{ steps.generate.outputs.suggested_pkg_version }}
           git push
 
       - name: Create zip archive file
         id: create_zip
-        if: ${{ steps.check_dist_sha1.outputs.should_tag == '1' }}
+        if: ${{ steps.generate.outputs.should_tag == '1' }}
         run: |
           tempd=$(mktemp -d)
           workd=$(pwd)
@@ -294,17 +68,17 @@ jobs:
           echo "sha1=$dist_sha1" >> $GITHUB_OUTPUT
 
       - name: GH Release
-        if: ${{ steps.check_dist_sha1.outputs.should_tag == '1' }}
+        if: ${{ steps.generate.outputs.should_tag == '1' }}
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ steps.check_dist_sha1.outputs.ver }}
-          name: Release ${{ steps.check_dist_sha1.outputs.ver }}
+          tag_name: v${{ steps.generate.outputs.suggested_pkg_version }}
+          name: v${{ steps.generate.outputs.suggested_pkg_version }}
           files: |
             ${{ steps.create_zip.outputs.zip }}
             ${{ steps.create_zip.outputs.sha1 }}
 
       - name: NPM Publish
-        if: ${{ steps.check_dist_sha1.outputs.should_tag == '1' }}
+        if: ${{ steps.generate.outputs.should_tag == '1' }}
         uses: JS-DevTools/npm-publish@v3
         with:
           token: ${{ secrets.NPM_AUTH_TOKEN }}
