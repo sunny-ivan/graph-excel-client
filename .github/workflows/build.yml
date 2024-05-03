@@ -27,7 +27,7 @@ jobs:
 
       - name: Check for updates, generate code and build package
         id: generate
-        uses: sunny-ivan/generate-kiota-typescript
+        uses: sunny-ivan/generate-kiota-typescript@main
         with:
           kiota_generate_options: --include-path '/drives/**/workbook' --include-path '/drives/**/workbook/**'
 
