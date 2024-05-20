@@ -2218,7 +2218,7 @@ export interface WorkbookChart extends Entity, Parsable {
      */
     axes?: WorkbookChartAxes;
     /**
-     * Represents the datalabels on the chart. Read-only.
+     * Represents the data labels on the chart. Read-only.
      */
     dataLabels?: WorkbookChartDataLabels;
     /**
@@ -2246,7 +2246,7 @@ export interface WorkbookChart extends Entity, Parsable {
      */
     series?: WorkbookChartSeries[];
     /**
-     * Represents the title of the specified chart, including the text, visibility, position and formating of the title. Read-only.
+     * Represents the title of the specified chart, including the text, visibility, position and formatting of the title. Read-only.
      */
     title?: WorkbookChartTitle;
     /**
