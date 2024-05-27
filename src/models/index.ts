@@ -2610,27 +2610,27 @@ export interface WorkbookFilterCriteria extends AdditionalDataHolder, Parsable {
      */
     additionalData?: Record<string, unknown>;
     /**
-     * The color property
+     * The color applied to the cell.
      */
     color?: string;
     /**
-     * The criterion1 property
+     * A custom criterion.
      */
     criterion1?: string;
     /**
-     * The criterion2 property
+     * A custom criterion.
      */
     criterion2?: string;
     /**
-     * The dynamicCriteria property
+     * A dynamic formula specified in a custom filter.
      */
     dynamicCriteria?: string;
     /**
-     * The filterOn property
+     * Indicates whether a filter is applied to a column.
      */
     filterOn?: string;
     /**
-     * The icon property
+     * An icon applied to a cell via conditional formatting.
      */
     icon?: WorkbookIcon;
     /**
@@ -2638,11 +2638,11 @@ export interface WorkbookFilterCriteria extends AdditionalDataHolder, Parsable {
      */
     odataType?: string;
     /**
-     * The operator property
+     * An operator in a cell; for example, =, >, <, <=, or <>.
      */
     operator?: string;
     /**
-     * The values property
+     * The values that appear in the cell.
      */
     values?: Json;
 }
