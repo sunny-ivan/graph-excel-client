@@ -2764,7 +2764,7 @@ export interface WorkbookRange extends Entity, Parsable {
      */
     columnCount?: number;
     /**
-     * Represents if all columns of the current range are hidden.
+     * Indicates whether all columns of the current range are hidden.
      */
     columnHidden?: boolean;
     /**
@@ -2800,7 +2800,7 @@ export interface WorkbookRange extends Entity, Parsable {
      */
     rowCount?: number;
     /**
-     * Represents if all rows of the current range are hidden.
+     * Indicates whether all rows of the current range are hidden.
      */
     rowHidden?: boolean;
     /**
@@ -2816,7 +2816,7 @@ export interface WorkbookRange extends Entity, Parsable {
      */
     text?: UntypedNode;
     /**
-     * Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contains an error returns the error string.
+     * Represents the raw values of the specified range. The data returned can be of type string, number, or a Boolean. Cell that contains an error returns the error string.
      */
     values?: UntypedNode;
     /**
