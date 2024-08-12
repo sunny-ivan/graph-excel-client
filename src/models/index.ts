@@ -23,6 +23,7 @@ export interface BaseCollectionPaginationCountResponse extends AdditionalDataHol
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {BaseCollectionPaginationCountResponse}
  */
+// @ts-ignore
 export function createBaseCollectionPaginationCountResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoBaseCollectionPaginationCountResponse;
 }
@@ -31,6 +32,7 @@ export function createBaseCollectionPaginationCountResponseFromDiscriminatorValu
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Entity}
  */
+// @ts-ignore
 export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     if(!parseNode) throw new Error("parseNode cannot be undefined");
     const mappingValueNode = parseNode.getChildNode("@odata.type");
@@ -138,6 +140,7 @@ export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefi
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookApplication}
  */
+// @ts-ignore
 export function createWorkbookApplicationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookApplication;
 }
@@ -146,6 +149,7 @@ export function createWorkbookApplicationFromDiscriminatorValue(parseNode: Parse
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartAreaFormat}
  */
+// @ts-ignore
 export function createWorkbookChartAreaFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartAreaFormat;
 }
@@ -154,6 +158,7 @@ export function createWorkbookChartAreaFormatFromDiscriminatorValue(parseNode: P
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartAxes}
  */
+// @ts-ignore
 export function createWorkbookChartAxesFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartAxes;
 }
@@ -162,6 +167,7 @@ export function createWorkbookChartAxesFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartAxisFormat}
  */
+// @ts-ignore
 export function createWorkbookChartAxisFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartAxisFormat;
 }
@@ -170,6 +176,7 @@ export function createWorkbookChartAxisFormatFromDiscriminatorValue(parseNode: P
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartAxis}
  */
+// @ts-ignore
 export function createWorkbookChartAxisFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartAxis;
 }
@@ -178,6 +185,7 @@ export function createWorkbookChartAxisFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartAxisTitleFormat}
  */
+// @ts-ignore
 export function createWorkbookChartAxisTitleFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartAxisTitleFormat;
 }
@@ -186,6 +194,7 @@ export function createWorkbookChartAxisTitleFormatFromDiscriminatorValue(parseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartAxisTitle}
  */
+// @ts-ignore
 export function createWorkbookChartAxisTitleFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartAxisTitle;
 }
@@ -194,6 +203,7 @@ export function createWorkbookChartAxisTitleFromDiscriminatorValue(parseNode: Pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookChartCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartCollectionResponse;
 }
@@ -202,6 +212,7 @@ export function createWorkbookChartCollectionResponseFromDiscriminatorValue(pars
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartDataLabelFormat}
  */
+// @ts-ignore
 export function createWorkbookChartDataLabelFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartDataLabelFormat;
 }
@@ -210,6 +221,7 @@ export function createWorkbookChartDataLabelFormatFromDiscriminatorValue(parseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartDataLabels}
  */
+// @ts-ignore
 export function createWorkbookChartDataLabelsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartDataLabels;
 }
@@ -218,6 +230,7 @@ export function createWorkbookChartDataLabelsFromDiscriminatorValue(parseNode: P
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartFill}
  */
+// @ts-ignore
 export function createWorkbookChartFillFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartFill;
 }
@@ -226,6 +239,7 @@ export function createWorkbookChartFillFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartFont}
  */
+// @ts-ignore
 export function createWorkbookChartFontFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartFont;
 }
@@ -234,6 +248,7 @@ export function createWorkbookChartFontFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChart}
  */
+// @ts-ignore
 export function createWorkbookChartFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChart;
 }
@@ -242,6 +257,7 @@ export function createWorkbookChartFromDiscriminatorValue(parseNode: ParseNode |
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartGridlinesFormat}
  */
+// @ts-ignore
 export function createWorkbookChartGridlinesFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartGridlinesFormat;
 }
@@ -250,6 +266,7 @@ export function createWorkbookChartGridlinesFormatFromDiscriminatorValue(parseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartGridlines}
  */
+// @ts-ignore
 export function createWorkbookChartGridlinesFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartGridlines;
 }
@@ -258,6 +275,7 @@ export function createWorkbookChartGridlinesFromDiscriminatorValue(parseNode: Pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartLegendFormat}
  */
+// @ts-ignore
 export function createWorkbookChartLegendFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartLegendFormat;
 }
@@ -266,6 +284,7 @@ export function createWorkbookChartLegendFormatFromDiscriminatorValue(parseNode:
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartLegend}
  */
+// @ts-ignore
 export function createWorkbookChartLegendFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartLegend;
 }
@@ -274,6 +293,7 @@ export function createWorkbookChartLegendFromDiscriminatorValue(parseNode: Parse
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartLineFormat}
  */
+// @ts-ignore
 export function createWorkbookChartLineFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartLineFormat;
 }
@@ -282,6 +302,7 @@ export function createWorkbookChartLineFormatFromDiscriminatorValue(parseNode: P
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartPointCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookChartPointCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartPointCollectionResponse;
 }
@@ -290,6 +311,7 @@ export function createWorkbookChartPointCollectionResponseFromDiscriminatorValue
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartPointFormat}
  */
+// @ts-ignore
 export function createWorkbookChartPointFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartPointFormat;
 }
@@ -298,6 +320,7 @@ export function createWorkbookChartPointFormatFromDiscriminatorValue(parseNode: 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartPoint}
  */
+// @ts-ignore
 export function createWorkbookChartPointFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartPoint;
 }
@@ -306,6 +329,7 @@ export function createWorkbookChartPointFromDiscriminatorValue(parseNode: ParseN
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartSeriesCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookChartSeriesCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartSeriesCollectionResponse;
 }
@@ -314,6 +338,7 @@ export function createWorkbookChartSeriesCollectionResponseFromDiscriminatorValu
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartSeriesFormat}
  */
+// @ts-ignore
 export function createWorkbookChartSeriesFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartSeriesFormat;
 }
@@ -322,6 +347,7 @@ export function createWorkbookChartSeriesFormatFromDiscriminatorValue(parseNode:
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartSeries}
  */
+// @ts-ignore
 export function createWorkbookChartSeriesFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartSeries;
 }
@@ -330,6 +356,7 @@ export function createWorkbookChartSeriesFromDiscriminatorValue(parseNode: Parse
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartTitleFormat}
  */
+// @ts-ignore
 export function createWorkbookChartTitleFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartTitleFormat;
 }
@@ -338,6 +365,7 @@ export function createWorkbookChartTitleFormatFromDiscriminatorValue(parseNode: 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookChartTitle}
  */
+// @ts-ignore
 export function createWorkbookChartTitleFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookChartTitle;
 }
@@ -346,6 +374,7 @@ export function createWorkbookChartTitleFromDiscriminatorValue(parseNode: ParseN
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookCommentCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookCommentCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookCommentCollectionResponse;
 }
@@ -354,6 +383,7 @@ export function createWorkbookCommentCollectionResponseFromDiscriminatorValue(pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookComment}
  */
+// @ts-ignore
 export function createWorkbookCommentFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookComment;
 }
@@ -362,6 +392,7 @@ export function createWorkbookCommentFromDiscriminatorValue(parseNode: ParseNode
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookCommentReplyCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookCommentReplyCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookCommentReplyCollectionResponse;
 }
@@ -370,6 +401,7 @@ export function createWorkbookCommentReplyCollectionResponseFromDiscriminatorVal
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookCommentReply}
  */
+// @ts-ignore
 export function createWorkbookCommentReplyFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookCommentReply;
 }
@@ -378,6 +410,7 @@ export function createWorkbookCommentReplyFromDiscriminatorValue(parseNode: Pars
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookFilterCriteria}
  */
+// @ts-ignore
 export function createWorkbookFilterCriteriaFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookFilterCriteria;
 }
@@ -386,6 +419,7 @@ export function createWorkbookFilterCriteriaFromDiscriminatorValue(parseNode: Pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookFilter}
  */
+// @ts-ignore
 export function createWorkbookFilterFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookFilter;
 }
@@ -394,6 +428,7 @@ export function createWorkbookFilterFromDiscriminatorValue(parseNode: ParseNode 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookFormatProtection}
  */
+// @ts-ignore
 export function createWorkbookFormatProtectionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookFormatProtection;
 }
@@ -402,6 +437,7 @@ export function createWorkbookFormatProtectionFromDiscriminatorValue(parseNode: 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Workbook}
  */
+// @ts-ignore
 export function createWorkbookFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbook;
 }
@@ -410,6 +446,7 @@ export function createWorkbookFromDiscriminatorValue(parseNode: ParseNode | unde
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookFunctionResult}
  */
+// @ts-ignore
 export function createWorkbookFunctionResultFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookFunctionResult;
 }
@@ -418,6 +455,7 @@ export function createWorkbookFunctionResultFromDiscriminatorValue(parseNode: Pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookFunctions}
  */
+// @ts-ignore
 export function createWorkbookFunctionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookFunctions;
 }
@@ -426,6 +464,7 @@ export function createWorkbookFunctionsFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookIcon}
  */
+// @ts-ignore
 export function createWorkbookIconFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookIcon;
 }
@@ -434,6 +473,7 @@ export function createWorkbookIconFromDiscriminatorValue(parseNode: ParseNode | 
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookNamedItemCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookNamedItemCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookNamedItemCollectionResponse;
 }
@@ -442,6 +482,7 @@ export function createWorkbookNamedItemCollectionResponseFromDiscriminatorValue(
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookNamedItem}
  */
+// @ts-ignore
 export function createWorkbookNamedItemFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookNamedItem;
 }
@@ -450,6 +491,7 @@ export function createWorkbookNamedItemFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookOperationCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookOperationCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookOperationCollectionResponse;
 }
@@ -458,6 +500,7 @@ export function createWorkbookOperationCollectionResponseFromDiscriminatorValue(
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookOperationError}
  */
+// @ts-ignore
 export function createWorkbookOperationErrorFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookOperationError;
 }
@@ -466,6 +509,7 @@ export function createWorkbookOperationErrorFromDiscriminatorValue(parseNode: Pa
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookOperation}
  */
+// @ts-ignore
 export function createWorkbookOperationFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookOperation;
 }
@@ -474,6 +518,7 @@ export function createWorkbookOperationFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookPivotTableCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookPivotTableCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookPivotTableCollectionResponse;
 }
@@ -482,6 +527,7 @@ export function createWorkbookPivotTableCollectionResponseFromDiscriminatorValue
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookPivotTable}
  */
+// @ts-ignore
 export function createWorkbookPivotTableFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookPivotTable;
 }
@@ -490,6 +536,7 @@ export function createWorkbookPivotTableFromDiscriminatorValue(parseNode: ParseN
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookRangeBorder}
  */
+// @ts-ignore
 export function createWorkbookRangeBorderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookRangeBorder;
 }
@@ -498,6 +545,7 @@ export function createWorkbookRangeBorderFromDiscriminatorValue(parseNode: Parse
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookRangeFill}
  */
+// @ts-ignore
 export function createWorkbookRangeFillFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookRangeFill;
 }
@@ -506,6 +554,7 @@ export function createWorkbookRangeFillFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookRangeFont}
  */
+// @ts-ignore
 export function createWorkbookRangeFontFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookRangeFont;
 }
@@ -514,6 +563,7 @@ export function createWorkbookRangeFontFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookRangeFormat}
  */
+// @ts-ignore
 export function createWorkbookRangeFormatFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookRangeFormat;
 }
@@ -522,6 +572,7 @@ export function createWorkbookRangeFormatFromDiscriminatorValue(parseNode: Parse
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookRange}
  */
+// @ts-ignore
 export function createWorkbookRangeFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookRange;
 }
@@ -530,6 +581,7 @@ export function createWorkbookRangeFromDiscriminatorValue(parseNode: ParseNode |
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookRangeSort}
  */
+// @ts-ignore
 export function createWorkbookRangeSortFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookRangeSort;
 }
@@ -538,6 +590,7 @@ export function createWorkbookRangeSortFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookSessionInfo}
  */
+// @ts-ignore
 export function createWorkbookSessionInfoFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookSessionInfo;
 }
@@ -546,6 +599,7 @@ export function createWorkbookSessionInfoFromDiscriminatorValue(parseNode: Parse
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookSortField}
  */
+// @ts-ignore
 export function createWorkbookSortFieldFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookSortField;
 }
@@ -554,6 +608,7 @@ export function createWorkbookSortFieldFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookTableCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookTableCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookTableCollectionResponse;
 }
@@ -562,6 +617,7 @@ export function createWorkbookTableCollectionResponseFromDiscriminatorValue(pars
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookTableColumnCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookTableColumnCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookTableColumnCollectionResponse;
 }
@@ -570,6 +626,7 @@ export function createWorkbookTableColumnCollectionResponseFromDiscriminatorValu
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookTableColumn}
  */
+// @ts-ignore
 export function createWorkbookTableColumnFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookTableColumn;
 }
@@ -578,6 +635,7 @@ export function createWorkbookTableColumnFromDiscriminatorValue(parseNode: Parse
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookTable}
  */
+// @ts-ignore
 export function createWorkbookTableFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookTable;
 }
@@ -586,6 +644,7 @@ export function createWorkbookTableFromDiscriminatorValue(parseNode: ParseNode |
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookTableRowCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookTableRowCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookTableRowCollectionResponse;
 }
@@ -594,6 +653,7 @@ export function createWorkbookTableRowCollectionResponseFromDiscriminatorValue(p
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookTableRow}
  */
+// @ts-ignore
 export function createWorkbookTableRowFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookTableRow;
 }
@@ -602,6 +662,7 @@ export function createWorkbookTableRowFromDiscriminatorValue(parseNode: ParseNod
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookTableSort}
  */
+// @ts-ignore
 export function createWorkbookTableSortFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookTableSort;
 }
@@ -610,6 +671,7 @@ export function createWorkbookTableSortFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookWorksheetCollectionResponse}
  */
+// @ts-ignore
 export function createWorkbookWorksheetCollectionResponseFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookWorksheetCollectionResponse;
 }
@@ -618,6 +680,7 @@ export function createWorkbookWorksheetCollectionResponseFromDiscriminatorValue(
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookWorksheet}
  */
+// @ts-ignore
 export function createWorkbookWorksheetFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookWorksheet;
 }
@@ -626,6 +689,7 @@ export function createWorkbookWorksheetFromDiscriminatorValue(parseNode: ParseNo
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookWorksheetProtection}
  */
+// @ts-ignore
 export function createWorkbookWorksheetProtectionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookWorksheetProtection;
 }
@@ -634,6 +698,7 @@ export function createWorkbookWorksheetProtectionFromDiscriminatorValue(parseNod
  * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {WorkbookWorksheetProtectionOptions}
  */
+// @ts-ignore
 export function createWorkbookWorksheetProtectionOptionsFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookWorksheetProtectionOptions;
 }
@@ -641,6 +706,7 @@ export function createWorkbookWorksheetProtectionOptionsFromDiscriminatorValue(p
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoBaseCollectionPaginationCountResponse(baseCollectionPaginationCountResponse: Partial<BaseCollectionPaginationCountResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "@odata.count": n => { baseCollectionPaginationCountResponse.odataCount = n.getNumberValue(); },
@@ -651,6 +717,7 @@ export function deserializeIntoBaseCollectionPaginationCountResponse(baseCollect
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "id": n => { entity.id = n.getStringValue(); },
@@ -661,6 +728,7 @@ export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbook(workbook: Partial<Workbook> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbook),
@@ -677,6 +745,7 @@ export function deserializeIntoWorkbook(workbook: Partial<Workbook> | undefined 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookApplication(workbookApplication: Partial<WorkbookApplication> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookApplication),
@@ -687,6 +756,7 @@ export function deserializeIntoWorkbookApplication(workbookApplication: Partial<
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChart(workbookChart: Partial<WorkbookChart> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChart),
@@ -708,6 +778,7 @@ export function deserializeIntoWorkbookChart(workbookChart: Partial<WorkbookChar
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartAreaFormat(workbookChartAreaFormat: Partial<WorkbookChartAreaFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAreaFormat),
@@ -719,6 +790,7 @@ export function deserializeIntoWorkbookChartAreaFormat(workbookChartAreaFormat: 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartAxes(workbookChartAxes: Partial<WorkbookChartAxes> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxes),
@@ -731,6 +803,7 @@ export function deserializeIntoWorkbookChartAxes(workbookChartAxes: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartAxis(workbookChartAxis: Partial<WorkbookChartAxis> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxis),
@@ -748,6 +821,7 @@ export function deserializeIntoWorkbookChartAxis(workbookChartAxis: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartAxisFormat(workbookChartAxisFormat: Partial<WorkbookChartAxisFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxisFormat),
@@ -759,6 +833,7 @@ export function deserializeIntoWorkbookChartAxisFormat(workbookChartAxisFormat: 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartAxisTitle(workbookChartAxisTitle: Partial<WorkbookChartAxisTitle> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxisTitle),
@@ -771,6 +846,7 @@ export function deserializeIntoWorkbookChartAxisTitle(workbookChartAxisTitle: Pa
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartAxisTitleFormat(workbookChartAxisTitleFormat: Partial<WorkbookChartAxisTitleFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxisTitleFormat),
@@ -781,6 +857,7 @@ export function deserializeIntoWorkbookChartAxisTitleFormat(workbookChartAxisTit
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartCollectionResponse(workbookChartCollectionResponse: Partial<WorkbookChartCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookChartCollectionResponse),
@@ -791,6 +868,7 @@ export function deserializeIntoWorkbookChartCollectionResponse(workbookChartColl
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartDataLabelFormat(workbookChartDataLabelFormat: Partial<WorkbookChartDataLabelFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartDataLabelFormat),
@@ -802,6 +880,7 @@ export function deserializeIntoWorkbookChartDataLabelFormat(workbookChartDataLab
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartDataLabels(workbookChartDataLabels: Partial<WorkbookChartDataLabels> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartDataLabels),
@@ -820,6 +899,7 @@ export function deserializeIntoWorkbookChartDataLabels(workbookChartDataLabels: 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartFill(workbookChartFill: Partial<WorkbookChartFill> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartFill),
@@ -829,6 +909,7 @@ export function deserializeIntoWorkbookChartFill(workbookChartFill: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartFont(workbookChartFont: Partial<WorkbookChartFont> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartFont),
@@ -844,6 +925,7 @@ export function deserializeIntoWorkbookChartFont(workbookChartFont: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartGridlines(workbookChartGridlines: Partial<WorkbookChartGridlines> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartGridlines),
@@ -855,6 +937,7 @@ export function deserializeIntoWorkbookChartGridlines(workbookChartGridlines: Pa
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartGridlinesFormat(workbookChartGridlinesFormat: Partial<WorkbookChartGridlinesFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartGridlinesFormat),
@@ -865,6 +948,7 @@ export function deserializeIntoWorkbookChartGridlinesFormat(workbookChartGridlin
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartLegend(workbookChartLegend: Partial<WorkbookChartLegend> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartLegend),
@@ -878,6 +962,7 @@ export function deserializeIntoWorkbookChartLegend(workbookChartLegend: Partial<
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartLegendFormat(workbookChartLegendFormat: Partial<WorkbookChartLegendFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartLegendFormat),
@@ -889,6 +974,7 @@ export function deserializeIntoWorkbookChartLegendFormat(workbookChartLegendForm
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartLineFormat(workbookChartLineFormat: Partial<WorkbookChartLineFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartLineFormat),
@@ -899,6 +985,7 @@ export function deserializeIntoWorkbookChartLineFormat(workbookChartLineFormat: 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartPoint(workbookChartPoint: Partial<WorkbookChartPoint> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartPoint),
@@ -910,6 +997,7 @@ export function deserializeIntoWorkbookChartPoint(workbookChartPoint: Partial<Wo
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartPointCollectionResponse(workbookChartPointCollectionResponse: Partial<WorkbookChartPointCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookChartPointCollectionResponse),
@@ -920,6 +1008,7 @@ export function deserializeIntoWorkbookChartPointCollectionResponse(workbookChar
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartPointFormat(workbookChartPointFormat: Partial<WorkbookChartPointFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartPointFormat),
@@ -930,6 +1019,7 @@ export function deserializeIntoWorkbookChartPointFormat(workbookChartPointFormat
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartSeries(workbookChartSeries: Partial<WorkbookChartSeries> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartSeries),
@@ -942,6 +1032,7 @@ export function deserializeIntoWorkbookChartSeries(workbookChartSeries: Partial<
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartSeriesCollectionResponse(workbookChartSeriesCollectionResponse: Partial<WorkbookChartSeriesCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookChartSeriesCollectionResponse),
@@ -952,6 +1043,7 @@ export function deserializeIntoWorkbookChartSeriesCollectionResponse(workbookCha
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartSeriesFormat(workbookChartSeriesFormat: Partial<WorkbookChartSeriesFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartSeriesFormat),
@@ -963,6 +1055,7 @@ export function deserializeIntoWorkbookChartSeriesFormat(workbookChartSeriesForm
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartTitle(workbookChartTitle: Partial<WorkbookChartTitle> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartTitle),
@@ -976,6 +1069,7 @@ export function deserializeIntoWorkbookChartTitle(workbookChartTitle: Partial<Wo
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookChartTitleFormat(workbookChartTitleFormat: Partial<WorkbookChartTitleFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartTitleFormat),
@@ -987,6 +1081,7 @@ export function deserializeIntoWorkbookChartTitleFormat(workbookChartTitleFormat
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookComment(workbookComment: Partial<WorkbookComment> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookComment),
@@ -999,6 +1094,7 @@ export function deserializeIntoWorkbookComment(workbookComment: Partial<Workbook
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookCommentCollectionResponse(workbookCommentCollectionResponse: Partial<WorkbookCommentCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookCommentCollectionResponse),
@@ -1009,6 +1105,7 @@ export function deserializeIntoWorkbookCommentCollectionResponse(workbookComment
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookCommentReply(workbookCommentReply: Partial<WorkbookCommentReply> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookCommentReply),
@@ -1020,6 +1117,7 @@ export function deserializeIntoWorkbookCommentReply(workbookCommentReply: Partia
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookCommentReplyCollectionResponse(workbookCommentReplyCollectionResponse: Partial<WorkbookCommentReplyCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookCommentReplyCollectionResponse),
@@ -1030,6 +1128,7 @@ export function deserializeIntoWorkbookCommentReplyCollectionResponse(workbookCo
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookFilter(workbookFilter: Partial<WorkbookFilter> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookFilter),
@@ -1040,6 +1139,7 @@ export function deserializeIntoWorkbookFilter(workbookFilter: Partial<WorkbookFi
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookFilterCriteria(workbookFilterCriteria: Partial<WorkbookFilterCriteria> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "color": n => { workbookFilterCriteria.color = n.getStringValue(); },
@@ -1057,6 +1157,7 @@ export function deserializeIntoWorkbookFilterCriteria(workbookFilterCriteria: Pa
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookFormatProtection(workbookFormatProtection: Partial<WorkbookFormatProtection> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookFormatProtection),
@@ -1068,6 +1169,7 @@ export function deserializeIntoWorkbookFormatProtection(workbookFormatProtection
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookFunctionResult(workbookFunctionResult: Partial<WorkbookFunctionResult> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookFunctionResult),
@@ -1079,6 +1181,7 @@ export function deserializeIntoWorkbookFunctionResult(workbookFunctionResult: Pa
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookFunctions(workbookFunctions: Partial<WorkbookFunctions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookFunctions),
@@ -1088,6 +1191,7 @@ export function deserializeIntoWorkbookFunctions(workbookFunctions: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookIcon(workbookIcon: Partial<WorkbookIcon> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "index": n => { workbookIcon.index = n.getNumberValue(); },
@@ -1099,6 +1203,7 @@ export function deserializeIntoWorkbookIcon(workbookIcon: Partial<WorkbookIcon> 
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookNamedItem(workbookNamedItem: Partial<WorkbookNamedItem> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookNamedItem),
@@ -1115,6 +1220,7 @@ export function deserializeIntoWorkbookNamedItem(workbookNamedItem: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookNamedItemCollectionResponse(workbookNamedItemCollectionResponse: Partial<WorkbookNamedItemCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookNamedItemCollectionResponse),
@@ -1125,6 +1231,7 @@ export function deserializeIntoWorkbookNamedItemCollectionResponse(workbookNamed
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookOperation(workbookOperation: Partial<WorkbookOperation> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookOperation),
@@ -1137,6 +1244,7 @@ export function deserializeIntoWorkbookOperation(workbookOperation: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookOperationCollectionResponse(workbookOperationCollectionResponse: Partial<WorkbookOperationCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookOperationCollectionResponse),
@@ -1147,6 +1255,7 @@ export function deserializeIntoWorkbookOperationCollectionResponse(workbookOpera
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookOperationError(workbookOperationError: Partial<WorkbookOperationError> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "code": n => { workbookOperationError.code = n.getStringValue(); },
@@ -1159,6 +1268,7 @@ export function deserializeIntoWorkbookOperationError(workbookOperationError: Pa
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookPivotTable(workbookPivotTable: Partial<WorkbookPivotTable> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookPivotTable),
@@ -1170,6 +1280,7 @@ export function deserializeIntoWorkbookPivotTable(workbookPivotTable: Partial<Wo
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookPivotTableCollectionResponse(workbookPivotTableCollectionResponse: Partial<WorkbookPivotTableCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookPivotTableCollectionResponse),
@@ -1180,6 +1291,7 @@ export function deserializeIntoWorkbookPivotTableCollectionResponse(workbookPivo
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookRange(workbookRange: Partial<WorkbookRange> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookRange),
@@ -1209,6 +1321,7 @@ export function deserializeIntoWorkbookRange(workbookRange: Partial<WorkbookRang
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookRangeBorder(workbookRangeBorder: Partial<WorkbookRangeBorder> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookRangeBorder),
@@ -1222,6 +1335,7 @@ export function deserializeIntoWorkbookRangeBorder(workbookRangeBorder: Partial<
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookRangeFill(workbookRangeFill: Partial<WorkbookRangeFill> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookRangeFill),
@@ -1232,6 +1346,7 @@ export function deserializeIntoWorkbookRangeFill(workbookRangeFill: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookRangeFont(workbookRangeFont: Partial<WorkbookRangeFont> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookRangeFont),
@@ -1247,6 +1362,7 @@ export function deserializeIntoWorkbookRangeFont(workbookRangeFont: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookRangeFormat(workbookRangeFormat: Partial<WorkbookRangeFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookRangeFormat),
@@ -1265,6 +1381,7 @@ export function deserializeIntoWorkbookRangeFormat(workbookRangeFormat: Partial<
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookRangeSort(workbookRangeSort: Partial<WorkbookRangeSort> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookRangeSort),
@@ -1274,6 +1391,7 @@ export function deserializeIntoWorkbookRangeSort(workbookRangeSort: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookSessionInfo(workbookSessionInfo: Partial<WorkbookSessionInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "id": n => { workbookSessionInfo.id = n.getStringValue(); },
@@ -1285,6 +1403,7 @@ export function deserializeIntoWorkbookSessionInfo(workbookSessionInfo: Partial<
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookSortField(workbookSortField: Partial<WorkbookSortField> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "ascending": n => { workbookSortField.ascending = n.getBooleanValue(); },
@@ -1300,6 +1419,7 @@ export function deserializeIntoWorkbookSortField(workbookSortField: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookTable(workbookTable: Partial<WorkbookTable> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookTable),
@@ -1323,6 +1443,7 @@ export function deserializeIntoWorkbookTable(workbookTable: Partial<WorkbookTabl
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookTableCollectionResponse(workbookTableCollectionResponse: Partial<WorkbookTableCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookTableCollectionResponse),
@@ -1333,6 +1454,7 @@ export function deserializeIntoWorkbookTableCollectionResponse(workbookTableColl
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookTableColumn(workbookTableColumn: Partial<WorkbookTableColumn> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookTableColumn),
@@ -1346,6 +1468,7 @@ export function deserializeIntoWorkbookTableColumn(workbookTableColumn: Partial<
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookTableColumnCollectionResponse(workbookTableColumnCollectionResponse: Partial<WorkbookTableColumnCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookTableColumnCollectionResponse),
@@ -1356,6 +1479,7 @@ export function deserializeIntoWorkbookTableColumnCollectionResponse(workbookTab
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookTableRow(workbookTableRow: Partial<WorkbookTableRow> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookTableRow),
@@ -1367,6 +1491,7 @@ export function deserializeIntoWorkbookTableRow(workbookTableRow: Partial<Workbo
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookTableRowCollectionResponse(workbookTableRowCollectionResponse: Partial<WorkbookTableRowCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookTableRowCollectionResponse),
@@ -1377,6 +1502,7 @@ export function deserializeIntoWorkbookTableRowCollectionResponse(workbookTableR
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookTableSort(workbookTableSort: Partial<WorkbookTableSort> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookTableSort),
@@ -1389,6 +1515,7 @@ export function deserializeIntoWorkbookTableSort(workbookTableSort: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookWorksheet(workbookWorksheet: Partial<WorkbookWorksheet> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookWorksheet),
@@ -1406,6 +1533,7 @@ export function deserializeIntoWorkbookWorksheet(workbookWorksheet: Partial<Work
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookWorksheetCollectionResponse(workbookWorksheetCollectionResponse: Partial<WorkbookWorksheetCollectionResponse> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoBaseCollectionPaginationCountResponse(workbookWorksheetCollectionResponse),
@@ -1416,6 +1544,7 @@ export function deserializeIntoWorkbookWorksheetCollectionResponse(workbookWorks
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookWorksheetProtection(workbookWorksheetProtection: Partial<WorkbookWorksheetProtection> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookWorksheetProtection),
@@ -1427,6 +1556,7 @@ export function deserializeIntoWorkbookWorksheetProtection(workbookWorksheetProt
  * The deserialization information for the current model
  * @returns {Record<string, (node: ParseNode) => void>}
  */
+// @ts-ignore
 export function deserializeIntoWorkbookWorksheetProtectionOptions(workbookWorksheetProtectionOptions: Partial<WorkbookWorksheetProtectionOptions> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "allowAutoFilter": n => { workbookWorksheetProtectionOptions.allowAutoFilter = n.getBooleanValue(); },
@@ -1461,6 +1591,7 @@ export interface Entity extends AdditionalDataHolder, Parsable {
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeBaseCollectionPaginationCountResponse(writer: SerializationWriter, baseCollectionPaginationCountResponse: Partial<BaseCollectionPaginationCountResponse> | undefined = {}) : void {
     writer.writeNumberValue("@odata.count", baseCollectionPaginationCountResponse.odataCount);
     writer.writeStringValue("@odata.nextLink", baseCollectionPaginationCountResponse.odataNextLink);
@@ -1470,6 +1601,7 @@ export function serializeBaseCollectionPaginationCountResponse(writer: Serializa
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeEntity(writer: SerializationWriter, entity: Partial<Entity> | undefined = {}) : void {
     writer.writeStringValue("id", entity.id);
     writer.writeStringValue("@odata.type", entity.odataType);
@@ -1479,6 +1611,7 @@ export function serializeEntity(writer: SerializationWriter, entity: Partial<Ent
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbook(writer: SerializationWriter, workbook: Partial<Workbook> | undefined = {}) : void {
     serializeEntity(writer, workbook)
     writer.writeObjectValue<WorkbookApplication>("application", workbook.application, serializeWorkbookApplication);
@@ -1493,6 +1626,7 @@ export function serializeWorkbook(writer: SerializationWriter, workbook: Partial
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookApplication(writer: SerializationWriter, workbookApplication: Partial<WorkbookApplication> | undefined = {}) : void {
     serializeEntity(writer, workbookApplication)
     writer.writeStringValue("calculationMode", workbookApplication.calculationMode);
@@ -1501,6 +1635,7 @@ export function serializeWorkbookApplication(writer: SerializationWriter, workbo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChart(writer: SerializationWriter, workbookChart: Partial<WorkbookChart> | undefined = {}) : void {
     serializeEntity(writer, workbookChart)
     writer.writeObjectValue<WorkbookChartAxes>("axes", workbookChart.axes, serializeWorkbookChartAxes);
@@ -1520,6 +1655,7 @@ export function serializeWorkbookChart(writer: SerializationWriter, workbookChar
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartAreaFormat(writer: SerializationWriter, workbookChartAreaFormat: Partial<WorkbookChartAreaFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartAreaFormat)
     writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartAreaFormat.fill, serializeWorkbookChartFill);
@@ -1529,6 +1665,7 @@ export function serializeWorkbookChartAreaFormat(writer: SerializationWriter, wo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartAxes(writer: SerializationWriter, workbookChartAxes: Partial<WorkbookChartAxes> | undefined = {}) : void {
     serializeEntity(writer, workbookChartAxes)
     writer.writeObjectValue<WorkbookChartAxis>("categoryAxis", workbookChartAxes.categoryAxis, serializeWorkbookChartAxis);
@@ -1539,6 +1676,7 @@ export function serializeWorkbookChartAxes(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartAxis(writer: SerializationWriter, workbookChartAxis: Partial<WorkbookChartAxis> | undefined = {}) : void {
     serializeEntity(writer, workbookChartAxis)
     writer.writeObjectValue<WorkbookChartAxisFormat>("format", workbookChartAxis.format, serializeWorkbookChartAxisFormat);
@@ -1554,6 +1692,7 @@ export function serializeWorkbookChartAxis(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartAxisFormat(writer: SerializationWriter, workbookChartAxisFormat: Partial<WorkbookChartAxisFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartAxisFormat)
     writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAxisFormat.font, serializeWorkbookChartFont);
@@ -1563,6 +1702,7 @@ export function serializeWorkbookChartAxisFormat(writer: SerializationWriter, wo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartAxisTitle(writer: SerializationWriter, workbookChartAxisTitle: Partial<WorkbookChartAxisTitle> | undefined = {}) : void {
     serializeEntity(writer, workbookChartAxisTitle)
     writer.writeObjectValue<WorkbookChartAxisTitleFormat>("format", workbookChartAxisTitle.format, serializeWorkbookChartAxisTitleFormat);
@@ -1573,6 +1713,7 @@ export function serializeWorkbookChartAxisTitle(writer: SerializationWriter, wor
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartAxisTitleFormat(writer: SerializationWriter, workbookChartAxisTitleFormat: Partial<WorkbookChartAxisTitleFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartAxisTitleFormat)
     writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAxisTitleFormat.font, serializeWorkbookChartFont);
@@ -1581,6 +1722,7 @@ export function serializeWorkbookChartAxisTitleFormat(writer: SerializationWrite
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartCollectionResponse(writer: SerializationWriter, workbookChartCollectionResponse: Partial<WorkbookChartCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookChartCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookChart>("value", workbookChartCollectionResponse.value, serializeWorkbookChart);
@@ -1589,6 +1731,7 @@ export function serializeWorkbookChartCollectionResponse(writer: SerializationWr
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartDataLabelFormat(writer: SerializationWriter, workbookChartDataLabelFormat: Partial<WorkbookChartDataLabelFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartDataLabelFormat)
     writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartDataLabelFormat.fill, serializeWorkbookChartFill);
@@ -1598,6 +1741,7 @@ export function serializeWorkbookChartDataLabelFormat(writer: SerializationWrite
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartDataLabels(writer: SerializationWriter, workbookChartDataLabels: Partial<WorkbookChartDataLabels> | undefined = {}) : void {
     serializeEntity(writer, workbookChartDataLabels)
     writer.writeObjectValue<WorkbookChartDataLabelFormat>("format", workbookChartDataLabels.format, serializeWorkbookChartDataLabelFormat);
@@ -1614,6 +1758,7 @@ export function serializeWorkbookChartDataLabels(writer: SerializationWriter, wo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartFill(writer: SerializationWriter, workbookChartFill: Partial<WorkbookChartFill> | undefined = {}) : void {
     serializeEntity(writer, workbookChartFill)
 }
@@ -1621,6 +1766,7 @@ export function serializeWorkbookChartFill(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartFont(writer: SerializationWriter, workbookChartFont: Partial<WorkbookChartFont> | undefined = {}) : void {
     serializeEntity(writer, workbookChartFont)
     writer.writeBooleanValue("bold", workbookChartFont.bold);
@@ -1634,6 +1780,7 @@ export function serializeWorkbookChartFont(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartGridlines(writer: SerializationWriter, workbookChartGridlines: Partial<WorkbookChartGridlines> | undefined = {}) : void {
     serializeEntity(writer, workbookChartGridlines)
     writer.writeObjectValue<WorkbookChartGridlinesFormat>("format", workbookChartGridlines.format, serializeWorkbookChartGridlinesFormat);
@@ -1643,6 +1790,7 @@ export function serializeWorkbookChartGridlines(writer: SerializationWriter, wor
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartGridlinesFormat(writer: SerializationWriter, workbookChartGridlinesFormat: Partial<WorkbookChartGridlinesFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartGridlinesFormat)
     writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartGridlinesFormat.line, serializeWorkbookChartLineFormat);
@@ -1651,6 +1799,7 @@ export function serializeWorkbookChartGridlinesFormat(writer: SerializationWrite
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartLegend(writer: SerializationWriter, workbookChartLegend: Partial<WorkbookChartLegend> | undefined = {}) : void {
     serializeEntity(writer, workbookChartLegend)
     writer.writeObjectValue<WorkbookChartLegendFormat>("format", workbookChartLegend.format, serializeWorkbookChartLegendFormat);
@@ -1662,6 +1811,7 @@ export function serializeWorkbookChartLegend(writer: SerializationWriter, workbo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartLegendFormat(writer: SerializationWriter, workbookChartLegendFormat: Partial<WorkbookChartLegendFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartLegendFormat)
     writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartLegendFormat.fill, serializeWorkbookChartFill);
@@ -1671,6 +1821,7 @@ export function serializeWorkbookChartLegendFormat(writer: SerializationWriter, 
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartLineFormat(writer: SerializationWriter, workbookChartLineFormat: Partial<WorkbookChartLineFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartLineFormat)
     writer.writeStringValue("color", workbookChartLineFormat.color);
@@ -1679,6 +1830,7 @@ export function serializeWorkbookChartLineFormat(writer: SerializationWriter, wo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartPoint(writer: SerializationWriter, workbookChartPoint: Partial<WorkbookChartPoint> | undefined = {}) : void {
     serializeEntity(writer, workbookChartPoint)
     writer.writeObjectValue<WorkbookChartPointFormat>("format", workbookChartPoint.format, serializeWorkbookChartPointFormat);
@@ -1688,6 +1840,7 @@ export function serializeWorkbookChartPoint(writer: SerializationWriter, workboo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartPointCollectionResponse(writer: SerializationWriter, workbookChartPointCollectionResponse: Partial<WorkbookChartPointCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookChartPointCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookChartPoint>("value", workbookChartPointCollectionResponse.value, serializeWorkbookChartPoint);
@@ -1696,6 +1849,7 @@ export function serializeWorkbookChartPointCollectionResponse(writer: Serializat
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartPointFormat(writer: SerializationWriter, workbookChartPointFormat: Partial<WorkbookChartPointFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartPointFormat)
     writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartPointFormat.fill, serializeWorkbookChartFill);
@@ -1704,6 +1858,7 @@ export function serializeWorkbookChartPointFormat(writer: SerializationWriter, w
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartSeries(writer: SerializationWriter, workbookChartSeries: Partial<WorkbookChartSeries> | undefined = {}) : void {
     serializeEntity(writer, workbookChartSeries)
     writer.writeObjectValue<WorkbookChartSeriesFormat>("format", workbookChartSeries.format, serializeWorkbookChartSeriesFormat);
@@ -1714,6 +1869,7 @@ export function serializeWorkbookChartSeries(writer: SerializationWriter, workbo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartSeriesCollectionResponse(writer: SerializationWriter, workbookChartSeriesCollectionResponse: Partial<WorkbookChartSeriesCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookChartSeriesCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookChartSeries>("value", workbookChartSeriesCollectionResponse.value, serializeWorkbookChartSeries);
@@ -1722,6 +1878,7 @@ export function serializeWorkbookChartSeriesCollectionResponse(writer: Serializa
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartSeriesFormat(writer: SerializationWriter, workbookChartSeriesFormat: Partial<WorkbookChartSeriesFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartSeriesFormat)
     writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartSeriesFormat.fill, serializeWorkbookChartFill);
@@ -1731,6 +1888,7 @@ export function serializeWorkbookChartSeriesFormat(writer: SerializationWriter, 
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartTitle(writer: SerializationWriter, workbookChartTitle: Partial<WorkbookChartTitle> | undefined = {}) : void {
     serializeEntity(writer, workbookChartTitle)
     writer.writeObjectValue<WorkbookChartTitleFormat>("format", workbookChartTitle.format, serializeWorkbookChartTitleFormat);
@@ -1742,6 +1900,7 @@ export function serializeWorkbookChartTitle(writer: SerializationWriter, workboo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookChartTitleFormat(writer: SerializationWriter, workbookChartTitleFormat: Partial<WorkbookChartTitleFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookChartTitleFormat)
     writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartTitleFormat.fill, serializeWorkbookChartFill);
@@ -1751,6 +1910,7 @@ export function serializeWorkbookChartTitleFormat(writer: SerializationWriter, w
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookComment(writer: SerializationWriter, workbookComment: Partial<WorkbookComment> | undefined = {}) : void {
     serializeEntity(writer, workbookComment)
     writer.writeStringValue("content", workbookComment.content);
@@ -1761,6 +1921,7 @@ export function serializeWorkbookComment(writer: SerializationWriter, workbookCo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookCommentCollectionResponse(writer: SerializationWriter, workbookCommentCollectionResponse: Partial<WorkbookCommentCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookCommentCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookComment>("value", workbookCommentCollectionResponse.value, serializeWorkbookComment);
@@ -1769,6 +1930,7 @@ export function serializeWorkbookCommentCollectionResponse(writer: Serialization
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookCommentReply(writer: SerializationWriter, workbookCommentReply: Partial<WorkbookCommentReply> | undefined = {}) : void {
     serializeEntity(writer, workbookCommentReply)
     writer.writeStringValue("content", workbookCommentReply.content);
@@ -1778,6 +1940,7 @@ export function serializeWorkbookCommentReply(writer: SerializationWriter, workb
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookCommentReplyCollectionResponse(writer: SerializationWriter, workbookCommentReplyCollectionResponse: Partial<WorkbookCommentReplyCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookCommentReplyCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookCommentReply>("value", workbookCommentReplyCollectionResponse.value, serializeWorkbookCommentReply);
@@ -1786,6 +1949,7 @@ export function serializeWorkbookCommentReplyCollectionResponse(writer: Serializ
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookFilter(writer: SerializationWriter, workbookFilter: Partial<WorkbookFilter> | undefined = {}) : void {
     serializeEntity(writer, workbookFilter)
     writer.writeObjectValue<WorkbookFilterCriteria>("criteria", workbookFilter.criteria, serializeWorkbookFilterCriteria);
@@ -1794,6 +1958,7 @@ export function serializeWorkbookFilter(writer: SerializationWriter, workbookFil
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookFilterCriteria(writer: SerializationWriter, workbookFilterCriteria: Partial<WorkbookFilterCriteria> | undefined = {}) : void {
     writer.writeStringValue("color", workbookFilterCriteria.color);
     writer.writeStringValue("criterion1", workbookFilterCriteria.criterion1);
@@ -1810,6 +1975,7 @@ export function serializeWorkbookFilterCriteria(writer: SerializationWriter, wor
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookFormatProtection(writer: SerializationWriter, workbookFormatProtection: Partial<WorkbookFormatProtection> | undefined = {}) : void {
     serializeEntity(writer, workbookFormatProtection)
     writer.writeBooleanValue("formulaHidden", workbookFormatProtection.formulaHidden);
@@ -1819,6 +1985,7 @@ export function serializeWorkbookFormatProtection(writer: SerializationWriter, w
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookFunctionResult(writer: SerializationWriter, workbookFunctionResult: Partial<WorkbookFunctionResult> | undefined = {}) : void {
     serializeEntity(writer, workbookFunctionResult)
     writer.writeStringValue("error", workbookFunctionResult.errorEscaped);
@@ -1828,6 +1995,7 @@ export function serializeWorkbookFunctionResult(writer: SerializationWriter, wor
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookFunctions(writer: SerializationWriter, workbookFunctions: Partial<WorkbookFunctions> | undefined = {}) : void {
     serializeEntity(writer, workbookFunctions)
 }
@@ -1835,6 +2003,7 @@ export function serializeWorkbookFunctions(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookIcon(writer: SerializationWriter, workbookIcon: Partial<WorkbookIcon> | undefined = {}) : void {
     writer.writeNumberValue("index", workbookIcon.index);
     writer.writeStringValue("@odata.type", workbookIcon.odataType);
@@ -1845,6 +2014,7 @@ export function serializeWorkbookIcon(writer: SerializationWriter, workbookIcon:
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookNamedItem(writer: SerializationWriter, workbookNamedItem: Partial<WorkbookNamedItem> | undefined = {}) : void {
     serializeEntity(writer, workbookNamedItem)
     writer.writeStringValue("comment", workbookNamedItem.comment);
@@ -1859,6 +2029,7 @@ export function serializeWorkbookNamedItem(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookNamedItemCollectionResponse(writer: SerializationWriter, workbookNamedItemCollectionResponse: Partial<WorkbookNamedItemCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookNamedItemCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookNamedItem>("value", workbookNamedItemCollectionResponse.value, serializeWorkbookNamedItem);
@@ -1867,6 +2038,7 @@ export function serializeWorkbookNamedItemCollectionResponse(writer: Serializati
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookOperation(writer: SerializationWriter, workbookOperation: Partial<WorkbookOperation> | undefined = {}) : void {
     serializeEntity(writer, workbookOperation)
     writer.writeObjectValue<WorkbookOperationError>("error", workbookOperation.errorEscaped, serializeWorkbookOperationError);
@@ -1877,6 +2049,7 @@ export function serializeWorkbookOperation(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookOperationCollectionResponse(writer: SerializationWriter, workbookOperationCollectionResponse: Partial<WorkbookOperationCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookOperationCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookOperation>("value", workbookOperationCollectionResponse.value, serializeWorkbookOperation);
@@ -1885,6 +2058,7 @@ export function serializeWorkbookOperationCollectionResponse(writer: Serializati
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookOperationError(writer: SerializationWriter, workbookOperationError: Partial<WorkbookOperationError> | undefined = {}) : void {
     writer.writeStringValue("code", workbookOperationError.code);
     writer.writeObjectValue<WorkbookOperationError>("innerError", workbookOperationError.innerError, serializeWorkbookOperationError);
@@ -1896,6 +2070,7 @@ export function serializeWorkbookOperationError(writer: SerializationWriter, wor
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookPivotTable(writer: SerializationWriter, workbookPivotTable: Partial<WorkbookPivotTable> | undefined = {}) : void {
     serializeEntity(writer, workbookPivotTable)
     writer.writeStringValue("name", workbookPivotTable.name);
@@ -1905,6 +2080,7 @@ export function serializeWorkbookPivotTable(writer: SerializationWriter, workboo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookPivotTableCollectionResponse(writer: SerializationWriter, workbookPivotTableCollectionResponse: Partial<WorkbookPivotTableCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookPivotTableCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookPivotTable>("value", workbookPivotTableCollectionResponse.value, serializeWorkbookPivotTable);
@@ -1913,6 +2089,7 @@ export function serializeWorkbookPivotTableCollectionResponse(writer: Serializat
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookRange(writer: SerializationWriter, workbookRange: Partial<WorkbookRange> | undefined = {}) : void {
     serializeEntity(writer, workbookRange)
     writer.writeStringValue("address", workbookRange.address);
@@ -1940,6 +2117,7 @@ export function serializeWorkbookRange(writer: SerializationWriter, workbookRang
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookRangeBorder(writer: SerializationWriter, workbookRangeBorder: Partial<WorkbookRangeBorder> | undefined = {}) : void {
     serializeEntity(writer, workbookRangeBorder)
     writer.writeStringValue("color", workbookRangeBorder.color);
@@ -1951,6 +2129,7 @@ export function serializeWorkbookRangeBorder(writer: SerializationWriter, workbo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookRangeFill(writer: SerializationWriter, workbookRangeFill: Partial<WorkbookRangeFill> | undefined = {}) : void {
     serializeEntity(writer, workbookRangeFill)
     writer.writeStringValue("color", workbookRangeFill.color);
@@ -1959,6 +2138,7 @@ export function serializeWorkbookRangeFill(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookRangeFont(writer: SerializationWriter, workbookRangeFont: Partial<WorkbookRangeFont> | undefined = {}) : void {
     serializeEntity(writer, workbookRangeFont)
     writer.writeBooleanValue("bold", workbookRangeFont.bold);
@@ -1972,6 +2152,7 @@ export function serializeWorkbookRangeFont(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookRangeFormat(writer: SerializationWriter, workbookRangeFormat: Partial<WorkbookRangeFormat> | undefined = {}) : void {
     serializeEntity(writer, workbookRangeFormat)
     writer.writeCollectionOfObjectValues<WorkbookRangeBorder>("borders", workbookRangeFormat.borders, serializeWorkbookRangeBorder);
@@ -1988,6 +2169,7 @@ export function serializeWorkbookRangeFormat(writer: SerializationWriter, workbo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookRangeSort(writer: SerializationWriter, workbookRangeSort: Partial<WorkbookRangeSort> | undefined = {}) : void {
     serializeEntity(writer, workbookRangeSort)
 }
@@ -1995,6 +2177,7 @@ export function serializeWorkbookRangeSort(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookSessionInfo(writer: SerializationWriter, workbookSessionInfo: Partial<WorkbookSessionInfo> | undefined = {}) : void {
     writer.writeStringValue("id", workbookSessionInfo.id);
     writer.writeStringValue("@odata.type", workbookSessionInfo.odataType);
@@ -2005,6 +2188,7 @@ export function serializeWorkbookSessionInfo(writer: SerializationWriter, workbo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookSortField(writer: SerializationWriter, workbookSortField: Partial<WorkbookSortField> | undefined = {}) : void {
     writer.writeBooleanValue("ascending", workbookSortField.ascending);
     writer.writeStringValue("color", workbookSortField.color);
@@ -2019,6 +2203,7 @@ export function serializeWorkbookSortField(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookTable(writer: SerializationWriter, workbookTable: Partial<WorkbookTable> | undefined = {}) : void {
     serializeEntity(writer, workbookTable)
     writer.writeCollectionOfObjectValues<WorkbookTableColumn>("columns", workbookTable.columns, serializeWorkbookTableColumn);
@@ -2040,6 +2225,7 @@ export function serializeWorkbookTable(writer: SerializationWriter, workbookTabl
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookTableCollectionResponse(writer: SerializationWriter, workbookTableCollectionResponse: Partial<WorkbookTableCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookTableCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookTable>("value", workbookTableCollectionResponse.value, serializeWorkbookTable);
@@ -2048,6 +2234,7 @@ export function serializeWorkbookTableCollectionResponse(writer: SerializationWr
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookTableColumn(writer: SerializationWriter, workbookTableColumn: Partial<WorkbookTableColumn> | undefined = {}) : void {
     serializeEntity(writer, workbookTableColumn)
     writer.writeObjectValue<WorkbookFilter>("filter", workbookTableColumn.filter, serializeWorkbookFilter);
@@ -2059,6 +2246,7 @@ export function serializeWorkbookTableColumn(writer: SerializationWriter, workbo
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookTableColumnCollectionResponse(writer: SerializationWriter, workbookTableColumnCollectionResponse: Partial<WorkbookTableColumnCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookTableColumnCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookTableColumn>("value", workbookTableColumnCollectionResponse.value, serializeWorkbookTableColumn);
@@ -2067,6 +2255,7 @@ export function serializeWorkbookTableColumnCollectionResponse(writer: Serializa
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookTableRow(writer: SerializationWriter, workbookTableRow: Partial<WorkbookTableRow> | undefined = {}) : void {
     serializeEntity(writer, workbookTableRow)
     writer.writeNumberValue("index", workbookTableRow.index);
@@ -2076,6 +2265,7 @@ export function serializeWorkbookTableRow(writer: SerializationWriter, workbookT
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookTableRowCollectionResponse(writer: SerializationWriter, workbookTableRowCollectionResponse: Partial<WorkbookTableRowCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookTableRowCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookTableRow>("value", workbookTableRowCollectionResponse.value, serializeWorkbookTableRow);
@@ -2084,6 +2274,7 @@ export function serializeWorkbookTableRowCollectionResponse(writer: Serializatio
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookTableSort(writer: SerializationWriter, workbookTableSort: Partial<WorkbookTableSort> | undefined = {}) : void {
     serializeEntity(writer, workbookTableSort)
     writer.writeCollectionOfObjectValues<WorkbookSortField>("fields", workbookTableSort.fields, serializeWorkbookSortField);
@@ -2094,6 +2285,7 @@ export function serializeWorkbookTableSort(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookWorksheet(writer: SerializationWriter, workbookWorksheet: Partial<WorkbookWorksheet> | undefined = {}) : void {
     serializeEntity(writer, workbookWorksheet)
     writer.writeCollectionOfObjectValues<WorkbookChart>("charts", workbookWorksheet.charts, serializeWorkbookChart);
@@ -2109,6 +2301,7 @@ export function serializeWorkbookWorksheet(writer: SerializationWriter, workbook
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookWorksheetCollectionResponse(writer: SerializationWriter, workbookWorksheetCollectionResponse: Partial<WorkbookWorksheetCollectionResponse> | undefined = {}) : void {
     serializeBaseCollectionPaginationCountResponse(writer, workbookWorksheetCollectionResponse)
     writer.writeCollectionOfObjectValues<WorkbookWorksheet>("value", workbookWorksheetCollectionResponse.value, serializeWorkbookWorksheet);
@@ -2117,6 +2310,7 @@ export function serializeWorkbookWorksheetCollectionResponse(writer: Serializati
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookWorksheetProtection(writer: SerializationWriter, workbookWorksheetProtection: Partial<WorkbookWorksheetProtection> | undefined = {}) : void {
     serializeEntity(writer, workbookWorksheetProtection)
     writer.writeObjectValue<WorkbookWorksheetProtectionOptions>("options", workbookWorksheetProtection.options, serializeWorkbookWorksheetProtectionOptions);
@@ -2126,6 +2320,7 @@ export function serializeWorkbookWorksheetProtection(writer: SerializationWriter
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
+// @ts-ignore
 export function serializeWorkbookWorksheetProtectionOptions(writer: SerializationWriter, workbookWorksheetProtectionOptions: Partial<WorkbookWorksheetProtectionOptions> | undefined = {}) : void {
     writer.writeBooleanValue("allowAutoFilter", workbookWorksheetProtectionOptions.allowAutoFilter);
     writer.writeBooleanValue("allowDeleteColumns", workbookWorksheetProtectionOptions.allowDeleteColumns);
@@ -2305,7 +2500,7 @@ export interface WorkbookChartAxisTitle extends Entity, Parsable {
      */
     text?: string;
     /**
-     * A boolean that specifies the visibility of an axis title.
+     * A Boolean that specifies the visibility of an axis title.
      */
     visible?: boolean;
 }
@@ -2341,31 +2536,31 @@ export interface WorkbookChartDataLabels extends Entity, Parsable {
      */
     position?: string;
     /**
-     * String representing the separator used for the data labels on a chart.
+     * String that represents the separator used for the data labels on a chart.
      */
     separator?: string;
     /**
-     * Boolean value representing if the data label bubble size is visible or not.
+     * Boolean value that represents whether the data label bubble size is visible.
      */
     showBubbleSize?: boolean;
     /**
-     * Boolean value representing if the data label category name is visible or not.
+     * Boolean value that represents whether the data label category name is visible.
      */
     showCategoryName?: boolean;
     /**
-     * Boolean value representing if the data label legend key is visible or not.
+     * Boolean value that represents whether the data label legend key is visible.
      */
     showLegendKey?: boolean;
     /**
-     * Boolean value representing if the data label percentage is visible or not.
+     * Boolean value that represents whether the data label percentage is visible.
      */
     showPercentage?: boolean;
     /**
-     * Boolean value representing if the data label series name is visible or not.
+     * Boolean value that represents whether the data label series name is visible.
      */
     showSeriesName?: boolean;
     /**
-     * Boolean value representing if the data label value is visible or not.
+     * Boolean value that represents whether the data label value is visible.
      */
     showValue?: boolean;
 }
@@ -2373,27 +2568,27 @@ export interface WorkbookChartFill extends Entity, Parsable {
 }
 export interface WorkbookChartFont extends Entity, Parsable {
     /**
-     * Represents the bold status of font.
+     * Indicates whether the fond is bold.
      */
     bold?: boolean;
     /**
-     * HTML color code representation of the text color. for example #FF0000 represents Red.
+     * The HTML color code representation of the text color. For example #FF0000 represents Red.
      */
     color?: string;
     /**
-     * Represents the italic status of the font.
+     * Indicates whether the fond is italic.
      */
     italic?: boolean;
     /**
-     * Font name (for example 'Calibri')
+     * The font name. For example 'Calibri'.
      */
     name?: string;
     /**
-     * Size of the font (for example 11)
+     * The size of the font. For example,  11.
      */
     size?: number;
     /**
-     * Type of underline applied to the font. The possible values are: None, Single.
+     * The type of underlining applied to the font. The possible values are: None, Single.
      */
     underline?: string;
 }
@@ -2403,7 +2598,7 @@ export interface WorkbookChartGridlines extends Entity, Parsable {
      */
     format?: WorkbookChartGridlinesFormat;
     /**
-     * Boolean value representing if the axis gridlines are visible or not.
+     * Indicates whether the axis gridlines are visible.
      */
     visible?: boolean;
 }
@@ -2419,7 +2614,7 @@ export interface WorkbookChartLegend extends Entity, Parsable {
      */
     format?: WorkbookChartLegendFormat;
     /**
-     * Boolean value for whether the chart legend should overlap with the main body of the chart.
+     * Indicates whether the chart legend should overlap with the main body of the chart.
      */
     overlay?: boolean;
     /**
@@ -2427,7 +2622,7 @@ export interface WorkbookChartLegend extends Entity, Parsable {
      */
     position?: string;
     /**
-     * A boolean value the represents the visibility of a ChartLegend object.
+     * Indicates whether the chart legend is visible.
      */
     visible?: boolean;
 }
@@ -2443,17 +2638,17 @@ export interface WorkbookChartLegendFormat extends Entity, Parsable {
 }
 export interface WorkbookChartLineFormat extends Entity, Parsable {
     /**
-     * HTML color code representing the color of lines in the chart.
+     * The HTML color code that represents the color of lines in the chart.
      */
     color?: string;
 }
 export interface WorkbookChartPoint extends Entity, Parsable {
     /**
-     * Encapsulates the format properties chart point. Read-only.
+     * The format properties of the chart point. Read-only.
      */
     format?: WorkbookChartPointFormat;
     /**
-     * Returns the value of a chart point. Read-only.
+     * The value of a chart point. Read-only.
      */
     value?: UntypedNode;
 }
@@ -2471,15 +2666,15 @@ export interface WorkbookChartPointFormat extends Entity, Parsable {
 }
 export interface WorkbookChartSeries extends Entity, Parsable {
     /**
-     * Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
+     * The formatting of a chart series, which includes fill and line formatting. Read-only.
      */
     format?: WorkbookChartSeriesFormat;
     /**
-     * Represents the name of a series in a chart.
+     * The name of a series in a chart.
      */
     name?: string;
     /**
-     * Represents a collection of all points in the series. Read-only.
+     * A collection of all points in the series. Read-only.
      */
     points?: WorkbookChartPoint[];
 }
@@ -2501,19 +2696,19 @@ export interface WorkbookChartSeriesFormat extends Entity, Parsable {
 }
 export interface WorkbookChartTitle extends Entity, Parsable {
     /**
-     * Represents the formatting of a chart title, which includes fill and font formatting. Read-only.
+     * The formatting of a chart title, which includes fill and font formatting. Read-only.
      */
     format?: WorkbookChartTitleFormat;
     /**
-     * Boolean value representing if the chart title will overlay the chart or not.
+     * Indicates whether the chart title will overlay the chart or not.
      */
     overlay?: boolean;
     /**
-     * Represents the title text of a chart.
+     * The title text of the chart.
      */
     text?: string;
     /**
-     * A boolean value that represents the visibility of a chart title object.
+     * Indicates whether the chart title is visible.
      */
     visible?: boolean;
 }
@@ -2529,15 +2724,15 @@ export interface WorkbookChartTitleFormat extends Entity, Parsable {
 }
 export interface WorkbookComment extends Entity, Parsable {
     /**
-     * The content of comment.
+     * The content of the comment.
      */
     content?: string;
     /**
-     * Indicates the type for the comment.
+     * The content type of the comment.
      */
     contentType?: string;
     /**
-     * The replies property
+     * The list of replies to the comment. Read-only. Nullable.
      */
     replies?: WorkbookCommentReply[];
 }
@@ -2549,11 +2744,11 @@ export interface WorkbookCommentCollectionResponse extends BaseCollectionPaginat
 }
 export interface WorkbookCommentReply extends Entity, Parsable {
     /**
-     * The content of a comment reply.
+     * The content of the reply.
      */
     content?: string;
     /**
-     * Indicates the type for the comment reply.
+     * The content type for the reply.
      */
     contentType?: string;
 }
@@ -2613,11 +2808,11 @@ export interface WorkbookFilterCriteria extends AdditionalDataHolder, Parsable {
 }
 export interface WorkbookFormatProtection extends Entity, Parsable {
     /**
-     * Indicates if Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
+     * Indicates whether Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
      */
     formulaHidden?: boolean;
     /**
-     * Indicates if Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
+     * Indicates whether Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
      */
     locked?: boolean;
 }
@@ -2639,7 +2834,7 @@ export interface WorkbookIcon extends AdditionalDataHolder, Parsable {
      */
     additionalData?: Record<string, unknown>;
     /**
-     * Represents the index of the icon in the given set.
+     * The index of the icon in the given set.
      */
     index?: number;
     /**
@@ -2647,13 +2842,13 @@ export interface WorkbookIcon extends AdditionalDataHolder, Parsable {
      */
     odataType?: string;
     /**
-     * Represents the set that the icon is part of. The possible values are: Invalid, ThreeArrows, ThreeArrowsGray, ThreeFlags, ThreeTrafficLights1, ThreeTrafficLights2, ThreeSigns, ThreeSymbols, ThreeSymbols2, FourArrows, FourArrowsGray, FourRedToBlack, FourRating, FourTrafficLights, FiveArrows, FiveArrowsGray, FiveRating, FiveQuarters, ThreeStars, ThreeTriangles, FiveBoxes.
+     * The set that the icon is part of. The possible values are: Invalid, ThreeArrows, ThreeArrowsGray, ThreeFlags, ThreeTrafficLights1, ThreeTrafficLights2, ThreeSigns, ThreeSymbols, ThreeSymbols2, FourArrows, FourArrowsGray, FourRedToBlack, FourRating, FourTrafficLights, FiveArrows, FiveArrowsGray, FiveRating, FiveQuarters, ThreeStars, ThreeTriangles, FiveBoxes.
      */
     set?: string;
 }
 export interface WorkbookNamedItem extends Entity, Parsable {
     /**
-     * Represents the comment associated with this name.
+     * The comment associated with this name.
      */
     comment?: string;
     /**
@@ -2665,19 +2860,19 @@ export interface WorkbookNamedItem extends Entity, Parsable {
      */
     scope?: string;
     /**
-     * Indicates what type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
+     * The type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
      */
     type?: string;
     /**
-     * Represents the formula that the name is defined to refer to. for example, =Sheet14!$B$2:$H$12, =4.75, etc. Read-only.
+     * The formula that the name is defined to refer to. For example, =Sheet14!$B$2:$H$12 and =4.75. Read-only.
      */
     value?: UntypedNode;
     /**
-     * Specifies whether the object is visible or not.
+     * Indicates whether the object is visible.
      */
     visible?: boolean;
     /**
-     * Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
+     * Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
      */
     worksheet?: WorkbookWorksheet;
 }
@@ -2732,11 +2927,11 @@ export interface WorkbookOperationError extends AdditionalDataHolder, Parsable {
 export type WorkbookOperationStatus = (typeof WorkbookOperationStatusObject)[keyof typeof WorkbookOperationStatusObject];
 export interface WorkbookPivotTable extends Entity, Parsable {
     /**
-     * Name of the PivotTable.
+     * The name of the pivot table.
      */
     name?: string;
     /**
-     * The worksheet containing the current PivotTable. Read-only.
+     * The worksheet that contains the current pivot table. Read-only.
      */
     worksheet?: WorkbookWorksheet;
 }
@@ -2830,51 +3025,51 @@ export interface WorkbookRange extends Entity, Parsable {
 }
 export interface WorkbookRangeBorder extends Entity, Parsable {
     /**
-     * HTML color code representing the color of the border line, of the form #RRGGBB (for example 'FFA500') or as a named HTML color (for example 'orange').
+     * The HTML color code that represents the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or a named HTML color, for example 'orange'.
      */
     color?: string;
     /**
-     * Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
+     * Indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
      */
     sideIndex?: string;
     /**
-     * One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
+     * Indicates the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
      */
     style?: string;
     /**
-     * Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
+     * The weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
      */
     weight?: string;
 }
 export interface WorkbookRangeFill extends Entity, Parsable {
     /**
-     * HTML color code representing the color of the border line, of the form #RRGGBB (for example 'FFA500') or as a named HTML color (for example 'orange')
+     * HTML color code representing the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or be a named HTML color, for example 'orange'.
      */
     color?: string;
 }
 export interface WorkbookRangeFont extends Entity, Parsable {
     /**
-     * Represents the bold status of font.
+     * Inidicates whether the font is bold.
      */
     bold?: boolean;
     /**
-     * HTML color code representation of the text color. for example #FF0000 represents Red.
+     * The HTML color code representation of the text color. For example, #FF0000 represents the color red.
      */
     color?: string;
     /**
-     * Represents the italic status of the font.
+     * Inidicates whether the font is italic.
      */
     italic?: boolean;
     /**
-     * Font name (for example 'Calibri')
+     * The font name. For example, 'Calibri'.
      */
     name?: string;
     /**
-     * Font size.
+     * The font size.
      */
     size?: number;
     /**
-     * Type of underline applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
+     * The type of underlining applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
      */
     underline?: string;
 }
@@ -2884,7 +3079,7 @@ export interface WorkbookRangeFormat extends Entity, Parsable {
      */
     borders?: WorkbookRangeBorder[];
     /**
-     * Gets or sets the width of all columns within the range. If the column widths aren't uniform, null will be returned.
+     * The width of all columns within the range. If the column widths aren't uniform, null will be returned.
      */
     columnWidth?: number;
     /**
@@ -2896,7 +3091,7 @@ export interface WorkbookRangeFormat extends Entity, Parsable {
      */
     font?: WorkbookRangeFont;
     /**
-     * Represents the horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
+     * The horizontal alignment for the specified object. Possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
      */
     horizontalAlignment?: string;
     /**
@@ -2904,15 +3099,15 @@ export interface WorkbookRangeFormat extends Entity, Parsable {
      */
     protection?: WorkbookFormatProtection;
     /**
-     * Gets or sets the height of all rows in the range. If the row heights aren't uniform null will be returned.
+     * The height of all rows in the range. If the row heights aren't uniform null will be returned.
      */
     rowHeight?: number;
     /**
-     * Represents the vertical alignment for the specified object. The possible values are: Top, Center, Bottom, Justify, Distributed.
+     * The vertical alignment for the specified object. Possible values are: Top, Center, Bottom, Justify, Distributed.
      */
     verticalAlignment?: string;
     /**
-     * Indicates if Excel wraps the text in the object. A null value indicates that the entire range doesn't have uniform wrap setting
+     * Indicates whether Excel wraps the text in the object. A null value indicates that the entire range doesn't have a uniform wrap setting.
      */
     wrapText?: boolean;
 }
@@ -2972,7 +3167,7 @@ export interface WorkbookSortField extends AdditionalDataHolder, Parsable {
 }
 export interface WorkbookTable extends Entity, Parsable {
     /**
-     * Represents a collection of all the columns in the table. Read-only.
+     * The list of all the columns in the table. Read-only.
      */
     columns?: WorkbookTableColumn[];
     /**
@@ -2984,15 +3179,15 @@ export interface WorkbookTable extends Entity, Parsable {
      */
     highlightLastColumn?: boolean;
     /**
-     * Legacy ID used in older Excel clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and shouldn't be parsed to any other type. Read-only.
+     * A legacy identifier used in older Excel clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and shouldn't be parsed to any other type. Read-only.
      */
     legacyId?: string;
     /**
-     * Name of the table.
+     * The name of the table.
      */
     name?: string;
     /**
-     * Represents a collection of all the rows in the table. Read-only.
+     * The list of all the rows in the table. Read-only.
      */
     rows?: WorkbookTableRow[];
     /**
@@ -3016,11 +3211,11 @@ export interface WorkbookTable extends Entity, Parsable {
      */
     showTotals?: boolean;
     /**
-     * Represents the sorting for the table. Read-only.
+     * The sorting for the table. Read-only.
      */
     sort?: WorkbookTableSort;
     /**
-     * Constant value that represents the Table style. The possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
+     * A constant value that represents the Table style. Possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
      */
     style?: string;
     /**
@@ -3036,19 +3231,19 @@ export interface WorkbookTableCollectionResponse extends BaseCollectionPaginatio
 }
 export interface WorkbookTableColumn extends Entity, Parsable {
     /**
-     * Retrieve the filter applied to the column. Read-only.
+     * The filter applied to the column. Read-only.
      */
     filter?: WorkbookFilter;
     /**
-     * Returns the index number of the column within the columns collection of the table. Zero-indexed. Read-only.
+     * The index of the column within the columns collection of the table. Zero-indexed. Read-only.
      */
     index?: number;
     /**
-     * Returns the name of the table column.
+     * The name of the table column.
      */
     name?: string;
     /**
-     * Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
+     * TRepresents the raw values of the specified range. The data returned could be of type string, number, or a Boolean. Cell that contain an error will return the error string.
      */
     values?: UntypedNode;
 }
@@ -3060,11 +3255,11 @@ export interface WorkbookTableColumnCollectionResponse extends BaseCollectionPag
 }
 export interface WorkbookTableRow extends Entity, Parsable {
     /**
-     * Returns the index number of the row within the rows collection of the table. Zero-indexed. Read-only.
+     * The index of the row within the rows collection of the table. Zero-based. Read-only.
      */
     index?: number;
     /**
-     * Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
+     * The raw values of the specified range. The data returned could be of type string, number, or a Boolean. Any cell that contain an error will return the error string.
      */
     values?: UntypedNode;
 }
@@ -3076,21 +3271,21 @@ export interface WorkbookTableRowCollectionResponse extends BaseCollectionPagina
 }
 export interface WorkbookTableSort extends Entity, Parsable {
     /**
-     * Represents the current conditions used to last sort the table. Read-only.
+     * The list of the current conditions last used to sort the table. Read-only.
      */
     fields?: WorkbookSortField[];
     /**
-     * Represents whether the casing impacted the last sort of the table. Read-only.
+     * Indicates whether the casing impacted the last sort of the table. Read-only.
      */
     matchCase?: boolean;
     /**
-     * Represents Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
+     * The Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
      */
     method?: string;
 }
 export interface WorkbookWorksheet extends Entity, Parsable {
     /**
-     * Returns collection of charts that are part of the worksheet. Read-only.
+     * The list of charts that are part of the worksheet. Read-only.
      */
     charts?: WorkbookChart[];
     /**
@@ -3098,11 +3293,11 @@ export interface WorkbookWorksheet extends Entity, Parsable {
      */
     name?: string;
     /**
-     * Returns collection of names that are associated with the worksheet. Read-only.
+     * The list of names that are associated with the worksheet. Read-only.
      */
     names?: WorkbookNamedItem[];
     /**
-     * Collection of PivotTables that are part of the worksheet.
+     * The list of piot tables that are part of the worksheet.
      */
     pivotTables?: WorkbookPivotTable[];
     /**
@@ -3110,15 +3305,15 @@ export interface WorkbookWorksheet extends Entity, Parsable {
      */
     position?: number;
     /**
-     * Returns sheet protection object for a worksheet. Read-only.
+     * The sheet protection object for a worksheet. Read-only.
      */
     protection?: WorkbookWorksheetProtection;
     /**
-     * Collection of tables that are part of the worksheet. Read-only.
+     * The list of tables that are part of the worksheet. Read-only.
      */
     tables?: WorkbookTable[];
     /**
-     * The Visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
+     * The visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
      */
     visibility?: string;
 }
@@ -3130,11 +3325,11 @@ export interface WorkbookWorksheetCollectionResponse extends BaseCollectionPagin
 }
 export interface WorkbookWorksheetProtection extends Entity, Parsable {
     /**
-     * Sheet protection options. Read-only.
+     * Worksheet protection options. Read-only.
      */
     options?: WorkbookWorksheetProtectionOptions;
     /**
-     * Indicates if the worksheet is protected.  Read-only.
+     * Indicates whether the worksheet is protected.  Read-only.
      */
     protected?: boolean;
 }
