@@ -118,6 +118,8 @@ export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefi
                     return deserializeIntoWorkbookRangeFormat;
                 case "#microsoft.graph.workbookRangeSort":
                     return deserializeIntoWorkbookRangeSort;
+                case "#microsoft.graph.workbookRangeView":
+                    return deserializeIntoWorkbookRangeView;
                 case "#microsoft.graph.workbookTable":
                     return deserializeIntoWorkbookTable;
                 case "#microsoft.graph.workbookTableColumn":
@@ -584,6 +586,15 @@ export function createWorkbookRangeFromDiscriminatorValue(parseNode: ParseNode |
 // @ts-ignore
 export function createWorkbookRangeSortFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookRangeSort;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {WorkbookRangeView}
+ */
+// @ts-ignore
+export function createWorkbookRangeViewFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoWorkbookRangeView;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -1392,6 +1403,28 @@ export function deserializeIntoWorkbookRangeSort(workbookRangeSort: Partial<Work
  * @returns {Record<string, (node: ParseNode) => void>}
  */
 // @ts-ignore
+export function deserializeIntoWorkbookRangeView(workbookRangeView: Partial<WorkbookRangeView> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoEntity(workbookRangeView),
+        "cellAddresses": n => { workbookRangeView.cellAddresses = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+        "columnCount": n => { workbookRangeView.columnCount = n.getNumberValue(); },
+        "formulas": n => { workbookRangeView.formulas = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+        "formulasLocal": n => { workbookRangeView.formulasLocal = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+        "formulasR1C1": n => { workbookRangeView.formulasR1C1 = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+        "index": n => { workbookRangeView.index = n.getNumberValue(); },
+        "numberFormat": n => { workbookRangeView.numberFormat = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+        "rowCount": n => { workbookRangeView.rowCount = n.getNumberValue(); },
+        "rows": n => { workbookRangeView.rows = n.getCollectionOfObjectValues<WorkbookRangeView>(createWorkbookRangeViewFromDiscriminatorValue); },
+        "text": n => { workbookRangeView.text = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+        "values": n => { workbookRangeView.values = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+        "valueTypes": n => { workbookRangeView.valueTypes = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
 export function deserializeIntoWorkbookSessionInfo(workbookSessionInfo: Partial<WorkbookSessionInfo> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         "id": n => { workbookSessionInfo.id = n.getStringValue(); },
@@ -2172,6 +2205,26 @@ export function serializeWorkbookRangeFormat(writer: SerializationWriter, workbo
 // @ts-ignore
 export function serializeWorkbookRangeSort(writer: SerializationWriter, workbookRangeSort: Partial<WorkbookRangeSort> | undefined = {}) : void {
     serializeEntity(writer, workbookRangeSort)
+}
+/**
+ * Serializes information the current object
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeWorkbookRangeView(writer: SerializationWriter, workbookRangeView: Partial<WorkbookRangeView> | undefined = {}) : void {
+    serializeEntity(writer, workbookRangeView)
+    writer.writeObjectValue("cellAddresses", workbookRangeView.cellAddresses);
+    writer.writeNumberValue("columnCount", workbookRangeView.columnCount);
+    writer.writeObjectValue("formulas", workbookRangeView.formulas);
+    writer.writeObjectValue("formulasLocal", workbookRangeView.formulasLocal);
+    writer.writeObjectValue("formulasR1C1", workbookRangeView.formulasR1C1);
+    writer.writeNumberValue("index", workbookRangeView.index);
+    writer.writeObjectValue("numberFormat", workbookRangeView.numberFormat);
+    writer.writeNumberValue("rowCount", workbookRangeView.rowCount);
+    writer.writeCollectionOfObjectValues<WorkbookRangeView>("rows", workbookRangeView.rows, serializeWorkbookRangeView);
+    writer.writeObjectValue("text", workbookRangeView.text);
+    writer.writeObjectValue("values", workbookRangeView.values);
+    writer.writeObjectValue("valueTypes", workbookRangeView.valueTypes);
 }
 /**
  * Serializes information the current object
@@ -3113,6 +3166,56 @@ export interface WorkbookRangeFormat extends Entity, Parsable {
 }
 export interface WorkbookRangeSort extends Entity, Parsable {
 }
+export interface WorkbookRangeView extends Entity, Parsable {
+    /**
+     * The cell addresses.
+     */
+    cellAddresses?: UntypedNode;
+    /**
+     * The number of visible columns. Read-only.
+     */
+    columnCount?: number;
+    /**
+     * The formula in A1-style notation.
+     */
+    formulas?: UntypedNode;
+    /**
+     * The formula in A1-style notation, in the user's language and number-formatting locale. For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
+     */
+    formulasLocal?: UntypedNode;
+    /**
+     * Represents the formula in R1C1-style notation.
+     */
+    formulasR1C1?: UntypedNode;
+    /**
+     * The index of the range.
+     */
+    index?: number;
+    /**
+     * Excel's number format code for the given cell. Read-only.
+     */
+    numberFormat?: UntypedNode;
+    /**
+     * The number of visible rows. Read-only.
+     */
+    rowCount?: number;
+    /**
+     * The collection of range views associated with the range. Read-only. Read-only.
+     */
+    rows?: WorkbookRangeView[];
+    /**
+     * The text values of the specified range. The Text value won't depend on the cell width. The # sign substitution that happens in Excel UI won't affect the text value returned by the API. Read-only.
+     */
+    text?: UntypedNode;
+    /**
+     * The raw values of the specified range view. The data returned could be of type string, number, or a Boolean. Cell that contains an error returns the error string.
+     */
+    values?: UntypedNode;
+    /**
+     * The type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
+     */
+    valueTypes?: UntypedNode;
+}
 export interface WorkbookSessionInfo extends AdditionalDataHolder, Parsable {
     /**
      * Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
@@ -3339,47 +3442,47 @@ export interface WorkbookWorksheetProtectionOptions extends AdditionalDataHolder
      */
     additionalData?: Record<string, unknown>;
     /**
-     * Represents the worksheet protection option of allowing using auto filter feature.
+     * Indicates whether the worksheet protection option to allow the use of the autofilter feature is enabled.
      */
     allowAutoFilter?: boolean;
     /**
-     * Represents the worksheet protection option of allowing deleting columns.
+     * Indicates whether the worksheet protection option to allow deleting columns is enabled.
      */
     allowDeleteColumns?: boolean;
     /**
-     * Represents the worksheet protection option of allowing deleting rows.
+     * Indicates whether the worksheet protection option to allow deleting rows is enabled.
      */
     allowDeleteRows?: boolean;
     /**
-     * Represents the worksheet protection option of allowing formatting cells.
+     * Indicates whether the worksheet protection option to allow formatting cells is enabled.
      */
     allowFormatCells?: boolean;
     /**
-     * Represents the worksheet protection option of allowing formatting columns.
+     * Indicates whether the worksheet protection option to allow formatting columns is enabled.
      */
     allowFormatColumns?: boolean;
     /**
-     * Represents the worksheet protection option of allowing formatting rows.
+     * Indicates whether the worksheet protection option to allow formatting rows is enabled.
      */
     allowFormatRows?: boolean;
     /**
-     * Represents the worksheet protection option of allowing inserting columns.
+     * Indicates whether the worksheet protection option to allow inserting columns is enabled.
      */
     allowInsertColumns?: boolean;
     /**
-     * Represents the worksheet protection option of allowing inserting hyperlinks.
+     * Indicates whether the worksheet protection option to allow inserting hyperlinks is enabled.
      */
     allowInsertHyperlinks?: boolean;
     /**
-     * Represents the worksheet protection option of allowing inserting rows.
+     * Indicates whether the worksheet protection option to allow inserting rows is enabled.
      */
     allowInsertRows?: boolean;
     /**
-     * Represents the worksheet protection option of allowing using pivot table feature.
+     * Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled.
      */
     allowPivotTables?: boolean;
     /**
-     * Represents the worksheet protection option of allowing using sort feature.
+     * Indicates whether the worksheet protection option to allow the use of the sort feature is enabled.
      */
     allowSort?: boolean;
     /**
