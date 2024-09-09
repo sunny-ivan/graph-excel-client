@@ -12,11 +12,11 @@ export interface BaseCollectionPaginationCountResponse extends AdditionalDataHol
     /**
      * The OdataCount property
      */
-    odataCount?: number;
+    odataCount?: number | null;
     /**
      * The OdataNextLink property
      */
-    odataNextLink?: string;
+    odataNextLink?: string | null;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -35,7 +35,7 @@ export function createBaseCollectionPaginationCountResponseFromDiscriminatorValu
 // @ts-ignore
 export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     if(!parseNode) throw new Error("parseNode cannot be undefined");
-    const mappingValueNode = parseNode.getChildNode("@odata.type");
+    const mappingValueNode = parseNode?.getChildNode("@odata.type");
     if (mappingValueNode) {
         const mappingValue = mappingValueNode.getStringValue();
         if (mappingValue) {
@@ -1614,1008 +1614,1140 @@ export interface Entity extends AdditionalDataHolder, Parsable {
     /**
      * The unique identifier for an entity. Read-only.
      */
-    id?: string;
+    id?: string | null;
     /**
      * The OdataType property
      */
-    odataType?: string;
+    odataType?: string | null;
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeBaseCollectionPaginationCountResponse(writer: SerializationWriter, baseCollectionPaginationCountResponse: Partial<BaseCollectionPaginationCountResponse> | undefined = {}) : void {
-    writer.writeNumberValue("@odata.count", baseCollectionPaginationCountResponse.odataCount);
-    writer.writeStringValue("@odata.nextLink", baseCollectionPaginationCountResponse.odataNextLink);
-    writer.writeAdditionalData(baseCollectionPaginationCountResponse.additionalData);
+export function serializeBaseCollectionPaginationCountResponse(writer: SerializationWriter, baseCollectionPaginationCountResponse: Partial<BaseCollectionPaginationCountResponse> | undefined | null = {}) : void {
+    if (baseCollectionPaginationCountResponse) {
+        writer.writeNumberValue("@odata.count", baseCollectionPaginationCountResponse.odataCount);
+        writer.writeStringValue("@odata.nextLink", baseCollectionPaginationCountResponse.odataNextLink);
+        writer.writeAdditionalData(baseCollectionPaginationCountResponse.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeEntity(writer: SerializationWriter, entity: Partial<Entity> | undefined = {}) : void {
-    writer.writeStringValue("id", entity.id);
-    writer.writeStringValue("@odata.type", entity.odataType);
-    writer.writeAdditionalData(entity.additionalData);
+export function serializeEntity(writer: SerializationWriter, entity: Partial<Entity> | undefined | null = {}) : void {
+    if (entity) {
+        writer.writeStringValue("id", entity.id);
+        writer.writeStringValue("@odata.type", entity.odataType);
+        writer.writeAdditionalData(entity.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbook(writer: SerializationWriter, workbook: Partial<Workbook> | undefined = {}) : void {
-    serializeEntity(writer, workbook)
-    writer.writeObjectValue<WorkbookApplication>("application", workbook.application, serializeWorkbookApplication);
-    writer.writeCollectionOfObjectValues<WorkbookComment>("comments", workbook.comments, serializeWorkbookComment);
-    writer.writeObjectValue<WorkbookFunctions>("functions", workbook.functions, serializeWorkbookFunctions);
-    writer.writeCollectionOfObjectValues<WorkbookNamedItem>("names", workbook.names, serializeWorkbookNamedItem);
-    writer.writeCollectionOfObjectValues<WorkbookOperation>("operations", workbook.operations, serializeWorkbookOperation);
-    writer.writeCollectionOfObjectValues<WorkbookTable>("tables", workbook.tables, serializeWorkbookTable);
-    writer.writeCollectionOfObjectValues<WorkbookWorksheet>("worksheets", workbook.worksheets, serializeWorkbookWorksheet);
+export function serializeWorkbook(writer: SerializationWriter, workbook: Partial<Workbook> | undefined | null = {}) : void {
+    if (workbook) {
+        serializeEntity(writer, workbook)
+        writer.writeObjectValue<WorkbookApplication>("application", workbook.application, serializeWorkbookApplication);
+        writer.writeCollectionOfObjectValues<WorkbookComment>("comments", workbook.comments, serializeWorkbookComment);
+        writer.writeObjectValue<WorkbookFunctions>("functions", workbook.functions, serializeWorkbookFunctions);
+        writer.writeCollectionOfObjectValues<WorkbookNamedItem>("names", workbook.names, serializeWorkbookNamedItem);
+        writer.writeCollectionOfObjectValues<WorkbookOperation>("operations", workbook.operations, serializeWorkbookOperation);
+        writer.writeCollectionOfObjectValues<WorkbookTable>("tables", workbook.tables, serializeWorkbookTable);
+        writer.writeCollectionOfObjectValues<WorkbookWorksheet>("worksheets", workbook.worksheets, serializeWorkbookWorksheet);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookApplication(writer: SerializationWriter, workbookApplication: Partial<WorkbookApplication> | undefined = {}) : void {
-    serializeEntity(writer, workbookApplication)
-    writer.writeStringValue("calculationMode", workbookApplication.calculationMode);
+export function serializeWorkbookApplication(writer: SerializationWriter, workbookApplication: Partial<WorkbookApplication> | undefined | null = {}) : void {
+    if (workbookApplication) {
+        serializeEntity(writer, workbookApplication)
+        writer.writeStringValue("calculationMode", workbookApplication.calculationMode);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChart(writer: SerializationWriter, workbookChart: Partial<WorkbookChart> | undefined = {}) : void {
-    serializeEntity(writer, workbookChart)
-    writer.writeObjectValue<WorkbookChartAxes>("axes", workbookChart.axes, serializeWorkbookChartAxes);
-    writer.writeObjectValue<WorkbookChartDataLabels>("dataLabels", workbookChart.dataLabels, serializeWorkbookChartDataLabels);
-    writer.writeObjectValue<WorkbookChartAreaFormat>("format", workbookChart.format, serializeWorkbookChartAreaFormat);
-    writer.writeNumberValue("height", workbookChart.height);
-    writer.writeNumberValue("left", workbookChart.left);
-    writer.writeObjectValue<WorkbookChartLegend>("legend", workbookChart.legend, serializeWorkbookChartLegend);
-    writer.writeStringValue("name", workbookChart.name);
-    writer.writeCollectionOfObjectValues<WorkbookChartSeries>("series", workbookChart.series, serializeWorkbookChartSeries);
-    writer.writeObjectValue<WorkbookChartTitle>("title", workbookChart.title, serializeWorkbookChartTitle);
-    writer.writeNumberValue("top", workbookChart.top);
-    writer.writeNumberValue("width", workbookChart.width);
-    writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookChart.worksheet, serializeWorkbookWorksheet);
+export function serializeWorkbookChart(writer: SerializationWriter, workbookChart: Partial<WorkbookChart> | undefined | null = {}) : void {
+    if (workbookChart) {
+        serializeEntity(writer, workbookChart)
+        writer.writeObjectValue<WorkbookChartAxes>("axes", workbookChart.axes, serializeWorkbookChartAxes);
+        writer.writeObjectValue<WorkbookChartDataLabels>("dataLabels", workbookChart.dataLabels, serializeWorkbookChartDataLabels);
+        writer.writeObjectValue<WorkbookChartAreaFormat>("format", workbookChart.format, serializeWorkbookChartAreaFormat);
+        writer.writeNumberValue("height", workbookChart.height);
+        writer.writeNumberValue("left", workbookChart.left);
+        writer.writeObjectValue<WorkbookChartLegend>("legend", workbookChart.legend, serializeWorkbookChartLegend);
+        writer.writeStringValue("name", workbookChart.name);
+        writer.writeCollectionOfObjectValues<WorkbookChartSeries>("series", workbookChart.series, serializeWorkbookChartSeries);
+        writer.writeObjectValue<WorkbookChartTitle>("title", workbookChart.title, serializeWorkbookChartTitle);
+        writer.writeNumberValue("top", workbookChart.top);
+        writer.writeNumberValue("width", workbookChart.width);
+        writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookChart.worksheet, serializeWorkbookWorksheet);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartAreaFormat(writer: SerializationWriter, workbookChartAreaFormat: Partial<WorkbookChartAreaFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartAreaFormat)
-    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartAreaFormat.fill, serializeWorkbookChartFill);
-    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAreaFormat.font, serializeWorkbookChartFont);
+export function serializeWorkbookChartAreaFormat(writer: SerializationWriter, workbookChartAreaFormat: Partial<WorkbookChartAreaFormat> | undefined | null = {}) : void {
+    if (workbookChartAreaFormat) {
+        serializeEntity(writer, workbookChartAreaFormat)
+        writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartAreaFormat.fill, serializeWorkbookChartFill);
+        writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAreaFormat.font, serializeWorkbookChartFont);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartAxes(writer: SerializationWriter, workbookChartAxes: Partial<WorkbookChartAxes> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartAxes)
-    writer.writeObjectValue<WorkbookChartAxis>("categoryAxis", workbookChartAxes.categoryAxis, serializeWorkbookChartAxis);
-    writer.writeObjectValue<WorkbookChartAxis>("seriesAxis", workbookChartAxes.seriesAxis, serializeWorkbookChartAxis);
-    writer.writeObjectValue<WorkbookChartAxis>("valueAxis", workbookChartAxes.valueAxis, serializeWorkbookChartAxis);
+export function serializeWorkbookChartAxes(writer: SerializationWriter, workbookChartAxes: Partial<WorkbookChartAxes> | undefined | null = {}) : void {
+    if (workbookChartAxes) {
+        serializeEntity(writer, workbookChartAxes)
+        writer.writeObjectValue<WorkbookChartAxis>("categoryAxis", workbookChartAxes.categoryAxis, serializeWorkbookChartAxis);
+        writer.writeObjectValue<WorkbookChartAxis>("seriesAxis", workbookChartAxes.seriesAxis, serializeWorkbookChartAxis);
+        writer.writeObjectValue<WorkbookChartAxis>("valueAxis", workbookChartAxes.valueAxis, serializeWorkbookChartAxis);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartAxis(writer: SerializationWriter, workbookChartAxis: Partial<WorkbookChartAxis> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartAxis)
-    writer.writeObjectValue<WorkbookChartAxisFormat>("format", workbookChartAxis.format, serializeWorkbookChartAxisFormat);
-    writer.writeObjectValue<WorkbookChartGridlines>("majorGridlines", workbookChartAxis.majorGridlines, serializeWorkbookChartGridlines);
-    writer.writeObjectValue("majorUnit", workbookChartAxis.majorUnit);
-    writer.writeObjectValue("maximum", workbookChartAxis.maximum);
-    writer.writeObjectValue("minimum", workbookChartAxis.minimum);
-    writer.writeObjectValue<WorkbookChartGridlines>("minorGridlines", workbookChartAxis.minorGridlines, serializeWorkbookChartGridlines);
-    writer.writeObjectValue("minorUnit", workbookChartAxis.minorUnit);
-    writer.writeObjectValue<WorkbookChartAxisTitle>("title", workbookChartAxis.title, serializeWorkbookChartAxisTitle);
+export function serializeWorkbookChartAxis(writer: SerializationWriter, workbookChartAxis: Partial<WorkbookChartAxis> | undefined | null = {}) : void {
+    if (workbookChartAxis) {
+        serializeEntity(writer, workbookChartAxis)
+        writer.writeObjectValue<WorkbookChartAxisFormat>("format", workbookChartAxis.format, serializeWorkbookChartAxisFormat);
+        writer.writeObjectValue<WorkbookChartGridlines>("majorGridlines", workbookChartAxis.majorGridlines, serializeWorkbookChartGridlines);
+        writer.writeObjectValue("majorUnit", workbookChartAxis.majorUnit);
+        writer.writeObjectValue("maximum", workbookChartAxis.maximum);
+        writer.writeObjectValue("minimum", workbookChartAxis.minimum);
+        writer.writeObjectValue<WorkbookChartGridlines>("minorGridlines", workbookChartAxis.minorGridlines, serializeWorkbookChartGridlines);
+        writer.writeObjectValue("minorUnit", workbookChartAxis.minorUnit);
+        writer.writeObjectValue<WorkbookChartAxisTitle>("title", workbookChartAxis.title, serializeWorkbookChartAxisTitle);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartAxisFormat(writer: SerializationWriter, workbookChartAxisFormat: Partial<WorkbookChartAxisFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartAxisFormat)
-    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAxisFormat.font, serializeWorkbookChartFont);
-    writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartAxisFormat.line, serializeWorkbookChartLineFormat);
+export function serializeWorkbookChartAxisFormat(writer: SerializationWriter, workbookChartAxisFormat: Partial<WorkbookChartAxisFormat> | undefined | null = {}) : void {
+    if (workbookChartAxisFormat) {
+        serializeEntity(writer, workbookChartAxisFormat)
+        writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAxisFormat.font, serializeWorkbookChartFont);
+        writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartAxisFormat.line, serializeWorkbookChartLineFormat);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartAxisTitle(writer: SerializationWriter, workbookChartAxisTitle: Partial<WorkbookChartAxisTitle> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartAxisTitle)
-    writer.writeObjectValue<WorkbookChartAxisTitleFormat>("format", workbookChartAxisTitle.format, serializeWorkbookChartAxisTitleFormat);
-    writer.writeStringValue("text", workbookChartAxisTitle.text);
-    writer.writeBooleanValue("visible", workbookChartAxisTitle.visible);
+export function serializeWorkbookChartAxisTitle(writer: SerializationWriter, workbookChartAxisTitle: Partial<WorkbookChartAxisTitle> | undefined | null = {}) : void {
+    if (workbookChartAxisTitle) {
+        serializeEntity(writer, workbookChartAxisTitle)
+        writer.writeObjectValue<WorkbookChartAxisTitleFormat>("format", workbookChartAxisTitle.format, serializeWorkbookChartAxisTitleFormat);
+        writer.writeStringValue("text", workbookChartAxisTitle.text);
+        writer.writeBooleanValue("visible", workbookChartAxisTitle.visible);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartAxisTitleFormat(writer: SerializationWriter, workbookChartAxisTitleFormat: Partial<WorkbookChartAxisTitleFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartAxisTitleFormat)
-    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAxisTitleFormat.font, serializeWorkbookChartFont);
+export function serializeWorkbookChartAxisTitleFormat(writer: SerializationWriter, workbookChartAxisTitleFormat: Partial<WorkbookChartAxisTitleFormat> | undefined | null = {}) : void {
+    if (workbookChartAxisTitleFormat) {
+        serializeEntity(writer, workbookChartAxisTitleFormat)
+        writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAxisTitleFormat.font, serializeWorkbookChartFont);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartCollectionResponse(writer: SerializationWriter, workbookChartCollectionResponse: Partial<WorkbookChartCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookChartCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookChart>("value", workbookChartCollectionResponse.value, serializeWorkbookChart);
+export function serializeWorkbookChartCollectionResponse(writer: SerializationWriter, workbookChartCollectionResponse: Partial<WorkbookChartCollectionResponse> | undefined | null = {}) : void {
+    if (workbookChartCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookChartCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookChart>("value", workbookChartCollectionResponse.value, serializeWorkbookChart);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartDataLabelFormat(writer: SerializationWriter, workbookChartDataLabelFormat: Partial<WorkbookChartDataLabelFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartDataLabelFormat)
-    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartDataLabelFormat.fill, serializeWorkbookChartFill);
-    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartDataLabelFormat.font, serializeWorkbookChartFont);
+export function serializeWorkbookChartDataLabelFormat(writer: SerializationWriter, workbookChartDataLabelFormat: Partial<WorkbookChartDataLabelFormat> | undefined | null = {}) : void {
+    if (workbookChartDataLabelFormat) {
+        serializeEntity(writer, workbookChartDataLabelFormat)
+        writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartDataLabelFormat.fill, serializeWorkbookChartFill);
+        writer.writeObjectValue<WorkbookChartFont>("font", workbookChartDataLabelFormat.font, serializeWorkbookChartFont);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartDataLabels(writer: SerializationWriter, workbookChartDataLabels: Partial<WorkbookChartDataLabels> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartDataLabels)
-    writer.writeObjectValue<WorkbookChartDataLabelFormat>("format", workbookChartDataLabels.format, serializeWorkbookChartDataLabelFormat);
-    writer.writeStringValue("position", workbookChartDataLabels.position);
-    writer.writeStringValue("separator", workbookChartDataLabels.separator);
-    writer.writeBooleanValue("showBubbleSize", workbookChartDataLabels.showBubbleSize);
-    writer.writeBooleanValue("showCategoryName", workbookChartDataLabels.showCategoryName);
-    writer.writeBooleanValue("showLegendKey", workbookChartDataLabels.showLegendKey);
-    writer.writeBooleanValue("showPercentage", workbookChartDataLabels.showPercentage);
-    writer.writeBooleanValue("showSeriesName", workbookChartDataLabels.showSeriesName);
-    writer.writeBooleanValue("showValue", workbookChartDataLabels.showValue);
+export function serializeWorkbookChartDataLabels(writer: SerializationWriter, workbookChartDataLabels: Partial<WorkbookChartDataLabels> | undefined | null = {}) : void {
+    if (workbookChartDataLabels) {
+        serializeEntity(writer, workbookChartDataLabels)
+        writer.writeObjectValue<WorkbookChartDataLabelFormat>("format", workbookChartDataLabels.format, serializeWorkbookChartDataLabelFormat);
+        writer.writeStringValue("position", workbookChartDataLabels.position);
+        writer.writeStringValue("separator", workbookChartDataLabels.separator);
+        writer.writeBooleanValue("showBubbleSize", workbookChartDataLabels.showBubbleSize);
+        writer.writeBooleanValue("showCategoryName", workbookChartDataLabels.showCategoryName);
+        writer.writeBooleanValue("showLegendKey", workbookChartDataLabels.showLegendKey);
+        writer.writeBooleanValue("showPercentage", workbookChartDataLabels.showPercentage);
+        writer.writeBooleanValue("showSeriesName", workbookChartDataLabels.showSeriesName);
+        writer.writeBooleanValue("showValue", workbookChartDataLabels.showValue);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartFill(writer: SerializationWriter, workbookChartFill: Partial<WorkbookChartFill> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartFill)
+export function serializeWorkbookChartFill(writer: SerializationWriter, workbookChartFill: Partial<WorkbookChartFill> | undefined | null = {}) : void {
+    if (workbookChartFill) {
+        serializeEntity(writer, workbookChartFill)
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartFont(writer: SerializationWriter, workbookChartFont: Partial<WorkbookChartFont> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartFont)
-    writer.writeBooleanValue("bold", workbookChartFont.bold);
-    writer.writeStringValue("color", workbookChartFont.color);
-    writer.writeBooleanValue("italic", workbookChartFont.italic);
-    writer.writeStringValue("name", workbookChartFont.name);
-    writer.writeNumberValue("size", workbookChartFont.size);
-    writer.writeStringValue("underline", workbookChartFont.underline);
+export function serializeWorkbookChartFont(writer: SerializationWriter, workbookChartFont: Partial<WorkbookChartFont> | undefined | null = {}) : void {
+    if (workbookChartFont) {
+        serializeEntity(writer, workbookChartFont)
+        writer.writeBooleanValue("bold", workbookChartFont.bold);
+        writer.writeStringValue("color", workbookChartFont.color);
+        writer.writeBooleanValue("italic", workbookChartFont.italic);
+        writer.writeStringValue("name", workbookChartFont.name);
+        writer.writeNumberValue("size", workbookChartFont.size);
+        writer.writeStringValue("underline", workbookChartFont.underline);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartGridlines(writer: SerializationWriter, workbookChartGridlines: Partial<WorkbookChartGridlines> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartGridlines)
-    writer.writeObjectValue<WorkbookChartGridlinesFormat>("format", workbookChartGridlines.format, serializeWorkbookChartGridlinesFormat);
-    writer.writeBooleanValue("visible", workbookChartGridlines.visible);
+export function serializeWorkbookChartGridlines(writer: SerializationWriter, workbookChartGridlines: Partial<WorkbookChartGridlines> | undefined | null = {}) : void {
+    if (workbookChartGridlines) {
+        serializeEntity(writer, workbookChartGridlines)
+        writer.writeObjectValue<WorkbookChartGridlinesFormat>("format", workbookChartGridlines.format, serializeWorkbookChartGridlinesFormat);
+        writer.writeBooleanValue("visible", workbookChartGridlines.visible);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartGridlinesFormat(writer: SerializationWriter, workbookChartGridlinesFormat: Partial<WorkbookChartGridlinesFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartGridlinesFormat)
-    writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartGridlinesFormat.line, serializeWorkbookChartLineFormat);
+export function serializeWorkbookChartGridlinesFormat(writer: SerializationWriter, workbookChartGridlinesFormat: Partial<WorkbookChartGridlinesFormat> | undefined | null = {}) : void {
+    if (workbookChartGridlinesFormat) {
+        serializeEntity(writer, workbookChartGridlinesFormat)
+        writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartGridlinesFormat.line, serializeWorkbookChartLineFormat);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartLegend(writer: SerializationWriter, workbookChartLegend: Partial<WorkbookChartLegend> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartLegend)
-    writer.writeObjectValue<WorkbookChartLegendFormat>("format", workbookChartLegend.format, serializeWorkbookChartLegendFormat);
-    writer.writeBooleanValue("overlay", workbookChartLegend.overlay);
-    writer.writeStringValue("position", workbookChartLegend.position);
-    writer.writeBooleanValue("visible", workbookChartLegend.visible);
+export function serializeWorkbookChartLegend(writer: SerializationWriter, workbookChartLegend: Partial<WorkbookChartLegend> | undefined | null = {}) : void {
+    if (workbookChartLegend) {
+        serializeEntity(writer, workbookChartLegend)
+        writer.writeObjectValue<WorkbookChartLegendFormat>("format", workbookChartLegend.format, serializeWorkbookChartLegendFormat);
+        writer.writeBooleanValue("overlay", workbookChartLegend.overlay);
+        writer.writeStringValue("position", workbookChartLegend.position);
+        writer.writeBooleanValue("visible", workbookChartLegend.visible);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartLegendFormat(writer: SerializationWriter, workbookChartLegendFormat: Partial<WorkbookChartLegendFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartLegendFormat)
-    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartLegendFormat.fill, serializeWorkbookChartFill);
-    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartLegendFormat.font, serializeWorkbookChartFont);
+export function serializeWorkbookChartLegendFormat(writer: SerializationWriter, workbookChartLegendFormat: Partial<WorkbookChartLegendFormat> | undefined | null = {}) : void {
+    if (workbookChartLegendFormat) {
+        serializeEntity(writer, workbookChartLegendFormat)
+        writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartLegendFormat.fill, serializeWorkbookChartFill);
+        writer.writeObjectValue<WorkbookChartFont>("font", workbookChartLegendFormat.font, serializeWorkbookChartFont);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartLineFormat(writer: SerializationWriter, workbookChartLineFormat: Partial<WorkbookChartLineFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartLineFormat)
-    writer.writeStringValue("color", workbookChartLineFormat.color);
+export function serializeWorkbookChartLineFormat(writer: SerializationWriter, workbookChartLineFormat: Partial<WorkbookChartLineFormat> | undefined | null = {}) : void {
+    if (workbookChartLineFormat) {
+        serializeEntity(writer, workbookChartLineFormat)
+        writer.writeStringValue("color", workbookChartLineFormat.color);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartPoint(writer: SerializationWriter, workbookChartPoint: Partial<WorkbookChartPoint> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartPoint)
-    writer.writeObjectValue<WorkbookChartPointFormat>("format", workbookChartPoint.format, serializeWorkbookChartPointFormat);
-    writer.writeObjectValue("value", workbookChartPoint.value);
+export function serializeWorkbookChartPoint(writer: SerializationWriter, workbookChartPoint: Partial<WorkbookChartPoint> | undefined | null = {}) : void {
+    if (workbookChartPoint) {
+        serializeEntity(writer, workbookChartPoint)
+        writer.writeObjectValue<WorkbookChartPointFormat>("format", workbookChartPoint.format, serializeWorkbookChartPointFormat);
+        writer.writeObjectValue("value", workbookChartPoint.value);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartPointCollectionResponse(writer: SerializationWriter, workbookChartPointCollectionResponse: Partial<WorkbookChartPointCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookChartPointCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookChartPoint>("value", workbookChartPointCollectionResponse.value, serializeWorkbookChartPoint);
+export function serializeWorkbookChartPointCollectionResponse(writer: SerializationWriter, workbookChartPointCollectionResponse: Partial<WorkbookChartPointCollectionResponse> | undefined | null = {}) : void {
+    if (workbookChartPointCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookChartPointCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookChartPoint>("value", workbookChartPointCollectionResponse.value, serializeWorkbookChartPoint);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartPointFormat(writer: SerializationWriter, workbookChartPointFormat: Partial<WorkbookChartPointFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartPointFormat)
-    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartPointFormat.fill, serializeWorkbookChartFill);
+export function serializeWorkbookChartPointFormat(writer: SerializationWriter, workbookChartPointFormat: Partial<WorkbookChartPointFormat> | undefined | null = {}) : void {
+    if (workbookChartPointFormat) {
+        serializeEntity(writer, workbookChartPointFormat)
+        writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartPointFormat.fill, serializeWorkbookChartFill);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartSeries(writer: SerializationWriter, workbookChartSeries: Partial<WorkbookChartSeries> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartSeries)
-    writer.writeObjectValue<WorkbookChartSeriesFormat>("format", workbookChartSeries.format, serializeWorkbookChartSeriesFormat);
-    writer.writeStringValue("name", workbookChartSeries.name);
-    writer.writeCollectionOfObjectValues<WorkbookChartPoint>("points", workbookChartSeries.points, serializeWorkbookChartPoint);
+export function serializeWorkbookChartSeries(writer: SerializationWriter, workbookChartSeries: Partial<WorkbookChartSeries> | undefined | null = {}) : void {
+    if (workbookChartSeries) {
+        serializeEntity(writer, workbookChartSeries)
+        writer.writeObjectValue<WorkbookChartSeriesFormat>("format", workbookChartSeries.format, serializeWorkbookChartSeriesFormat);
+        writer.writeStringValue("name", workbookChartSeries.name);
+        writer.writeCollectionOfObjectValues<WorkbookChartPoint>("points", workbookChartSeries.points, serializeWorkbookChartPoint);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartSeriesCollectionResponse(writer: SerializationWriter, workbookChartSeriesCollectionResponse: Partial<WorkbookChartSeriesCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookChartSeriesCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookChartSeries>("value", workbookChartSeriesCollectionResponse.value, serializeWorkbookChartSeries);
+export function serializeWorkbookChartSeriesCollectionResponse(writer: SerializationWriter, workbookChartSeriesCollectionResponse: Partial<WorkbookChartSeriesCollectionResponse> | undefined | null = {}) : void {
+    if (workbookChartSeriesCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookChartSeriesCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookChartSeries>("value", workbookChartSeriesCollectionResponse.value, serializeWorkbookChartSeries);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartSeriesFormat(writer: SerializationWriter, workbookChartSeriesFormat: Partial<WorkbookChartSeriesFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartSeriesFormat)
-    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartSeriesFormat.fill, serializeWorkbookChartFill);
-    writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartSeriesFormat.line, serializeWorkbookChartLineFormat);
+export function serializeWorkbookChartSeriesFormat(writer: SerializationWriter, workbookChartSeriesFormat: Partial<WorkbookChartSeriesFormat> | undefined | null = {}) : void {
+    if (workbookChartSeriesFormat) {
+        serializeEntity(writer, workbookChartSeriesFormat)
+        writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartSeriesFormat.fill, serializeWorkbookChartFill);
+        writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartSeriesFormat.line, serializeWorkbookChartLineFormat);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartTitle(writer: SerializationWriter, workbookChartTitle: Partial<WorkbookChartTitle> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartTitle)
-    writer.writeObjectValue<WorkbookChartTitleFormat>("format", workbookChartTitle.format, serializeWorkbookChartTitleFormat);
-    writer.writeBooleanValue("overlay", workbookChartTitle.overlay);
-    writer.writeStringValue("text", workbookChartTitle.text);
-    writer.writeBooleanValue("visible", workbookChartTitle.visible);
+export function serializeWorkbookChartTitle(writer: SerializationWriter, workbookChartTitle: Partial<WorkbookChartTitle> | undefined | null = {}) : void {
+    if (workbookChartTitle) {
+        serializeEntity(writer, workbookChartTitle)
+        writer.writeObjectValue<WorkbookChartTitleFormat>("format", workbookChartTitle.format, serializeWorkbookChartTitleFormat);
+        writer.writeBooleanValue("overlay", workbookChartTitle.overlay);
+        writer.writeStringValue("text", workbookChartTitle.text);
+        writer.writeBooleanValue("visible", workbookChartTitle.visible);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookChartTitleFormat(writer: SerializationWriter, workbookChartTitleFormat: Partial<WorkbookChartTitleFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookChartTitleFormat)
-    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartTitleFormat.fill, serializeWorkbookChartFill);
-    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartTitleFormat.font, serializeWorkbookChartFont);
+export function serializeWorkbookChartTitleFormat(writer: SerializationWriter, workbookChartTitleFormat: Partial<WorkbookChartTitleFormat> | undefined | null = {}) : void {
+    if (workbookChartTitleFormat) {
+        serializeEntity(writer, workbookChartTitleFormat)
+        writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartTitleFormat.fill, serializeWorkbookChartFill);
+        writer.writeObjectValue<WorkbookChartFont>("font", workbookChartTitleFormat.font, serializeWorkbookChartFont);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookComment(writer: SerializationWriter, workbookComment: Partial<WorkbookComment> | undefined = {}) : void {
-    serializeEntity(writer, workbookComment)
-    writer.writeStringValue("content", workbookComment.content);
-    writer.writeStringValue("contentType", workbookComment.contentType);
-    writer.writeCollectionOfObjectValues<WorkbookCommentReply>("replies", workbookComment.replies, serializeWorkbookCommentReply);
+export function serializeWorkbookComment(writer: SerializationWriter, workbookComment: Partial<WorkbookComment> | undefined | null = {}) : void {
+    if (workbookComment) {
+        serializeEntity(writer, workbookComment)
+        writer.writeStringValue("content", workbookComment.content);
+        writer.writeStringValue("contentType", workbookComment.contentType);
+        writer.writeCollectionOfObjectValues<WorkbookCommentReply>("replies", workbookComment.replies, serializeWorkbookCommentReply);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookCommentCollectionResponse(writer: SerializationWriter, workbookCommentCollectionResponse: Partial<WorkbookCommentCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookCommentCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookComment>("value", workbookCommentCollectionResponse.value, serializeWorkbookComment);
+export function serializeWorkbookCommentCollectionResponse(writer: SerializationWriter, workbookCommentCollectionResponse: Partial<WorkbookCommentCollectionResponse> | undefined | null = {}) : void {
+    if (workbookCommentCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookCommentCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookComment>("value", workbookCommentCollectionResponse.value, serializeWorkbookComment);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookCommentReply(writer: SerializationWriter, workbookCommentReply: Partial<WorkbookCommentReply> | undefined = {}) : void {
-    serializeEntity(writer, workbookCommentReply)
-    writer.writeStringValue("content", workbookCommentReply.content);
-    writer.writeStringValue("contentType", workbookCommentReply.contentType);
+export function serializeWorkbookCommentReply(writer: SerializationWriter, workbookCommentReply: Partial<WorkbookCommentReply> | undefined | null = {}) : void {
+    if (workbookCommentReply) {
+        serializeEntity(writer, workbookCommentReply)
+        writer.writeStringValue("content", workbookCommentReply.content);
+        writer.writeStringValue("contentType", workbookCommentReply.contentType);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookCommentReplyCollectionResponse(writer: SerializationWriter, workbookCommentReplyCollectionResponse: Partial<WorkbookCommentReplyCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookCommentReplyCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookCommentReply>("value", workbookCommentReplyCollectionResponse.value, serializeWorkbookCommentReply);
+export function serializeWorkbookCommentReplyCollectionResponse(writer: SerializationWriter, workbookCommentReplyCollectionResponse: Partial<WorkbookCommentReplyCollectionResponse> | undefined | null = {}) : void {
+    if (workbookCommentReplyCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookCommentReplyCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookCommentReply>("value", workbookCommentReplyCollectionResponse.value, serializeWorkbookCommentReply);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookFilter(writer: SerializationWriter, workbookFilter: Partial<WorkbookFilter> | undefined = {}) : void {
-    serializeEntity(writer, workbookFilter)
-    writer.writeObjectValue<WorkbookFilterCriteria>("criteria", workbookFilter.criteria, serializeWorkbookFilterCriteria);
+export function serializeWorkbookFilter(writer: SerializationWriter, workbookFilter: Partial<WorkbookFilter> | undefined | null = {}) : void {
+    if (workbookFilter) {
+        serializeEntity(writer, workbookFilter)
+        writer.writeObjectValue<WorkbookFilterCriteria>("criteria", workbookFilter.criteria, serializeWorkbookFilterCriteria);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookFilterCriteria(writer: SerializationWriter, workbookFilterCriteria: Partial<WorkbookFilterCriteria> | undefined = {}) : void {
-    writer.writeStringValue("color", workbookFilterCriteria.color);
-    writer.writeStringValue("criterion1", workbookFilterCriteria.criterion1);
-    writer.writeStringValue("criterion2", workbookFilterCriteria.criterion2);
-    writer.writeStringValue("dynamicCriteria", workbookFilterCriteria.dynamicCriteria);
-    writer.writeStringValue("filterOn", workbookFilterCriteria.filterOn);
-    writer.writeObjectValue<WorkbookIcon>("icon", workbookFilterCriteria.icon, serializeWorkbookIcon);
-    writer.writeStringValue("@odata.type", workbookFilterCriteria.odataType);
-    writer.writeStringValue("operator", workbookFilterCriteria.operator);
-    writer.writeObjectValue("values", workbookFilterCriteria.values);
-    writer.writeAdditionalData(workbookFilterCriteria.additionalData);
+export function serializeWorkbookFilterCriteria(writer: SerializationWriter, workbookFilterCriteria: Partial<WorkbookFilterCriteria> | undefined | null = {}) : void {
+    if (workbookFilterCriteria) {
+        writer.writeStringValue("color", workbookFilterCriteria.color);
+        writer.writeStringValue("criterion1", workbookFilterCriteria.criterion1);
+        writer.writeStringValue("criterion2", workbookFilterCriteria.criterion2);
+        writer.writeStringValue("dynamicCriteria", workbookFilterCriteria.dynamicCriteria);
+        writer.writeStringValue("filterOn", workbookFilterCriteria.filterOn);
+        writer.writeObjectValue<WorkbookIcon>("icon", workbookFilterCriteria.icon, serializeWorkbookIcon);
+        writer.writeStringValue("@odata.type", workbookFilterCriteria.odataType);
+        writer.writeStringValue("operator", workbookFilterCriteria.operator);
+        writer.writeObjectValue("values", workbookFilterCriteria.values);
+        writer.writeAdditionalData(workbookFilterCriteria.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookFormatProtection(writer: SerializationWriter, workbookFormatProtection: Partial<WorkbookFormatProtection> | undefined = {}) : void {
-    serializeEntity(writer, workbookFormatProtection)
-    writer.writeBooleanValue("formulaHidden", workbookFormatProtection.formulaHidden);
-    writer.writeBooleanValue("locked", workbookFormatProtection.locked);
+export function serializeWorkbookFormatProtection(writer: SerializationWriter, workbookFormatProtection: Partial<WorkbookFormatProtection> | undefined | null = {}) : void {
+    if (workbookFormatProtection) {
+        serializeEntity(writer, workbookFormatProtection)
+        writer.writeBooleanValue("formulaHidden", workbookFormatProtection.formulaHidden);
+        writer.writeBooleanValue("locked", workbookFormatProtection.locked);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookFunctionResult(writer: SerializationWriter, workbookFunctionResult: Partial<WorkbookFunctionResult> | undefined = {}) : void {
-    serializeEntity(writer, workbookFunctionResult)
-    writer.writeStringValue("error", workbookFunctionResult.errorEscaped);
-    writer.writeObjectValue("value", workbookFunctionResult.value);
+export function serializeWorkbookFunctionResult(writer: SerializationWriter, workbookFunctionResult: Partial<WorkbookFunctionResult> | undefined | null = {}) : void {
+    if (workbookFunctionResult) {
+        serializeEntity(writer, workbookFunctionResult)
+        writer.writeStringValue("error", workbookFunctionResult.errorEscaped);
+        writer.writeObjectValue("value", workbookFunctionResult.value);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookFunctions(writer: SerializationWriter, workbookFunctions: Partial<WorkbookFunctions> | undefined = {}) : void {
-    serializeEntity(writer, workbookFunctions)
+export function serializeWorkbookFunctions(writer: SerializationWriter, workbookFunctions: Partial<WorkbookFunctions> | undefined | null = {}) : void {
+    if (workbookFunctions) {
+        serializeEntity(writer, workbookFunctions)
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookIcon(writer: SerializationWriter, workbookIcon: Partial<WorkbookIcon> | undefined = {}) : void {
-    writer.writeNumberValue("index", workbookIcon.index);
-    writer.writeStringValue("@odata.type", workbookIcon.odataType);
-    writer.writeStringValue("set", workbookIcon.set);
-    writer.writeAdditionalData(workbookIcon.additionalData);
+export function serializeWorkbookIcon(writer: SerializationWriter, workbookIcon: Partial<WorkbookIcon> | undefined | null = {}) : void {
+    if (workbookIcon) {
+        writer.writeNumberValue("index", workbookIcon.index);
+        writer.writeStringValue("@odata.type", workbookIcon.odataType);
+        writer.writeStringValue("set", workbookIcon.set);
+        writer.writeAdditionalData(workbookIcon.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookNamedItem(writer: SerializationWriter, workbookNamedItem: Partial<WorkbookNamedItem> | undefined = {}) : void {
-    serializeEntity(writer, workbookNamedItem)
-    writer.writeStringValue("comment", workbookNamedItem.comment);
-    writer.writeStringValue("name", workbookNamedItem.name);
-    writer.writeStringValue("scope", workbookNamedItem.scope);
-    writer.writeStringValue("type", workbookNamedItem.type);
-    writer.writeObjectValue("value", workbookNamedItem.value);
-    writer.writeBooleanValue("visible", workbookNamedItem.visible);
-    writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookNamedItem.worksheet, serializeWorkbookWorksheet);
+export function serializeWorkbookNamedItem(writer: SerializationWriter, workbookNamedItem: Partial<WorkbookNamedItem> | undefined | null = {}) : void {
+    if (workbookNamedItem) {
+        serializeEntity(writer, workbookNamedItem)
+        writer.writeStringValue("comment", workbookNamedItem.comment);
+        writer.writeStringValue("name", workbookNamedItem.name);
+        writer.writeStringValue("scope", workbookNamedItem.scope);
+        writer.writeStringValue("type", workbookNamedItem.type);
+        writer.writeObjectValue("value", workbookNamedItem.value);
+        writer.writeBooleanValue("visible", workbookNamedItem.visible);
+        writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookNamedItem.worksheet, serializeWorkbookWorksheet);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookNamedItemCollectionResponse(writer: SerializationWriter, workbookNamedItemCollectionResponse: Partial<WorkbookNamedItemCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookNamedItemCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookNamedItem>("value", workbookNamedItemCollectionResponse.value, serializeWorkbookNamedItem);
+export function serializeWorkbookNamedItemCollectionResponse(writer: SerializationWriter, workbookNamedItemCollectionResponse: Partial<WorkbookNamedItemCollectionResponse> | undefined | null = {}) : void {
+    if (workbookNamedItemCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookNamedItemCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookNamedItem>("value", workbookNamedItemCollectionResponse.value, serializeWorkbookNamedItem);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookOperation(writer: SerializationWriter, workbookOperation: Partial<WorkbookOperation> | undefined = {}) : void {
-    serializeEntity(writer, workbookOperation)
-    writer.writeObjectValue<WorkbookOperationError>("error", workbookOperation.errorEscaped, serializeWorkbookOperationError);
-    writer.writeStringValue("resourceLocation", workbookOperation.resourceLocation);
-    writer.writeEnumValue<WorkbookOperationStatus>("status", workbookOperation.status);
+export function serializeWorkbookOperation(writer: SerializationWriter, workbookOperation: Partial<WorkbookOperation> | undefined | null = {}) : void {
+    if (workbookOperation) {
+        serializeEntity(writer, workbookOperation)
+        writer.writeObjectValue<WorkbookOperationError>("error", workbookOperation.errorEscaped, serializeWorkbookOperationError);
+        writer.writeStringValue("resourceLocation", workbookOperation.resourceLocation);
+        writer.writeEnumValue<WorkbookOperationStatus>("status", workbookOperation.status);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookOperationCollectionResponse(writer: SerializationWriter, workbookOperationCollectionResponse: Partial<WorkbookOperationCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookOperationCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookOperation>("value", workbookOperationCollectionResponse.value, serializeWorkbookOperation);
+export function serializeWorkbookOperationCollectionResponse(writer: SerializationWriter, workbookOperationCollectionResponse: Partial<WorkbookOperationCollectionResponse> | undefined | null = {}) : void {
+    if (workbookOperationCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookOperationCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookOperation>("value", workbookOperationCollectionResponse.value, serializeWorkbookOperation);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookOperationError(writer: SerializationWriter, workbookOperationError: Partial<WorkbookOperationError> | undefined = {}) : void {
-    writer.writeStringValue("code", workbookOperationError.code);
-    writer.writeObjectValue<WorkbookOperationError>("innerError", workbookOperationError.innerError, serializeWorkbookOperationError);
-    writer.writeStringValue("message", workbookOperationError.message);
-    writer.writeStringValue("@odata.type", workbookOperationError.odataType);
-    writer.writeAdditionalData(workbookOperationError.additionalData);
+export function serializeWorkbookOperationError(writer: SerializationWriter, workbookOperationError: Partial<WorkbookOperationError> | undefined | null = {}) : void {
+    if (workbookOperationError) {
+        writer.writeStringValue("code", workbookOperationError.code);
+        writer.writeObjectValue<WorkbookOperationError>("innerError", workbookOperationError.innerError, serializeWorkbookOperationError);
+        writer.writeStringValue("message", workbookOperationError.message);
+        writer.writeStringValue("@odata.type", workbookOperationError.odataType);
+        writer.writeAdditionalData(workbookOperationError.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookPivotTable(writer: SerializationWriter, workbookPivotTable: Partial<WorkbookPivotTable> | undefined = {}) : void {
-    serializeEntity(writer, workbookPivotTable)
-    writer.writeStringValue("name", workbookPivotTable.name);
-    writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookPivotTable.worksheet, serializeWorkbookWorksheet);
+export function serializeWorkbookPivotTable(writer: SerializationWriter, workbookPivotTable: Partial<WorkbookPivotTable> | undefined | null = {}) : void {
+    if (workbookPivotTable) {
+        serializeEntity(writer, workbookPivotTable)
+        writer.writeStringValue("name", workbookPivotTable.name);
+        writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookPivotTable.worksheet, serializeWorkbookWorksheet);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookPivotTableCollectionResponse(writer: SerializationWriter, workbookPivotTableCollectionResponse: Partial<WorkbookPivotTableCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookPivotTableCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookPivotTable>("value", workbookPivotTableCollectionResponse.value, serializeWorkbookPivotTable);
+export function serializeWorkbookPivotTableCollectionResponse(writer: SerializationWriter, workbookPivotTableCollectionResponse: Partial<WorkbookPivotTableCollectionResponse> | undefined | null = {}) : void {
+    if (workbookPivotTableCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookPivotTableCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookPivotTable>("value", workbookPivotTableCollectionResponse.value, serializeWorkbookPivotTable);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookRange(writer: SerializationWriter, workbookRange: Partial<WorkbookRange> | undefined = {}) : void {
-    serializeEntity(writer, workbookRange)
-    writer.writeStringValue("address", workbookRange.address);
-    writer.writeStringValue("addressLocal", workbookRange.addressLocal);
-    writer.writeNumberValue("cellCount", workbookRange.cellCount);
-    writer.writeNumberValue("columnCount", workbookRange.columnCount);
-    writer.writeBooleanValue("columnHidden", workbookRange.columnHidden);
-    writer.writeNumberValue("columnIndex", workbookRange.columnIndex);
-    writer.writeObjectValue<WorkbookRangeFormat>("format", workbookRange.format, serializeWorkbookRangeFormat);
-    writer.writeObjectValue("formulas", workbookRange.formulas);
-    writer.writeObjectValue("formulasLocal", workbookRange.formulasLocal);
-    writer.writeObjectValue("formulasR1C1", workbookRange.formulasR1C1);
-    writer.writeBooleanValue("hidden", workbookRange.hidden);
-    writer.writeObjectValue("numberFormat", workbookRange.numberFormat);
-    writer.writeNumberValue("rowCount", workbookRange.rowCount);
-    writer.writeBooleanValue("rowHidden", workbookRange.rowHidden);
-    writer.writeNumberValue("rowIndex", workbookRange.rowIndex);
-    writer.writeObjectValue<WorkbookRangeSort>("sort", workbookRange.sort, serializeWorkbookRangeSort);
-    writer.writeObjectValue("text", workbookRange.text);
-    writer.writeObjectValue("values", workbookRange.values);
-    writer.writeObjectValue("valueTypes", workbookRange.valueTypes);
-    writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookRange.worksheet, serializeWorkbookWorksheet);
+export function serializeWorkbookRange(writer: SerializationWriter, workbookRange: Partial<WorkbookRange> | undefined | null = {}) : void {
+    if (workbookRange) {
+        serializeEntity(writer, workbookRange)
+        writer.writeStringValue("address", workbookRange.address);
+        writer.writeStringValue("addressLocal", workbookRange.addressLocal);
+        writer.writeNumberValue("cellCount", workbookRange.cellCount);
+        writer.writeNumberValue("columnCount", workbookRange.columnCount);
+        writer.writeBooleanValue("columnHidden", workbookRange.columnHidden);
+        writer.writeNumberValue("columnIndex", workbookRange.columnIndex);
+        writer.writeObjectValue<WorkbookRangeFormat>("format", workbookRange.format, serializeWorkbookRangeFormat);
+        writer.writeObjectValue("formulas", workbookRange.formulas);
+        writer.writeObjectValue("formulasLocal", workbookRange.formulasLocal);
+        writer.writeObjectValue("formulasR1C1", workbookRange.formulasR1C1);
+        writer.writeBooleanValue("hidden", workbookRange.hidden);
+        writer.writeObjectValue("numberFormat", workbookRange.numberFormat);
+        writer.writeNumberValue("rowCount", workbookRange.rowCount);
+        writer.writeBooleanValue("rowHidden", workbookRange.rowHidden);
+        writer.writeNumberValue("rowIndex", workbookRange.rowIndex);
+        writer.writeObjectValue<WorkbookRangeSort>("sort", workbookRange.sort, serializeWorkbookRangeSort);
+        writer.writeObjectValue("text", workbookRange.text);
+        writer.writeObjectValue("values", workbookRange.values);
+        writer.writeObjectValue("valueTypes", workbookRange.valueTypes);
+        writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookRange.worksheet, serializeWorkbookWorksheet);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookRangeBorder(writer: SerializationWriter, workbookRangeBorder: Partial<WorkbookRangeBorder> | undefined = {}) : void {
-    serializeEntity(writer, workbookRangeBorder)
-    writer.writeStringValue("color", workbookRangeBorder.color);
-    writer.writeStringValue("sideIndex", workbookRangeBorder.sideIndex);
-    writer.writeStringValue("style", workbookRangeBorder.style);
-    writer.writeStringValue("weight", workbookRangeBorder.weight);
+export function serializeWorkbookRangeBorder(writer: SerializationWriter, workbookRangeBorder: Partial<WorkbookRangeBorder> | undefined | null = {}) : void {
+    if (workbookRangeBorder) {
+        serializeEntity(writer, workbookRangeBorder)
+        writer.writeStringValue("color", workbookRangeBorder.color);
+        writer.writeStringValue("sideIndex", workbookRangeBorder.sideIndex);
+        writer.writeStringValue("style", workbookRangeBorder.style);
+        writer.writeStringValue("weight", workbookRangeBorder.weight);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookRangeFill(writer: SerializationWriter, workbookRangeFill: Partial<WorkbookRangeFill> | undefined = {}) : void {
-    serializeEntity(writer, workbookRangeFill)
-    writer.writeStringValue("color", workbookRangeFill.color);
+export function serializeWorkbookRangeFill(writer: SerializationWriter, workbookRangeFill: Partial<WorkbookRangeFill> | undefined | null = {}) : void {
+    if (workbookRangeFill) {
+        serializeEntity(writer, workbookRangeFill)
+        writer.writeStringValue("color", workbookRangeFill.color);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookRangeFont(writer: SerializationWriter, workbookRangeFont: Partial<WorkbookRangeFont> | undefined = {}) : void {
-    serializeEntity(writer, workbookRangeFont)
-    writer.writeBooleanValue("bold", workbookRangeFont.bold);
-    writer.writeStringValue("color", workbookRangeFont.color);
-    writer.writeBooleanValue("italic", workbookRangeFont.italic);
-    writer.writeStringValue("name", workbookRangeFont.name);
-    writer.writeNumberValue("size", workbookRangeFont.size);
-    writer.writeStringValue("underline", workbookRangeFont.underline);
+export function serializeWorkbookRangeFont(writer: SerializationWriter, workbookRangeFont: Partial<WorkbookRangeFont> | undefined | null = {}) : void {
+    if (workbookRangeFont) {
+        serializeEntity(writer, workbookRangeFont)
+        writer.writeBooleanValue("bold", workbookRangeFont.bold);
+        writer.writeStringValue("color", workbookRangeFont.color);
+        writer.writeBooleanValue("italic", workbookRangeFont.italic);
+        writer.writeStringValue("name", workbookRangeFont.name);
+        writer.writeNumberValue("size", workbookRangeFont.size);
+        writer.writeStringValue("underline", workbookRangeFont.underline);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookRangeFormat(writer: SerializationWriter, workbookRangeFormat: Partial<WorkbookRangeFormat> | undefined = {}) : void {
-    serializeEntity(writer, workbookRangeFormat)
-    writer.writeCollectionOfObjectValues<WorkbookRangeBorder>("borders", workbookRangeFormat.borders, serializeWorkbookRangeBorder);
-    writer.writeNumberValue("columnWidth", workbookRangeFormat.columnWidth);
-    writer.writeObjectValue<WorkbookRangeFill>("fill", workbookRangeFormat.fill, serializeWorkbookRangeFill);
-    writer.writeObjectValue<WorkbookRangeFont>("font", workbookRangeFormat.font, serializeWorkbookRangeFont);
-    writer.writeStringValue("horizontalAlignment", workbookRangeFormat.horizontalAlignment);
-    writer.writeObjectValue<WorkbookFormatProtection>("protection", workbookRangeFormat.protection, serializeWorkbookFormatProtection);
-    writer.writeNumberValue("rowHeight", workbookRangeFormat.rowHeight);
-    writer.writeStringValue("verticalAlignment", workbookRangeFormat.verticalAlignment);
-    writer.writeBooleanValue("wrapText", workbookRangeFormat.wrapText);
+export function serializeWorkbookRangeFormat(writer: SerializationWriter, workbookRangeFormat: Partial<WorkbookRangeFormat> | undefined | null = {}) : void {
+    if (workbookRangeFormat) {
+        serializeEntity(writer, workbookRangeFormat)
+        writer.writeCollectionOfObjectValues<WorkbookRangeBorder>("borders", workbookRangeFormat.borders, serializeWorkbookRangeBorder);
+        writer.writeNumberValue("columnWidth", workbookRangeFormat.columnWidth);
+        writer.writeObjectValue<WorkbookRangeFill>("fill", workbookRangeFormat.fill, serializeWorkbookRangeFill);
+        writer.writeObjectValue<WorkbookRangeFont>("font", workbookRangeFormat.font, serializeWorkbookRangeFont);
+        writer.writeStringValue("horizontalAlignment", workbookRangeFormat.horizontalAlignment);
+        writer.writeObjectValue<WorkbookFormatProtection>("protection", workbookRangeFormat.protection, serializeWorkbookFormatProtection);
+        writer.writeNumberValue("rowHeight", workbookRangeFormat.rowHeight);
+        writer.writeStringValue("verticalAlignment", workbookRangeFormat.verticalAlignment);
+        writer.writeBooleanValue("wrapText", workbookRangeFormat.wrapText);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookRangeSort(writer: SerializationWriter, workbookRangeSort: Partial<WorkbookRangeSort> | undefined = {}) : void {
-    serializeEntity(writer, workbookRangeSort)
+export function serializeWorkbookRangeSort(writer: SerializationWriter, workbookRangeSort: Partial<WorkbookRangeSort> | undefined | null = {}) : void {
+    if (workbookRangeSort) {
+        serializeEntity(writer, workbookRangeSort)
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookRangeView(writer: SerializationWriter, workbookRangeView: Partial<WorkbookRangeView> | undefined = {}) : void {
-    serializeEntity(writer, workbookRangeView)
-    writer.writeObjectValue("cellAddresses", workbookRangeView.cellAddresses);
-    writer.writeNumberValue("columnCount", workbookRangeView.columnCount);
-    writer.writeObjectValue("formulas", workbookRangeView.formulas);
-    writer.writeObjectValue("formulasLocal", workbookRangeView.formulasLocal);
-    writer.writeObjectValue("formulasR1C1", workbookRangeView.formulasR1C1);
-    writer.writeNumberValue("index", workbookRangeView.index);
-    writer.writeObjectValue("numberFormat", workbookRangeView.numberFormat);
-    writer.writeNumberValue("rowCount", workbookRangeView.rowCount);
-    writer.writeCollectionOfObjectValues<WorkbookRangeView>("rows", workbookRangeView.rows, serializeWorkbookRangeView);
-    writer.writeObjectValue("text", workbookRangeView.text);
-    writer.writeObjectValue("values", workbookRangeView.values);
-    writer.writeObjectValue("valueTypes", workbookRangeView.valueTypes);
+export function serializeWorkbookRangeView(writer: SerializationWriter, workbookRangeView: Partial<WorkbookRangeView> | undefined | null = {}) : void {
+    if (workbookRangeView) {
+        serializeEntity(writer, workbookRangeView)
+        writer.writeObjectValue("cellAddresses", workbookRangeView.cellAddresses);
+        writer.writeNumberValue("columnCount", workbookRangeView.columnCount);
+        writer.writeObjectValue("formulas", workbookRangeView.formulas);
+        writer.writeObjectValue("formulasLocal", workbookRangeView.formulasLocal);
+        writer.writeObjectValue("formulasR1C1", workbookRangeView.formulasR1C1);
+        writer.writeNumberValue("index", workbookRangeView.index);
+        writer.writeObjectValue("numberFormat", workbookRangeView.numberFormat);
+        writer.writeNumberValue("rowCount", workbookRangeView.rowCount);
+        writer.writeCollectionOfObjectValues<WorkbookRangeView>("rows", workbookRangeView.rows, serializeWorkbookRangeView);
+        writer.writeObjectValue("text", workbookRangeView.text);
+        writer.writeObjectValue("values", workbookRangeView.values);
+        writer.writeObjectValue("valueTypes", workbookRangeView.valueTypes);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookSessionInfo(writer: SerializationWriter, workbookSessionInfo: Partial<WorkbookSessionInfo> | undefined = {}) : void {
-    writer.writeStringValue("id", workbookSessionInfo.id);
-    writer.writeStringValue("@odata.type", workbookSessionInfo.odataType);
-    writer.writeBooleanValue("persistChanges", workbookSessionInfo.persistChanges);
-    writer.writeAdditionalData(workbookSessionInfo.additionalData);
+export function serializeWorkbookSessionInfo(writer: SerializationWriter, workbookSessionInfo: Partial<WorkbookSessionInfo> | undefined | null = {}) : void {
+    if (workbookSessionInfo) {
+        writer.writeStringValue("id", workbookSessionInfo.id);
+        writer.writeStringValue("@odata.type", workbookSessionInfo.odataType);
+        writer.writeBooleanValue("persistChanges", workbookSessionInfo.persistChanges);
+        writer.writeAdditionalData(workbookSessionInfo.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookSortField(writer: SerializationWriter, workbookSortField: Partial<WorkbookSortField> | undefined = {}) : void {
-    writer.writeBooleanValue("ascending", workbookSortField.ascending);
-    writer.writeStringValue("color", workbookSortField.color);
-    writer.writeStringValue("dataOption", workbookSortField.dataOption);
-    writer.writeObjectValue<WorkbookIcon>("icon", workbookSortField.icon, serializeWorkbookIcon);
-    writer.writeNumberValue("key", workbookSortField.key);
-    writer.writeStringValue("@odata.type", workbookSortField.odataType);
-    writer.writeStringValue("sortOn", workbookSortField.sortOn);
-    writer.writeAdditionalData(workbookSortField.additionalData);
+export function serializeWorkbookSortField(writer: SerializationWriter, workbookSortField: Partial<WorkbookSortField> | undefined | null = {}) : void {
+    if (workbookSortField) {
+        writer.writeBooleanValue("ascending", workbookSortField.ascending);
+        writer.writeStringValue("color", workbookSortField.color);
+        writer.writeStringValue("dataOption", workbookSortField.dataOption);
+        writer.writeObjectValue<WorkbookIcon>("icon", workbookSortField.icon, serializeWorkbookIcon);
+        writer.writeNumberValue("key", workbookSortField.key);
+        writer.writeStringValue("@odata.type", workbookSortField.odataType);
+        writer.writeStringValue("sortOn", workbookSortField.sortOn);
+        writer.writeAdditionalData(workbookSortField.additionalData);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookTable(writer: SerializationWriter, workbookTable: Partial<WorkbookTable> | undefined = {}) : void {
-    serializeEntity(writer, workbookTable)
-    writer.writeCollectionOfObjectValues<WorkbookTableColumn>("columns", workbookTable.columns, serializeWorkbookTableColumn);
-    writer.writeBooleanValue("highlightFirstColumn", workbookTable.highlightFirstColumn);
-    writer.writeBooleanValue("highlightLastColumn", workbookTable.highlightLastColumn);
-    writer.writeStringValue("legacyId", workbookTable.legacyId);
-    writer.writeStringValue("name", workbookTable.name);
-    writer.writeCollectionOfObjectValues<WorkbookTableRow>("rows", workbookTable.rows, serializeWorkbookTableRow);
-    writer.writeBooleanValue("showBandedColumns", workbookTable.showBandedColumns);
-    writer.writeBooleanValue("showBandedRows", workbookTable.showBandedRows);
-    writer.writeBooleanValue("showFilterButton", workbookTable.showFilterButton);
-    writer.writeBooleanValue("showHeaders", workbookTable.showHeaders);
-    writer.writeBooleanValue("showTotals", workbookTable.showTotals);
-    writer.writeObjectValue<WorkbookTableSort>("sort", workbookTable.sort, serializeWorkbookTableSort);
-    writer.writeStringValue("style", workbookTable.style);
-    writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookTable.worksheet, serializeWorkbookWorksheet);
+export function serializeWorkbookTable(writer: SerializationWriter, workbookTable: Partial<WorkbookTable> | undefined | null = {}) : void {
+    if (workbookTable) {
+        serializeEntity(writer, workbookTable)
+        writer.writeCollectionOfObjectValues<WorkbookTableColumn>("columns", workbookTable.columns, serializeWorkbookTableColumn);
+        writer.writeBooleanValue("highlightFirstColumn", workbookTable.highlightFirstColumn);
+        writer.writeBooleanValue("highlightLastColumn", workbookTable.highlightLastColumn);
+        writer.writeStringValue("legacyId", workbookTable.legacyId);
+        writer.writeStringValue("name", workbookTable.name);
+        writer.writeCollectionOfObjectValues<WorkbookTableRow>("rows", workbookTable.rows, serializeWorkbookTableRow);
+        writer.writeBooleanValue("showBandedColumns", workbookTable.showBandedColumns);
+        writer.writeBooleanValue("showBandedRows", workbookTable.showBandedRows);
+        writer.writeBooleanValue("showFilterButton", workbookTable.showFilterButton);
+        writer.writeBooleanValue("showHeaders", workbookTable.showHeaders);
+        writer.writeBooleanValue("showTotals", workbookTable.showTotals);
+        writer.writeObjectValue<WorkbookTableSort>("sort", workbookTable.sort, serializeWorkbookTableSort);
+        writer.writeStringValue("style", workbookTable.style);
+        writer.writeObjectValue<WorkbookWorksheet>("worksheet", workbookTable.worksheet, serializeWorkbookWorksheet);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookTableCollectionResponse(writer: SerializationWriter, workbookTableCollectionResponse: Partial<WorkbookTableCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookTableCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookTable>("value", workbookTableCollectionResponse.value, serializeWorkbookTable);
+export function serializeWorkbookTableCollectionResponse(writer: SerializationWriter, workbookTableCollectionResponse: Partial<WorkbookTableCollectionResponse> | undefined | null = {}) : void {
+    if (workbookTableCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookTableCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookTable>("value", workbookTableCollectionResponse.value, serializeWorkbookTable);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookTableColumn(writer: SerializationWriter, workbookTableColumn: Partial<WorkbookTableColumn> | undefined = {}) : void {
-    serializeEntity(writer, workbookTableColumn)
-    writer.writeObjectValue<WorkbookFilter>("filter", workbookTableColumn.filter, serializeWorkbookFilter);
-    writer.writeNumberValue("index", workbookTableColumn.index);
-    writer.writeStringValue("name", workbookTableColumn.name);
-    writer.writeObjectValue("values", workbookTableColumn.values);
+export function serializeWorkbookTableColumn(writer: SerializationWriter, workbookTableColumn: Partial<WorkbookTableColumn> | undefined | null = {}) : void {
+    if (workbookTableColumn) {
+        serializeEntity(writer, workbookTableColumn)
+        writer.writeObjectValue<WorkbookFilter>("filter", workbookTableColumn.filter, serializeWorkbookFilter);
+        writer.writeNumberValue("index", workbookTableColumn.index);
+        writer.writeStringValue("name", workbookTableColumn.name);
+        writer.writeObjectValue("values", workbookTableColumn.values);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookTableColumnCollectionResponse(writer: SerializationWriter, workbookTableColumnCollectionResponse: Partial<WorkbookTableColumnCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookTableColumnCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookTableColumn>("value", workbookTableColumnCollectionResponse.value, serializeWorkbookTableColumn);
+export function serializeWorkbookTableColumnCollectionResponse(writer: SerializationWriter, workbookTableColumnCollectionResponse: Partial<WorkbookTableColumnCollectionResponse> | undefined | null = {}) : void {
+    if (workbookTableColumnCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookTableColumnCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookTableColumn>("value", workbookTableColumnCollectionResponse.value, serializeWorkbookTableColumn);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookTableRow(writer: SerializationWriter, workbookTableRow: Partial<WorkbookTableRow> | undefined = {}) : void {
-    serializeEntity(writer, workbookTableRow)
-    writer.writeNumberValue("index", workbookTableRow.index);
-    writer.writeObjectValue("values", workbookTableRow.values);
+export function serializeWorkbookTableRow(writer: SerializationWriter, workbookTableRow: Partial<WorkbookTableRow> | undefined | null = {}) : void {
+    if (workbookTableRow) {
+        serializeEntity(writer, workbookTableRow)
+        writer.writeNumberValue("index", workbookTableRow.index);
+        writer.writeObjectValue("values", workbookTableRow.values);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookTableRowCollectionResponse(writer: SerializationWriter, workbookTableRowCollectionResponse: Partial<WorkbookTableRowCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookTableRowCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookTableRow>("value", workbookTableRowCollectionResponse.value, serializeWorkbookTableRow);
+export function serializeWorkbookTableRowCollectionResponse(writer: SerializationWriter, workbookTableRowCollectionResponse: Partial<WorkbookTableRowCollectionResponse> | undefined | null = {}) : void {
+    if (workbookTableRowCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookTableRowCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookTableRow>("value", workbookTableRowCollectionResponse.value, serializeWorkbookTableRow);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookTableSort(writer: SerializationWriter, workbookTableSort: Partial<WorkbookTableSort> | undefined = {}) : void {
-    serializeEntity(writer, workbookTableSort)
-    writer.writeCollectionOfObjectValues<WorkbookSortField>("fields", workbookTableSort.fields, serializeWorkbookSortField);
-    writer.writeBooleanValue("matchCase", workbookTableSort.matchCase);
-    writer.writeStringValue("method", workbookTableSort.method);
+export function serializeWorkbookTableSort(writer: SerializationWriter, workbookTableSort: Partial<WorkbookTableSort> | undefined | null = {}) : void {
+    if (workbookTableSort) {
+        serializeEntity(writer, workbookTableSort)
+        writer.writeCollectionOfObjectValues<WorkbookSortField>("fields", workbookTableSort.fields, serializeWorkbookSortField);
+        writer.writeBooleanValue("matchCase", workbookTableSort.matchCase);
+        writer.writeStringValue("method", workbookTableSort.method);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookWorksheet(writer: SerializationWriter, workbookWorksheet: Partial<WorkbookWorksheet> | undefined = {}) : void {
-    serializeEntity(writer, workbookWorksheet)
-    writer.writeCollectionOfObjectValues<WorkbookChart>("charts", workbookWorksheet.charts, serializeWorkbookChart);
-    writer.writeStringValue("name", workbookWorksheet.name);
-    writer.writeCollectionOfObjectValues<WorkbookNamedItem>("names", workbookWorksheet.names, serializeWorkbookNamedItem);
-    writer.writeCollectionOfObjectValues<WorkbookPivotTable>("pivotTables", workbookWorksheet.pivotTables, serializeWorkbookPivotTable);
-    writer.writeNumberValue("position", workbookWorksheet.position);
-    writer.writeObjectValue<WorkbookWorksheetProtection>("protection", workbookWorksheet.protection, serializeWorkbookWorksheetProtection);
-    writer.writeCollectionOfObjectValues<WorkbookTable>("tables", workbookWorksheet.tables, serializeWorkbookTable);
-    writer.writeStringValue("visibility", workbookWorksheet.visibility);
+export function serializeWorkbookWorksheet(writer: SerializationWriter, workbookWorksheet: Partial<WorkbookWorksheet> | undefined | null = {}) : void {
+    if (workbookWorksheet) {
+        serializeEntity(writer, workbookWorksheet)
+        writer.writeCollectionOfObjectValues<WorkbookChart>("charts", workbookWorksheet.charts, serializeWorkbookChart);
+        writer.writeStringValue("name", workbookWorksheet.name);
+        writer.writeCollectionOfObjectValues<WorkbookNamedItem>("names", workbookWorksheet.names, serializeWorkbookNamedItem);
+        writer.writeCollectionOfObjectValues<WorkbookPivotTable>("pivotTables", workbookWorksheet.pivotTables, serializeWorkbookPivotTable);
+        writer.writeNumberValue("position", workbookWorksheet.position);
+        writer.writeObjectValue<WorkbookWorksheetProtection>("protection", workbookWorksheet.protection, serializeWorkbookWorksheetProtection);
+        writer.writeCollectionOfObjectValues<WorkbookTable>("tables", workbookWorksheet.tables, serializeWorkbookTable);
+        writer.writeStringValue("visibility", workbookWorksheet.visibility);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookWorksheetCollectionResponse(writer: SerializationWriter, workbookWorksheetCollectionResponse: Partial<WorkbookWorksheetCollectionResponse> | undefined = {}) : void {
-    serializeBaseCollectionPaginationCountResponse(writer, workbookWorksheetCollectionResponse)
-    writer.writeCollectionOfObjectValues<WorkbookWorksheet>("value", workbookWorksheetCollectionResponse.value, serializeWorkbookWorksheet);
+export function serializeWorkbookWorksheetCollectionResponse(writer: SerializationWriter, workbookWorksheetCollectionResponse: Partial<WorkbookWorksheetCollectionResponse> | undefined | null = {}) : void {
+    if (workbookWorksheetCollectionResponse) {
+        serializeBaseCollectionPaginationCountResponse(writer, workbookWorksheetCollectionResponse)
+        writer.writeCollectionOfObjectValues<WorkbookWorksheet>("value", workbookWorksheetCollectionResponse.value, serializeWorkbookWorksheet);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookWorksheetProtection(writer: SerializationWriter, workbookWorksheetProtection: Partial<WorkbookWorksheetProtection> | undefined = {}) : void {
-    serializeEntity(writer, workbookWorksheetProtection)
-    writer.writeObjectValue<WorkbookWorksheetProtectionOptions>("options", workbookWorksheetProtection.options, serializeWorkbookWorksheetProtectionOptions);
-    writer.writeBooleanValue("protected", workbookWorksheetProtection.protected);
+export function serializeWorkbookWorksheetProtection(writer: SerializationWriter, workbookWorksheetProtection: Partial<WorkbookWorksheetProtection> | undefined | null = {}) : void {
+    if (workbookWorksheetProtection) {
+        serializeEntity(writer, workbookWorksheetProtection)
+        writer.writeObjectValue<WorkbookWorksheetProtectionOptions>("options", workbookWorksheetProtection.options, serializeWorkbookWorksheetProtectionOptions);
+        writer.writeBooleanValue("protected", workbookWorksheetProtection.protected);
+    }
 }
 /**
  * Serializes information the current object
  * @param writer Serialization writer to use to serialize this model
  */
 // @ts-ignore
-export function serializeWorkbookWorksheetProtectionOptions(writer: SerializationWriter, workbookWorksheetProtectionOptions: Partial<WorkbookWorksheetProtectionOptions> | undefined = {}) : void {
-    writer.writeBooleanValue("allowAutoFilter", workbookWorksheetProtectionOptions.allowAutoFilter);
-    writer.writeBooleanValue("allowDeleteColumns", workbookWorksheetProtectionOptions.allowDeleteColumns);
-    writer.writeBooleanValue("allowDeleteRows", workbookWorksheetProtectionOptions.allowDeleteRows);
-    writer.writeBooleanValue("allowFormatCells", workbookWorksheetProtectionOptions.allowFormatCells);
-    writer.writeBooleanValue("allowFormatColumns", workbookWorksheetProtectionOptions.allowFormatColumns);
-    writer.writeBooleanValue("allowFormatRows", workbookWorksheetProtectionOptions.allowFormatRows);
-    writer.writeBooleanValue("allowInsertColumns", workbookWorksheetProtectionOptions.allowInsertColumns);
-    writer.writeBooleanValue("allowInsertHyperlinks", workbookWorksheetProtectionOptions.allowInsertHyperlinks);
-    writer.writeBooleanValue("allowInsertRows", workbookWorksheetProtectionOptions.allowInsertRows);
-    writer.writeBooleanValue("allowPivotTables", workbookWorksheetProtectionOptions.allowPivotTables);
-    writer.writeBooleanValue("allowSort", workbookWorksheetProtectionOptions.allowSort);
-    writer.writeStringValue("@odata.type", workbookWorksheetProtectionOptions.odataType);
-    writer.writeAdditionalData(workbookWorksheetProtectionOptions.additionalData);
+export function serializeWorkbookWorksheetProtectionOptions(writer: SerializationWriter, workbookWorksheetProtectionOptions: Partial<WorkbookWorksheetProtectionOptions> | undefined | null = {}) : void {
+    if (workbookWorksheetProtectionOptions) {
+        writer.writeBooleanValue("allowAutoFilter", workbookWorksheetProtectionOptions.allowAutoFilter);
+        writer.writeBooleanValue("allowDeleteColumns", workbookWorksheetProtectionOptions.allowDeleteColumns);
+        writer.writeBooleanValue("allowDeleteRows", workbookWorksheetProtectionOptions.allowDeleteRows);
+        writer.writeBooleanValue("allowFormatCells", workbookWorksheetProtectionOptions.allowFormatCells);
+        writer.writeBooleanValue("allowFormatColumns", workbookWorksheetProtectionOptions.allowFormatColumns);
+        writer.writeBooleanValue("allowFormatRows", workbookWorksheetProtectionOptions.allowFormatRows);
+        writer.writeBooleanValue("allowInsertColumns", workbookWorksheetProtectionOptions.allowInsertColumns);
+        writer.writeBooleanValue("allowInsertHyperlinks", workbookWorksheetProtectionOptions.allowInsertHyperlinks);
+        writer.writeBooleanValue("allowInsertRows", workbookWorksheetProtectionOptions.allowInsertRows);
+        writer.writeBooleanValue("allowPivotTables", workbookWorksheetProtectionOptions.allowPivotTables);
+        writer.writeBooleanValue("allowSort", workbookWorksheetProtectionOptions.allowSort);
+        writer.writeStringValue("@odata.type", workbookWorksheetProtectionOptions.odataType);
+        writer.writeAdditionalData(workbookWorksheetProtectionOptions.additionalData);
+    }
 }
 export interface Workbook extends Entity, Parsable {
     /**
      * The application property
      */
-    application?: WorkbookApplication;
+    application?: WorkbookApplication | null;
     /**
      * Represents a collection of comments in a workbook.
      */
-    comments?: WorkbookComment[];
+    comments?: WorkbookComment[] | null;
     /**
      * The functions property
      */
-    functions?: WorkbookFunctions;
+    functions?: WorkbookFunctions | null;
     /**
      * Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
      */
-    names?: WorkbookNamedItem[];
+    names?: WorkbookNamedItem[] | null;
     /**
      * The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
      */
-    operations?: WorkbookOperation[];
+    operations?: WorkbookOperation[] | null;
     /**
      * Represents a collection of tables associated with the workbook. Read-only.
      */
-    tables?: WorkbookTable[];
+    tables?: WorkbookTable[] | null;
     /**
      * Represents a collection of worksheets associated with the workbook. Read-only.
      */
-    worksheets?: WorkbookWorksheet[];
+    worksheets?: WorkbookWorksheet[] | null;
 }
 export interface WorkbookApplication extends Entity, Parsable {
     /**
      * Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
      */
-    calculationMode?: string;
+    calculationMode?: string | null;
 }
 export interface WorkbookChart extends Entity, Parsable {
     /**
      * Represents chart axes. Read-only.
      */
-    axes?: WorkbookChartAxes;
+    axes?: WorkbookChartAxes | null;
     /**
      * Represents the data labels on the chart. Read-only.
      */
-    dataLabels?: WorkbookChartDataLabels;
+    dataLabels?: WorkbookChartDataLabels | null;
     /**
      * Encapsulates the format properties for the chart area. Read-only.
      */
-    format?: WorkbookChartAreaFormat;
+    format?: WorkbookChartAreaFormat | null;
     /**
      * Represents the height, in points, of the chart object.
      */
-    height?: number;
+    height?: number | null;
     /**
      * The distance, in points, from the left side of the chart to the worksheet origin.
      */
-    left?: number;
+    left?: number | null;
     /**
      * Represents the legend for the chart. Read-only.
      */
-    legend?: WorkbookChartLegend;
+    legend?: WorkbookChartLegend | null;
     /**
      * Represents the name of a chart object.
      */
-    name?: string;
+    name?: string | null;
     /**
      * Represents either a single series or collection of series in the chart. Read-only.
      */
-    series?: WorkbookChartSeries[];
+    series?: WorkbookChartSeries[] | null;
     /**
      * Represents the title of the specified chart, including the text, visibility, position and formatting of the title. Read-only.
      */
-    title?: WorkbookChartTitle;
+    title?: WorkbookChartTitle | null;
     /**
      * Represents the distance, in points, from the top edge of the object to the top of row 1 (on a worksheet) or the top of the chart area (on a chart).
      */
-    top?: number;
+    top?: number | null;
     /**
      * Represents the width, in points, of the chart object.
      */
-    width?: number;
+    width?: number | null;
     /**
      * The worksheet containing the current chart. Read-only.
      */
-    worksheet?: WorkbookWorksheet;
+    worksheet?: WorkbookWorksheet | null;
 }
 export interface WorkbookChartAreaFormat extends Entity, Parsable {
     /**
      * Represents the fill format of an object, which includes background formatting information. Read-only.
      */
-    fill?: WorkbookChartFill;
+    fill?: WorkbookChartFill | null;
     /**
      * Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
      */
-    font?: WorkbookChartFont;
+    font?: WorkbookChartFont | null;
 }
 export interface WorkbookChartAxes extends Entity, Parsable {
     /**
      * Represents the category axis in a chart. Read-only.
      */
-    categoryAxis?: WorkbookChartAxis;
+    categoryAxis?: WorkbookChartAxis | null;
     /**
      * Represents the series axis of a 3-dimensional chart. Read-only.
      */
-    seriesAxis?: WorkbookChartAxis;
+    seriesAxis?: WorkbookChartAxis | null;
     /**
      * Represents the value axis in an axis. Read-only.
      */
-    valueAxis?: WorkbookChartAxis;
+    valueAxis?: WorkbookChartAxis | null;
 }
 export interface WorkbookChartAxis extends Entity, Parsable {
     /**
      * Represents the formatting of a chart object, which includes line and font formatting. Read-only.
      */
-    format?: WorkbookChartAxisFormat;
+    format?: WorkbookChartAxisFormat | null;
     /**
      * Returns a gridlines object that represents the major gridlines for the specified axis. Read-only.
      */
-    majorGridlines?: WorkbookChartGridlines;
+    majorGridlines?: WorkbookChartGridlines | null;
     /**
      * Represents the interval between two major tick marks. Can be set to a numeric value or an empty string.  The returned value is always a number.
      */
-    majorUnit?: UntypedNode;
+    majorUnit?: UntypedNode | null;
     /**
      * Represents the maximum value on the value axis.  Can be set to a numeric value or an empty string (for automatic axis values).  The returned value is always a number.
      */
-    maximum?: UntypedNode;
+    maximum?: UntypedNode | null;
     /**
      * Represents the minimum value on the value axis. Can be set to a numeric value or an empty string (for automatic axis values).  The returned value is always a number.
      */
-    minimum?: UntypedNode;
+    minimum?: UntypedNode | null;
     /**
      * Returns a Gridlines object that represents the minor gridlines for the specified axis. Read-only.
      */
-    minorGridlines?: WorkbookChartGridlines;
+    minorGridlines?: WorkbookChartGridlines | null;
     /**
      * Represents the interval between two minor tick marks. 'Can be set to a numeric value or an empty string (for automatic axis values). The returned value is always a number.
      */
-    minorUnit?: UntypedNode;
+    minorUnit?: UntypedNode | null;
     /**
      * Represents the axis title. Read-only.
      */
-    title?: WorkbookChartAxisTitle;
+    title?: WorkbookChartAxisTitle | null;
 }
 export interface WorkbookChartAxisFormat extends Entity, Parsable {
     /**
      * Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
      */
-    font?: WorkbookChartFont;
+    font?: WorkbookChartFont | null;
     /**
      * Represents chart line formatting. Read-only.
      */
-    line?: WorkbookChartLineFormat;
+    line?: WorkbookChartLineFormat | null;
 }
 export interface WorkbookChartAxisTitle extends Entity, Parsable {
     /**
      * Represents the formatting of chart axis title. Read-only.
      */
-    format?: WorkbookChartAxisTitleFormat;
+    format?: WorkbookChartAxisTitleFormat | null;
     /**
      * Represents the axis title.
      */
-    text?: string;
+    text?: string | null;
     /**
      * A Boolean that specifies the visibility of an axis title.
      */
-    visible?: boolean;
+    visible?: boolean | null;
 }
 export interface WorkbookChartAxisTitleFormat extends Entity, Parsable {
     /**
      * Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
      */
-    font?: WorkbookChartFont;
+    font?: WorkbookChartFont | null;
 }
 export interface WorkbookChartCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookChart[];
+    value?: WorkbookChart[] | null;
 }
 export interface WorkbookChartDataLabelFormat extends Entity, Parsable {
     /**
      * Represents the fill format of the current chart data label. Read-only.
      */
-    fill?: WorkbookChartFill;
+    fill?: WorkbookChartFill | null;
     /**
      * Represents the font attributes (font name, font size, color, etc.) for a chart data label. Read-only.
      */
-    font?: WorkbookChartFont;
+    font?: WorkbookChartFont | null;
 }
 export interface WorkbookChartDataLabels extends Entity, Parsable {
     /**
      * Represents the format of chart data labels, which includes fill and font formatting. Read-only.
      */
-    format?: WorkbookChartDataLabelFormat;
+    format?: WorkbookChartDataLabelFormat | null;
     /**
      * DataLabelPosition value that represents the position of the data label. The possible values are: None, Center, InsideEnd, InsideBase, OutsideEnd, Left, Right, Top, Bottom, BestFit, Callout.
      */
-    position?: string;
+    position?: string | null;
     /**
      * String that represents the separator used for the data labels on a chart.
      */
-    separator?: string;
+    separator?: string | null;
     /**
      * Boolean value that represents whether the data label bubble size is visible.
      */
-    showBubbleSize?: boolean;
+    showBubbleSize?: boolean | null;
     /**
      * Boolean value that represents whether the data label category name is visible.
      */
-    showCategoryName?: boolean;
+    showCategoryName?: boolean | null;
     /**
      * Boolean value that represents whether the data label legend key is visible.
      */
-    showLegendKey?: boolean;
+    showLegendKey?: boolean | null;
     /**
      * Boolean value that represents whether the data label percentage is visible.
      */
-    showPercentage?: boolean;
+    showPercentage?: boolean | null;
     /**
      * Boolean value that represents whether the data label series name is visible.
      */
-    showSeriesName?: boolean;
+    showSeriesName?: boolean | null;
     /**
      * Boolean value that represents whether the data label value is visible.
      */
-    showValue?: boolean;
+    showValue?: boolean | null;
 }
 export interface WorkbookChartFill extends Entity, Parsable {
 }
@@ -2623,199 +2755,199 @@ export interface WorkbookChartFont extends Entity, Parsable {
     /**
      * Indicates whether the fond is bold.
      */
-    bold?: boolean;
+    bold?: boolean | null;
     /**
      * The HTML color code representation of the text color. For example #FF0000 represents Red.
      */
-    color?: string;
+    color?: string | null;
     /**
      * Indicates whether the fond is italic.
      */
-    italic?: boolean;
+    italic?: boolean | null;
     /**
      * The font name. For example 'Calibri'.
      */
-    name?: string;
+    name?: string | null;
     /**
      * The size of the font. For example,  11.
      */
-    size?: number;
+    size?: number | null;
     /**
      * The type of underlining applied to the font. The possible values are: None, Single.
      */
-    underline?: string;
+    underline?: string | null;
 }
 export interface WorkbookChartGridlines extends Entity, Parsable {
     /**
      * Represents the formatting of chart gridlines. Read-only.
      */
-    format?: WorkbookChartGridlinesFormat;
+    format?: WorkbookChartGridlinesFormat | null;
     /**
      * Indicates whether the axis gridlines are visible.
      */
-    visible?: boolean;
+    visible?: boolean | null;
 }
 export interface WorkbookChartGridlinesFormat extends Entity, Parsable {
     /**
      * Represents chart line formatting. Read-only.
      */
-    line?: WorkbookChartLineFormat;
+    line?: WorkbookChartLineFormat | null;
 }
 export interface WorkbookChartLegend extends Entity, Parsable {
     /**
      * Represents the formatting of a chart legend, which includes fill and font formatting. Read-only.
      */
-    format?: WorkbookChartLegendFormat;
+    format?: WorkbookChartLegendFormat | null;
     /**
      * Indicates whether the chart legend should overlap with the main body of the chart.
      */
-    overlay?: boolean;
+    overlay?: boolean | null;
     /**
      * Represents the position of the legend on the chart. The possible values are: Top, Bottom, Left, Right, Corner, Custom.
      */
-    position?: string;
+    position?: string | null;
     /**
      * Indicates whether the chart legend is visible.
      */
-    visible?: boolean;
+    visible?: boolean | null;
 }
 export interface WorkbookChartLegendFormat extends Entity, Parsable {
     /**
      * Represents the fill format of an object, which includes background formating information. Read-only.
      */
-    fill?: WorkbookChartFill;
+    fill?: WorkbookChartFill | null;
     /**
      * Represents the font attributes such as font name, font size, color, etc. of a chart legend. Read-only.
      */
-    font?: WorkbookChartFont;
+    font?: WorkbookChartFont | null;
 }
 export interface WorkbookChartLineFormat extends Entity, Parsable {
     /**
      * The HTML color code that represents the color of lines in the chart.
      */
-    color?: string;
+    color?: string | null;
 }
 export interface WorkbookChartPoint extends Entity, Parsable {
     /**
      * The format properties of the chart point. Read-only.
      */
-    format?: WorkbookChartPointFormat;
+    format?: WorkbookChartPointFormat | null;
     /**
      * The value of a chart point. Read-only.
      */
-    value?: UntypedNode;
+    value?: UntypedNode | null;
 }
 export interface WorkbookChartPointCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookChartPoint[];
+    value?: WorkbookChartPoint[] | null;
 }
 export interface WorkbookChartPointFormat extends Entity, Parsable {
     /**
      * Represents the fill format of a chart, which includes background formatting information. Read-only.
      */
-    fill?: WorkbookChartFill;
+    fill?: WorkbookChartFill | null;
 }
 export interface WorkbookChartSeries extends Entity, Parsable {
     /**
      * The formatting of a chart series, which includes fill and line formatting. Read-only.
      */
-    format?: WorkbookChartSeriesFormat;
+    format?: WorkbookChartSeriesFormat | null;
     /**
      * The name of a series in a chart.
      */
-    name?: string;
+    name?: string | null;
     /**
      * A collection of all points in the series. Read-only.
      */
-    points?: WorkbookChartPoint[];
+    points?: WorkbookChartPoint[] | null;
 }
 export interface WorkbookChartSeriesCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookChartSeries[];
+    value?: WorkbookChartSeries[] | null;
 }
 export interface WorkbookChartSeriesFormat extends Entity, Parsable {
     /**
      * Represents the fill format of a chart series, which includes background formatting information. Read-only.
      */
-    fill?: WorkbookChartFill;
+    fill?: WorkbookChartFill | null;
     /**
      * Represents line formatting. Read-only.
      */
-    line?: WorkbookChartLineFormat;
+    line?: WorkbookChartLineFormat | null;
 }
 export interface WorkbookChartTitle extends Entity, Parsable {
     /**
      * The formatting of a chart title, which includes fill and font formatting. Read-only.
      */
-    format?: WorkbookChartTitleFormat;
+    format?: WorkbookChartTitleFormat | null;
     /**
      * Indicates whether the chart title will overlay the chart or not.
      */
-    overlay?: boolean;
+    overlay?: boolean | null;
     /**
      * The title text of the chart.
      */
-    text?: string;
+    text?: string | null;
     /**
      * Indicates whether the chart title is visible.
      */
-    visible?: boolean;
+    visible?: boolean | null;
 }
 export interface WorkbookChartTitleFormat extends Entity, Parsable {
     /**
      * Represents the fill format of an object, which includes background formatting information. Read-only.
      */
-    fill?: WorkbookChartFill;
+    fill?: WorkbookChartFill | null;
     /**
      * Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
      */
-    font?: WorkbookChartFont;
+    font?: WorkbookChartFont | null;
 }
 export interface WorkbookComment extends Entity, Parsable {
     /**
      * The content of the comment.
      */
-    content?: string;
+    content?: string | null;
     /**
      * The content type of the comment.
      */
-    contentType?: string;
+    contentType?: string | null;
     /**
      * The list of replies to the comment. Read-only. Nullable.
      */
-    replies?: WorkbookCommentReply[];
+    replies?: WorkbookCommentReply[] | null;
 }
 export interface WorkbookCommentCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookComment[];
+    value?: WorkbookComment[] | null;
 }
 export interface WorkbookCommentReply extends Entity, Parsable {
     /**
      * The content of the reply.
      */
-    content?: string;
+    content?: string | null;
     /**
      * The content type for the reply.
      */
-    contentType?: string;
+    contentType?: string | null;
 }
 export interface WorkbookCommentReplyCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookCommentReply[];
+    value?: WorkbookCommentReply[] | null;
 }
 export interface WorkbookFilter extends Entity, Parsable {
     /**
      * The currently applied filter on the given column. Read-only.
      */
-    criteria?: WorkbookFilterCriteria;
+    criteria?: WorkbookFilterCriteria | null;
 }
 export interface WorkbookFilterCriteria extends AdditionalDataHolder, Parsable {
     /**
@@ -2825,59 +2957,59 @@ export interface WorkbookFilterCriteria extends AdditionalDataHolder, Parsable {
     /**
      * The color applied to the cell.
      */
-    color?: string;
+    color?: string | null;
     /**
      * A custom criterion.
      */
-    criterion1?: string;
+    criterion1?: string | null;
     /**
      * A custom criterion.
      */
-    criterion2?: string;
+    criterion2?: string | null;
     /**
      * A dynamic formula specified in a custom filter.
      */
-    dynamicCriteria?: string;
+    dynamicCriteria?: string | null;
     /**
      * Indicates whether a filter is applied to a column.
      */
-    filterOn?: string;
+    filterOn?: string | null;
     /**
      * An icon applied to a cell via conditional formatting.
      */
-    icon?: WorkbookIcon;
+    icon?: WorkbookIcon | null;
     /**
      * The OdataType property
      */
-    odataType?: string;
+    odataType?: string | null;
     /**
      * An operator in a cell; for example, =, >, <, <=, or <>.
      */
-    operator?: string;
+    operator?: string | null;
     /**
      * The values that appear in the cell.
      */
-    values?: UntypedNode;
+    values?: UntypedNode | null;
 }
 export interface WorkbookFormatProtection extends Entity, Parsable {
     /**
      * Indicates whether Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
      */
-    formulaHidden?: boolean;
+    formulaHidden?: boolean | null;
     /**
      * Indicates whether Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
      */
-    locked?: boolean;
+    locked?: boolean | null;
 }
 export interface WorkbookFunctionResult extends Entity, Parsable {
     /**
      * The error property
      */
-    errorEscaped?: string;
+    errorEscaped?: string | null;
     /**
      * The value property
      */
-    value?: UntypedNode;
+    value?: UntypedNode | null;
 }
 export interface WorkbookFunctions extends Entity, Parsable {
 }
@@ -2889,71 +3021,71 @@ export interface WorkbookIcon extends AdditionalDataHolder, Parsable {
     /**
      * The index of the icon in the given set.
      */
-    index?: number;
+    index?: number | null;
     /**
      * The OdataType property
      */
-    odataType?: string;
+    odataType?: string | null;
     /**
      * The set that the icon is part of. The possible values are: Invalid, ThreeArrows, ThreeArrowsGray, ThreeFlags, ThreeTrafficLights1, ThreeTrafficLights2, ThreeSigns, ThreeSymbols, ThreeSymbols2, FourArrows, FourArrowsGray, FourRedToBlack, FourRating, FourTrafficLights, FiveArrows, FiveArrowsGray, FiveRating, FiveQuarters, ThreeStars, ThreeTriangles, FiveBoxes.
      */
-    set?: string;
+    set?: string | null;
 }
 export interface WorkbookNamedItem extends Entity, Parsable {
     /**
      * The comment associated with this name.
      */
-    comment?: string;
+    comment?: string | null;
     /**
      * The name of the object. Read-only.
      */
-    name?: string;
+    name?: string | null;
     /**
      * Indicates whether the name is scoped to the workbook or to a specific worksheet. Read-only.
      */
-    scope?: string;
+    scope?: string | null;
     /**
      * The type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
      */
-    type?: string;
+    type?: string | null;
     /**
      * The formula that the name is defined to refer to. For example, =Sheet14!$B$2:$H$12 and =4.75. Read-only.
      */
-    value?: UntypedNode;
+    value?: UntypedNode | null;
     /**
      * Indicates whether the object is visible.
      */
-    visible?: boolean;
+    visible?: boolean | null;
     /**
      * Returns the worksheet to which the named item is scoped. Available only if the item is scoped to the worksheet. Read-only.
      */
-    worksheet?: WorkbookWorksheet;
+    worksheet?: WorkbookWorksheet | null;
 }
 export interface WorkbookNamedItemCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookNamedItem[];
+    value?: WorkbookNamedItem[] | null;
 }
 export interface WorkbookOperation extends Entity, Parsable {
     /**
      * The error returned by the operation.
      */
-    errorEscaped?: WorkbookOperationError;
+    errorEscaped?: WorkbookOperationError | null;
     /**
      * The resource URI for the result.
      */
-    resourceLocation?: string;
+    resourceLocation?: string | null;
     /**
      * The status property
      */
-    status?: WorkbookOperationStatus;
+    status?: WorkbookOperationStatus | null;
 }
 export interface WorkbookOperationCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookOperation[];
+    value?: WorkbookOperation[] | null;
 }
 export interface WorkbookOperationError extends AdditionalDataHolder, Parsable {
     /**
@@ -2963,206 +3095,206 @@ export interface WorkbookOperationError extends AdditionalDataHolder, Parsable {
     /**
      * The error code.
      */
-    code?: string;
+    code?: string | null;
     /**
      * The innerError property
      */
-    innerError?: WorkbookOperationError;
+    innerError?: WorkbookOperationError | null;
     /**
      * The error message.
      */
-    message?: string;
+    message?: string | null;
     /**
      * The OdataType property
      */
-    odataType?: string;
+    odataType?: string | null;
 }
 export type WorkbookOperationStatus = (typeof WorkbookOperationStatusObject)[keyof typeof WorkbookOperationStatusObject];
 export interface WorkbookPivotTable extends Entity, Parsable {
     /**
      * The name of the pivot table.
      */
-    name?: string;
+    name?: string | null;
     /**
      * The worksheet that contains the current pivot table. Read-only.
      */
-    worksheet?: WorkbookWorksheet;
+    worksheet?: WorkbookWorksheet | null;
 }
 export interface WorkbookPivotTableCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookPivotTable[];
+    value?: WorkbookPivotTable[] | null;
 }
 export interface WorkbookRange extends Entity, Parsable {
     /**
      * Represents the range reference in A1-style. Address value contains the Sheet reference (for example, Sheet1!A1:B4). Read-only.
      */
-    address?: string;
+    address?: string | null;
     /**
      * Represents range reference for the specified range in the language of the user. Read-only.
      */
-    addressLocal?: string;
+    addressLocal?: string | null;
     /**
      * Number of cells in the range. Read-only.
      */
-    cellCount?: number;
+    cellCount?: number | null;
     /**
      * Represents the total number of columns in the range. Read-only.
      */
-    columnCount?: number;
+    columnCount?: number | null;
     /**
      * Indicates whether all columns of the current range are hidden.
      */
-    columnHidden?: boolean;
+    columnHidden?: boolean | null;
     /**
      * Represents the column number of the first cell in the range. Zero-indexed. Read-only.
      */
-    columnIndex?: number;
+    columnIndex?: number | null;
     /**
      * Returns a format object, encapsulating the range's font, fill, borders, alignment, and other properties. Read-only.
      */
-    format?: WorkbookRangeFormat;
+    format?: WorkbookRangeFormat | null;
     /**
      * Represents the formula in A1-style notation.
      */
-    formulas?: UntypedNode;
+    formulas?: UntypedNode | null;
     /**
      * Represents the formula in A1-style notation, in the user's language and number-formatting locale.  For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
      */
-    formulasLocal?: UntypedNode;
+    formulasLocal?: UntypedNode | null;
     /**
      * Represents the formula in R1C1-style notation.
      */
-    formulasR1C1?: UntypedNode;
+    formulasR1C1?: UntypedNode | null;
     /**
      * Represents if all cells of the current range are hidden. Read-only.
      */
-    hidden?: boolean;
+    hidden?: boolean | null;
     /**
      * Represents Excel's number format code for the given cell.
      */
-    numberFormat?: UntypedNode;
+    numberFormat?: UntypedNode | null;
     /**
      * Returns the total number of rows in the range. Read-only.
      */
-    rowCount?: number;
+    rowCount?: number | null;
     /**
      * Indicates whether all rows of the current range are hidden.
      */
-    rowHidden?: boolean;
+    rowHidden?: boolean | null;
     /**
      * Returns the row number of the first cell in the range. Zero-indexed. Read-only.
      */
-    rowIndex?: number;
+    rowIndex?: number | null;
     /**
      * The worksheet containing the current range. Read-only.
      */
-    sort?: WorkbookRangeSort;
+    sort?: WorkbookRangeSort | null;
     /**
      * Text values of the specified range. The Text value doesn't depend on the cell width. The # sign substitution that happens in Excel UI doesn't affect the text value returned by the API. Read-only.
      */
-    text?: UntypedNode;
+    text?: UntypedNode | null;
     /**
      * Represents the raw values of the specified range. The data returned can be of type string, number, or a Boolean. Cell that contains an error returns the error string.
      */
-    values?: UntypedNode;
+    values?: UntypedNode | null;
     /**
      * Represents the type of data of each cell. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
      */
-    valueTypes?: UntypedNode;
+    valueTypes?: UntypedNode | null;
     /**
      * The worksheet containing the current range. Read-only.
      */
-    worksheet?: WorkbookWorksheet;
+    worksheet?: WorkbookWorksheet | null;
 }
 export interface WorkbookRangeBorder extends Entity, Parsable {
     /**
      * The HTML color code that represents the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or a named HTML color, for example 'orange'.
      */
-    color?: string;
+    color?: string | null;
     /**
      * Indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
      */
-    sideIndex?: string;
+    sideIndex?: string | null;
     /**
      * Indicates the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
      */
-    style?: string;
+    style?: string | null;
     /**
      * The weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
      */
-    weight?: string;
+    weight?: string | null;
 }
 export interface WorkbookRangeFill extends Entity, Parsable {
     /**
      * HTML color code representing the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or be a named HTML color, for example 'orange'.
      */
-    color?: string;
+    color?: string | null;
 }
 export interface WorkbookRangeFont extends Entity, Parsable {
     /**
      * Inidicates whether the font is bold.
      */
-    bold?: boolean;
+    bold?: boolean | null;
     /**
      * The HTML color code representation of the text color. For example, #FF0000 represents the color red.
      */
-    color?: string;
+    color?: string | null;
     /**
      * Inidicates whether the font is italic.
      */
-    italic?: boolean;
+    italic?: boolean | null;
     /**
      * The font name. For example, 'Calibri'.
      */
-    name?: string;
+    name?: string | null;
     /**
      * The font size.
      */
-    size?: number;
+    size?: number | null;
     /**
      * The type of underlining applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
      */
-    underline?: string;
+    underline?: string | null;
 }
 export interface WorkbookRangeFormat extends Entity, Parsable {
     /**
      * Collection of border objects that apply to the overall range selected Read-only.
      */
-    borders?: WorkbookRangeBorder[];
+    borders?: WorkbookRangeBorder[] | null;
     /**
      * The width of all columns within the range. If the column widths aren't uniform, null will be returned.
      */
-    columnWidth?: number;
+    columnWidth?: number | null;
     /**
      * Returns the fill object defined on the overall range. Read-only.
      */
-    fill?: WorkbookRangeFill;
+    fill?: WorkbookRangeFill | null;
     /**
      * Returns the font object defined on the overall range selected Read-only.
      */
-    font?: WorkbookRangeFont;
+    font?: WorkbookRangeFont | null;
     /**
      * The horizontal alignment for the specified object. Possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
      */
-    horizontalAlignment?: string;
+    horizontalAlignment?: string | null;
     /**
      * Returns the format protection object for a range. Read-only.
      */
-    protection?: WorkbookFormatProtection;
+    protection?: WorkbookFormatProtection | null;
     /**
      * The height of all rows in the range. If the row heights aren't uniform null will be returned.
      */
-    rowHeight?: number;
+    rowHeight?: number | null;
     /**
      * The vertical alignment for the specified object. Possible values are: Top, Center, Bottom, Justify, Distributed.
      */
-    verticalAlignment?: string;
+    verticalAlignment?: string | null;
     /**
      * Indicates whether Excel wraps the text in the object. A null value indicates that the entire range doesn't have a uniform wrap setting.
      */
-    wrapText?: boolean;
+    wrapText?: boolean | null;
 }
 export interface WorkbookRangeSort extends Entity, Parsable {
 }
@@ -3170,51 +3302,51 @@ export interface WorkbookRangeView extends Entity, Parsable {
     /**
      * The cell addresses.
      */
-    cellAddresses?: UntypedNode;
+    cellAddresses?: UntypedNode | null;
     /**
      * The number of visible columns. Read-only.
      */
-    columnCount?: number;
+    columnCount?: number | null;
     /**
      * The formula in A1-style notation.
      */
-    formulas?: UntypedNode;
+    formulas?: UntypedNode | null;
     /**
      * The formula in A1-style notation, in the user's language and number-formatting locale. For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
      */
-    formulasLocal?: UntypedNode;
+    formulasLocal?: UntypedNode | null;
     /**
      * Represents the formula in R1C1-style notation.
      */
-    formulasR1C1?: UntypedNode;
+    formulasR1C1?: UntypedNode | null;
     /**
      * The index of the range.
      */
-    index?: number;
+    index?: number | null;
     /**
      * Excel's number format code for the given cell. Read-only.
      */
-    numberFormat?: UntypedNode;
+    numberFormat?: UntypedNode | null;
     /**
      * The number of visible rows. Read-only.
      */
-    rowCount?: number;
+    rowCount?: number | null;
     /**
      * The collection of range views associated with the range. Read-only. Read-only.
      */
-    rows?: WorkbookRangeView[];
+    rows?: WorkbookRangeView[] | null;
     /**
      * The text values of the specified range. The Text value won't depend on the cell width. The # sign substitution that happens in Excel UI won't affect the text value returned by the API. Read-only.
      */
-    text?: UntypedNode;
+    text?: UntypedNode | null;
     /**
      * The raw values of the specified range view. The data returned could be of type string, number, or a Boolean. Cell that contains an error returns the error string.
      */
-    values?: UntypedNode;
+    values?: UntypedNode | null;
     /**
      * The type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
      */
-    valueTypes?: UntypedNode;
+    valueTypes?: UntypedNode | null;
 }
 export interface WorkbookSessionInfo extends AdditionalDataHolder, Parsable {
     /**
@@ -3224,15 +3356,15 @@ export interface WorkbookSessionInfo extends AdditionalDataHolder, Parsable {
     /**
      * ID of the workbook session.
      */
-    id?: string;
+    id?: string | null;
     /**
      * The OdataType property
      */
-    odataType?: string;
+    odataType?: string | null;
     /**
      * true for persistent session. false for non-persistent session (view mode)
      */
-    persistChanges?: boolean;
+    persistChanges?: boolean | null;
 }
 export interface WorkbookSortField extends AdditionalDataHolder, Parsable {
     /**
@@ -3242,199 +3374,199 @@ export interface WorkbookSortField extends AdditionalDataHolder, Parsable {
     /**
      * Represents whether the sorting is done in an ascending fashion.
      */
-    ascending?: boolean;
+    ascending?: boolean | null;
     /**
      * Represents the color that is the target of the condition if the sorting is on font or cell color.
      */
-    color?: string;
+    color?: string | null;
     /**
      * Represents additional sorting options for this field. The possible values are: Normal, TextAsNumber.
      */
-    dataOption?: string;
+    dataOption?: string | null;
     /**
      * Represents the icon that is the target of the condition if the sorting is on the cell's icon.
      */
-    icon?: WorkbookIcon;
+    icon?: WorkbookIcon | null;
     /**
      * Represents the column (or row, depending on the sort orientation) that the condition is on. Represented as an offset from the first column (or row).
      */
-    key?: number;
+    key?: number | null;
     /**
      * The OdataType property
      */
-    odataType?: string;
+    odataType?: string | null;
     /**
      * Represents the type of sorting of this condition. The possible values are: Value, CellColor, FontColor, Icon.
      */
-    sortOn?: string;
+    sortOn?: string | null;
 }
 export interface WorkbookTable extends Entity, Parsable {
     /**
      * The list of all the columns in the table. Read-only.
      */
-    columns?: WorkbookTableColumn[];
+    columns?: WorkbookTableColumn[] | null;
     /**
      * Indicates whether the first column contains special formatting.
      */
-    highlightFirstColumn?: boolean;
+    highlightFirstColumn?: boolean | null;
     /**
      * Indicates whether the last column contains special formatting.
      */
-    highlightLastColumn?: boolean;
+    highlightLastColumn?: boolean | null;
     /**
      * A legacy identifier used in older Excel clients. The value of the identifier remains the same even when the table is renamed. This property should be interpreted as an opaque string value and shouldn't be parsed to any other type. Read-only.
      */
-    legacyId?: string;
+    legacyId?: string | null;
     /**
      * The name of the table.
      */
-    name?: string;
+    name?: string | null;
     /**
      * The list of all the rows in the table. Read-only.
      */
-    rows?: WorkbookTableRow[];
+    rows?: WorkbookTableRow[] | null;
     /**
      * Indicates whether the columns show banded formatting in which odd columns are highlighted differently from even ones to make reading the table easier.
      */
-    showBandedColumns?: boolean;
+    showBandedColumns?: boolean | null;
     /**
      * Indicates whether the rows show banded formatting in which odd rows are highlighted differently from even ones to make reading the table easier.
      */
-    showBandedRows?: boolean;
+    showBandedRows?: boolean | null;
     /**
      * Indicates whether the filter buttons are visible at the top of each column header. Setting this is only allowed if the table contains a header row.
      */
-    showFilterButton?: boolean;
+    showFilterButton?: boolean | null;
     /**
      * Indicates whether the header row is visible or not. This value can be set to show or remove the header row.
      */
-    showHeaders?: boolean;
+    showHeaders?: boolean | null;
     /**
      * Indicates whether the total row is visible or not. This value can be set to show or remove the total row.
      */
-    showTotals?: boolean;
+    showTotals?: boolean | null;
     /**
      * The sorting for the table. Read-only.
      */
-    sort?: WorkbookTableSort;
+    sort?: WorkbookTableSort | null;
     /**
      * A constant value that represents the Table style. Possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
      */
-    style?: string;
+    style?: string | null;
     /**
      * The worksheet containing the current table. Read-only.
      */
-    worksheet?: WorkbookWorksheet;
+    worksheet?: WorkbookWorksheet | null;
 }
 export interface WorkbookTableCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookTable[];
+    value?: WorkbookTable[] | null;
 }
 export interface WorkbookTableColumn extends Entity, Parsable {
     /**
      * The filter applied to the column. Read-only.
      */
-    filter?: WorkbookFilter;
+    filter?: WorkbookFilter | null;
     /**
      * The index of the column within the columns collection of the table. Zero-indexed. Read-only.
      */
-    index?: number;
+    index?: number | null;
     /**
      * The name of the table column.
      */
-    name?: string;
+    name?: string | null;
     /**
      * TRepresents the raw values of the specified range. The data returned could be of type string, number, or a Boolean. Cell that contain an error will return the error string.
      */
-    values?: UntypedNode;
+    values?: UntypedNode | null;
 }
 export interface WorkbookTableColumnCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookTableColumn[];
+    value?: WorkbookTableColumn[] | null;
 }
 export interface WorkbookTableRow extends Entity, Parsable {
     /**
      * The index of the row within the rows collection of the table. Zero-based. Read-only.
      */
-    index?: number;
+    index?: number | null;
     /**
      * The raw values of the specified range. The data returned could be of type string, number, or a Boolean. Any cell that contain an error will return the error string.
      */
-    values?: UntypedNode;
+    values?: UntypedNode | null;
 }
 export interface WorkbookTableRowCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookTableRow[];
+    value?: WorkbookTableRow[] | null;
 }
 export interface WorkbookTableSort extends Entity, Parsable {
     /**
      * The list of the current conditions last used to sort the table. Read-only.
      */
-    fields?: WorkbookSortField[];
+    fields?: WorkbookSortField[] | null;
     /**
      * Indicates whether the casing impacted the last sort of the table. Read-only.
      */
-    matchCase?: boolean;
+    matchCase?: boolean | null;
     /**
      * The Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
      */
-    method?: string;
+    method?: string | null;
 }
 export interface WorkbookWorksheet extends Entity, Parsable {
     /**
      * The list of charts that are part of the worksheet. Read-only.
      */
-    charts?: WorkbookChart[];
+    charts?: WorkbookChart[] | null;
     /**
      * The display name of the worksheet.
      */
-    name?: string;
+    name?: string | null;
     /**
      * The list of names that are associated with the worksheet. Read-only.
      */
-    names?: WorkbookNamedItem[];
+    names?: WorkbookNamedItem[] | null;
     /**
      * The list of piot tables that are part of the worksheet.
      */
-    pivotTables?: WorkbookPivotTable[];
+    pivotTables?: WorkbookPivotTable[] | null;
     /**
      * The zero-based position of the worksheet within the workbook.
      */
-    position?: number;
+    position?: number | null;
     /**
      * The sheet protection object for a worksheet. Read-only.
      */
-    protection?: WorkbookWorksheetProtection;
+    protection?: WorkbookWorksheetProtection | null;
     /**
      * The list of tables that are part of the worksheet. Read-only.
      */
-    tables?: WorkbookTable[];
+    tables?: WorkbookTable[] | null;
     /**
      * The visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
      */
-    visibility?: string;
+    visibility?: string | null;
 }
 export interface WorkbookWorksheetCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
      * The value property
      */
-    value?: WorkbookWorksheet[];
+    value?: WorkbookWorksheet[] | null;
 }
 export interface WorkbookWorksheetProtection extends Entity, Parsable {
     /**
      * Worksheet protection options. Read-only.
      */
-    options?: WorkbookWorksheetProtectionOptions;
+    options?: WorkbookWorksheetProtectionOptions | null;
     /**
      * Indicates whether the worksheet is protected.  Read-only.
      */
-    protected?: boolean;
+    protected?: boolean | null;
 }
 export interface WorkbookWorksheetProtectionOptions extends AdditionalDataHolder, Parsable {
     /**
@@ -3444,51 +3576,51 @@ export interface WorkbookWorksheetProtectionOptions extends AdditionalDataHolder
     /**
      * Indicates whether the worksheet protection option to allow the use of the autofilter feature is enabled.
      */
-    allowAutoFilter?: boolean;
+    allowAutoFilter?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow deleting columns is enabled.
      */
-    allowDeleteColumns?: boolean;
+    allowDeleteColumns?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow deleting rows is enabled.
      */
-    allowDeleteRows?: boolean;
+    allowDeleteRows?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow formatting cells is enabled.
      */
-    allowFormatCells?: boolean;
+    allowFormatCells?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow formatting columns is enabled.
      */
-    allowFormatColumns?: boolean;
+    allowFormatColumns?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow formatting rows is enabled.
      */
-    allowFormatRows?: boolean;
+    allowFormatRows?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow inserting columns is enabled.
      */
-    allowInsertColumns?: boolean;
+    allowInsertColumns?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow inserting hyperlinks is enabled.
      */
-    allowInsertHyperlinks?: boolean;
+    allowInsertHyperlinks?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow inserting rows is enabled.
      */
-    allowInsertRows?: boolean;
+    allowInsertRows?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled.
      */
-    allowPivotTables?: boolean;
+    allowPivotTables?: boolean | null;
     /**
      * Indicates whether the worksheet protection option to allow the use of the sort feature is enabled.
      */
-    allowSort?: boolean;
+    allowSort?: boolean | null;
     /**
      * The OdataType property
      */
-    odataType?: string;
+    odataType?: string | null;
 }
 export const WorkbookOperationStatusObject = {
     NotStarted: "notStarted",
