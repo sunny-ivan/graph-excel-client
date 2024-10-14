@@ -1,9 +1,10 @@
 {
-  "descriptionHash": "CBB6CCAD18DA64769C1F797ECD33A0786CB4D956FF7D537A0FFCE377B54D27ADA416FCF7EF95EFBF20F38EDD6B3F65097B967D9FBD4ABECA6F217E12ED3AA59B",
+  "descriptionHash": "14E7817D9CF594E68E3EA6FE920C88A5BEE81BE98ACCDE92F92D0BEC98A10E0CB1EC5A5B3F969FD84694F7FDADE20E3F5052742F7012666D79EFE7465F67FD00",
   "descriptionLocation": "../data/openapi.yaml",
   "lockFileVersion": "1.0.0",
-  "kiotaVersion": "1.18.0",
+  "kiotaVersion": "1.19.1",
   "clientClassName": "GraphExcelClient",
+  "typeAccessModifier": "Public",
   "clientNamespaceName": "ApiSdk",
   "language": "TypeScript",
   "usesBackingStore": false,
