@@ -3332,7 +3332,7 @@ export interface WorkbookRangeView extends Entity, Parsable {
      */
     rowCount?: number | null;
     /**
-     * The collection of range views associated with the range. Read-only. Read-only.
+     * The collection of range views associated with the range. Read-only.Read-only.
      */
     rows?: WorkbookRangeView[] | null;
     /**
@@ -3574,47 +3574,47 @@ export interface WorkbookWorksheetProtectionOptions extends AdditionalDataHolder
      */
     additionalData?: Record<string, unknown>;
     /**
-     * Indicates whether the worksheet protection option to allow the use of the autofilter feature is enabled.
+     * Represents the worksheet protection option of allowing using auto filter feature.
      */
     allowAutoFilter?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow deleting columns is enabled.
+     * Represents the worksheet protection option of allowing deleting columns.
      */
     allowDeleteColumns?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow deleting rows is enabled.
+     * Represents the worksheet protection option of allowing deleting rows.
      */
     allowDeleteRows?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow formatting cells is enabled.
+     * Represents the worksheet protection option of allowing formatting cells.
      */
     allowFormatCells?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow formatting columns is enabled.
+     * Represents the worksheet protection option of allowing formatting columns.
      */
     allowFormatColumns?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow formatting rows is enabled.
+     * Represents the worksheet protection option of allowing formatting rows.
      */
     allowFormatRows?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow inserting columns is enabled.
+     * Represents the worksheet protection option of allowing inserting columns.
      */
     allowInsertColumns?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow inserting hyperlinks is enabled.
+     * Represents the worksheet protection option of allowing inserting hyperlinks.
      */
     allowInsertHyperlinks?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow inserting rows is enabled.
+     * Represents the worksheet protection option of allowing inserting rows.
      */
     allowInsertRows?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled.
+     * Represents the worksheet protection option of allowing using pivot table feature.
      */
     allowPivotTables?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow the use of the sort feature is enabled.
+     * Represents the worksheet protection option of allowing using sort feature.
      */
     allowSort?: boolean | null;
     /**
