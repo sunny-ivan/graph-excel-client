@@ -3332,7 +3332,7 @@ export interface WorkbookRangeView extends Entity, Parsable {
      */
     rowCount?: number | null;
     /**
-     * The collection of range views associated with the range. Read-only.Read-only.
+     * The collection of range views associated with the range. Read-only. Read-only.
      */
     rows?: WorkbookRangeView[] | null;
     /**
