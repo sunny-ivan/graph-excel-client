@@ -90,6 +90,8 @@ export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefi
                     return deserializeIntoWorkbookCommentReply;
                 case "#microsoft.graph.workbookFilter":
                     return deserializeIntoWorkbookFilter;
+                case "#microsoft.graph.workbookFormatProtection":
+                    return deserializeIntoWorkbookFormatProtection;
                 case "#microsoft.graph.workbookFunctionResult":
                     return deserializeIntoWorkbookFunctionResult;
                 case "#microsoft.graph.workbookFunctions":
@@ -102,6 +104,12 @@ export function createEntityFromDiscriminatorValue(parseNode: ParseNode | undefi
                     return deserializeIntoWorkbookPivotTable;
                 case "#microsoft.graph.workbookRange":
                     return deserializeIntoWorkbookRange;
+                case "#microsoft.graph.workbookRangeBorder":
+                    return deserializeIntoWorkbookRangeBorder;
+                case "#microsoft.graph.workbookRangeFill":
+                    return deserializeIntoWorkbookRangeFill;
+                case "#microsoft.graph.workbookRangeFont":
+                    return deserializeIntoWorkbookRangeFont;
                 case "#microsoft.graph.workbookRangeFormat":
                     return deserializeIntoWorkbookRangeFormat;
                 case "#microsoft.graph.workbookRangeSort":
@@ -416,6 +424,15 @@ export function createWorkbookFilterFromDiscriminatorValue(parseNode: ParseNode 
 /**
  * Creates a new instance of the appropriate class based on discriminator value
  * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {WorkbookFormatProtection}
+ */
+// @ts-ignore
+export function createWorkbookFormatProtectionFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoWorkbookFormatProtection;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
  * @returns {Workbook}
  */
 // @ts-ignore
@@ -511,6 +528,33 @@ export function createWorkbookPivotTableCollectionResponseFromDiscriminatorValue
 // @ts-ignore
 export function createWorkbookPivotTableFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
     return deserializeIntoWorkbookPivotTable;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {WorkbookRangeBorder}
+ */
+// @ts-ignore
+export function createWorkbookRangeBorderFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoWorkbookRangeBorder;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {WorkbookRangeFill}
+ */
+// @ts-ignore
+export function createWorkbookRangeFillFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoWorkbookRangeFill;
+}
+/**
+ * Creates a new instance of the appropriate class based on discriminator value
+ * @param parseNode The parse node to use to read the discriminator value and create the object
+ * @returns {WorkbookRangeFont}
+ */
+// @ts-ignore
+export function createWorkbookRangeFontFromDiscriminatorValue(parseNode: ParseNode | undefined) : ((instance?: Parsable) => Record<string, (node: ParseNode) => void>) {
+    return deserializeIntoWorkbookRangeFont;
 }
 /**
  * Creates a new instance of the appropriate class based on discriminator value
@@ -698,6 +742,13 @@ export function deserializeIntoEntity(entity: Partial<Entity> | undefined = {}) 
 export function deserializeIntoWorkbook(workbook: Partial<Workbook> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbook),
+        "application": n => { workbook.application = n.getObjectValue<WorkbookApplication>(createWorkbookApplicationFromDiscriminatorValue); },
+        "comments": n => { workbook.comments = n.getCollectionOfObjectValues<WorkbookComment>(createWorkbookCommentFromDiscriminatorValue); },
+        "functions": n => { workbook.functions = n.getObjectValue<WorkbookFunctions>(createWorkbookFunctionsFromDiscriminatorValue); },
+        "names": n => { workbook.names = n.getCollectionOfObjectValues<WorkbookNamedItem>(createWorkbookNamedItemFromDiscriminatorValue); },
+        "operations": n => { workbook.operations = n.getCollectionOfObjectValues<WorkbookOperation>(createWorkbookOperationFromDiscriminatorValue); },
+        "tables": n => { workbook.tables = n.getCollectionOfObjectValues<WorkbookTable>(createWorkbookTableFromDiscriminatorValue); },
+        "worksheets": n => { workbook.worksheets = n.getCollectionOfObjectValues<WorkbookWorksheet>(createWorkbookWorksheetFromDiscriminatorValue); },
     }
 }
 /**
@@ -744,6 +795,8 @@ export function deserializeIntoWorkbookChart(workbookChart: Partial<WorkbookChar
 export function deserializeIntoWorkbookChartAreaFormat(workbookChartAreaFormat: Partial<WorkbookChartAreaFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAreaFormat),
+        "fill": n => { workbookChartAreaFormat.fill = n.getObjectValue<WorkbookChartFill>(createWorkbookChartFillFromDiscriminatorValue); },
+        "font": n => { workbookChartAreaFormat.font = n.getObjectValue<WorkbookChartFont>(createWorkbookChartFontFromDiscriminatorValue); },
     }
 }
 /**
@@ -755,6 +808,9 @@ export function deserializeIntoWorkbookChartAreaFormat(workbookChartAreaFormat: 
 export function deserializeIntoWorkbookChartAxes(workbookChartAxes: Partial<WorkbookChartAxes> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxes),
+        "categoryAxis": n => { workbookChartAxes.categoryAxis = n.getObjectValue<WorkbookChartAxis>(createWorkbookChartAxisFromDiscriminatorValue); },
+        "seriesAxis": n => { workbookChartAxes.seriesAxis = n.getObjectValue<WorkbookChartAxis>(createWorkbookChartAxisFromDiscriminatorValue); },
+        "valueAxis": n => { workbookChartAxes.valueAxis = n.getObjectValue<WorkbookChartAxis>(createWorkbookChartAxisFromDiscriminatorValue); },
     }
 }
 /**
@@ -785,6 +841,8 @@ export function deserializeIntoWorkbookChartAxis(workbookChartAxis: Partial<Work
 export function deserializeIntoWorkbookChartAxisFormat(workbookChartAxisFormat: Partial<WorkbookChartAxisFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxisFormat),
+        "font": n => { workbookChartAxisFormat.font = n.getObjectValue<WorkbookChartFont>(createWorkbookChartFontFromDiscriminatorValue); },
+        "line": n => { workbookChartAxisFormat.line = n.getObjectValue<WorkbookChartLineFormat>(createWorkbookChartLineFormatFromDiscriminatorValue); },
     }
 }
 /**
@@ -796,6 +854,9 @@ export function deserializeIntoWorkbookChartAxisFormat(workbookChartAxisFormat: 
 export function deserializeIntoWorkbookChartAxisTitle(workbookChartAxisTitle: Partial<WorkbookChartAxisTitle> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartAxisTitle),
+        "format": n => { workbookChartAxisTitle.format = n.getObjectValue<WorkbookChartAxisTitleFormat>(createWorkbookChartAxisTitleFormatFromDiscriminatorValue); },
+        "text": n => { workbookChartAxisTitle.text = n.getStringValue(); },
+        "visible": n => { workbookChartAxisTitle.visible = n.getBooleanValue(); },
     }
 }
 /**
@@ -844,6 +905,15 @@ export function deserializeIntoWorkbookChartDataLabelFormat(workbookChartDataLab
 export function deserializeIntoWorkbookChartDataLabels(workbookChartDataLabels: Partial<WorkbookChartDataLabels> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartDataLabels),
+        "format": n => { workbookChartDataLabels.format = n.getObjectValue<WorkbookChartDataLabelFormat>(createWorkbookChartDataLabelFormatFromDiscriminatorValue); },
+        "position": n => { workbookChartDataLabels.position = n.getStringValue(); },
+        "separator": n => { workbookChartDataLabels.separator = n.getStringValue(); },
+        "showBubbleSize": n => { workbookChartDataLabels.showBubbleSize = n.getBooleanValue(); },
+        "showCategoryName": n => { workbookChartDataLabels.showCategoryName = n.getBooleanValue(); },
+        "showLegendKey": n => { workbookChartDataLabels.showLegendKey = n.getBooleanValue(); },
+        "showPercentage": n => { workbookChartDataLabels.showPercentage = n.getBooleanValue(); },
+        "showSeriesName": n => { workbookChartDataLabels.showSeriesName = n.getBooleanValue(); },
+        "showValue": n => { workbookChartDataLabels.showValue = n.getBooleanValue(); },
     }
 }
 /**
@@ -866,6 +936,12 @@ export function deserializeIntoWorkbookChartFill(workbookChartFill: Partial<Work
 export function deserializeIntoWorkbookChartFont(workbookChartFont: Partial<WorkbookChartFont> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartFont),
+        "bold": n => { workbookChartFont.bold = n.getBooleanValue(); },
+        "color": n => { workbookChartFont.color = n.getStringValue(); },
+        "italic": n => { workbookChartFont.italic = n.getBooleanValue(); },
+        "name": n => { workbookChartFont.name = n.getStringValue(); },
+        "size": n => { workbookChartFont.size = n.getNumberValue(); },
+        "underline": n => { workbookChartFont.underline = n.getStringValue(); },
     }
 }
 /**
@@ -877,6 +953,8 @@ export function deserializeIntoWorkbookChartFont(workbookChartFont: Partial<Work
 export function deserializeIntoWorkbookChartGridlines(workbookChartGridlines: Partial<WorkbookChartGridlines> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartGridlines),
+        "format": n => { workbookChartGridlines.format = n.getObjectValue<WorkbookChartGridlinesFormat>(createWorkbookChartGridlinesFormatFromDiscriminatorValue); },
+        "visible": n => { workbookChartGridlines.visible = n.getBooleanValue(); },
     }
 }
 /**
@@ -900,6 +978,10 @@ export function deserializeIntoWorkbookChartGridlinesFormat(workbookChartGridlin
 export function deserializeIntoWorkbookChartLegend(workbookChartLegend: Partial<WorkbookChartLegend> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartLegend),
+        "format": n => { workbookChartLegend.format = n.getObjectValue<WorkbookChartLegendFormat>(createWorkbookChartLegendFormatFromDiscriminatorValue); },
+        "overlay": n => { workbookChartLegend.overlay = n.getBooleanValue(); },
+        "position": n => { workbookChartLegend.position = n.getStringValue(); },
+        "visible": n => { workbookChartLegend.visible = n.getBooleanValue(); },
     }
 }
 /**
@@ -924,6 +1006,7 @@ export function deserializeIntoWorkbookChartLegendFormat(workbookChartLegendForm
 export function deserializeIntoWorkbookChartLineFormat(workbookChartLineFormat: Partial<WorkbookChartLineFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartLineFormat),
+        "color": n => { workbookChartLineFormat.color = n.getStringValue(); },
     }
 }
 /**
@@ -960,6 +1043,7 @@ export function deserializeIntoWorkbookChartPointCollectionResponse(workbookChar
 export function deserializeIntoWorkbookChartPointFormat(workbookChartPointFormat: Partial<WorkbookChartPointFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartPointFormat),
+        "fill": n => { workbookChartPointFormat.fill = n.getObjectValue<WorkbookChartFill>(createWorkbookChartFillFromDiscriminatorValue); },
     }
 }
 /**
@@ -997,6 +1081,8 @@ export function deserializeIntoWorkbookChartSeriesCollectionResponse(workbookCha
 export function deserializeIntoWorkbookChartSeriesFormat(workbookChartSeriesFormat: Partial<WorkbookChartSeriesFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartSeriesFormat),
+        "fill": n => { workbookChartSeriesFormat.fill = n.getObjectValue<WorkbookChartFill>(createWorkbookChartFillFromDiscriminatorValue); },
+        "line": n => { workbookChartSeriesFormat.line = n.getObjectValue<WorkbookChartLineFormat>(createWorkbookChartLineFormatFromDiscriminatorValue); },
     }
 }
 /**
@@ -1008,6 +1094,10 @@ export function deserializeIntoWorkbookChartSeriesFormat(workbookChartSeriesForm
 export function deserializeIntoWorkbookChartTitle(workbookChartTitle: Partial<WorkbookChartTitle> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookChartTitle),
+        "format": n => { workbookChartTitle.format = n.getObjectValue<WorkbookChartTitleFormat>(createWorkbookChartTitleFormatFromDiscriminatorValue); },
+        "overlay": n => { workbookChartTitle.overlay = n.getBooleanValue(); },
+        "text": n => { workbookChartTitle.text = n.getStringValue(); },
+        "visible": n => { workbookChartTitle.visible = n.getBooleanValue(); },
     }
 }
 /**
@@ -1103,6 +1193,19 @@ export function deserializeIntoWorkbookFilterCriteria(workbookFilterCriteria: Pa
         "@odata.type": n => { workbookFilterCriteria.odataType = n.getStringValue(); },
         "operator": n => { workbookFilterCriteria.operator = n.getStringValue(); },
         "values": n => { workbookFilterCriteria.values = n.getObjectValue<UntypedNode>(createUntypedNodeFromDiscriminatorValue); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @param WorkbookFormatProtection The instance to deserialize into.
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoWorkbookFormatProtection(workbookFormatProtection: Partial<WorkbookFormatProtection> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoEntity(workbookFormatProtection),
+        "formulaHidden": n => { workbookFormatProtection.formulaHidden = n.getBooleanValue(); },
+        "locked": n => { workbookFormatProtection.locked = n.getBooleanValue(); },
     }
 }
 /**
@@ -1270,6 +1373,50 @@ export function deserializeIntoWorkbookRange(workbookRange: Partial<WorkbookRang
 }
 /**
  * The deserialization information for the current model
+ * @param WorkbookRangeBorder The instance to deserialize into.
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoWorkbookRangeBorder(workbookRangeBorder: Partial<WorkbookRangeBorder> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoEntity(workbookRangeBorder),
+        "color": n => { workbookRangeBorder.color = n.getStringValue(); },
+        "sideIndex": n => { workbookRangeBorder.sideIndex = n.getStringValue(); },
+        "style": n => { workbookRangeBorder.style = n.getStringValue(); },
+        "weight": n => { workbookRangeBorder.weight = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @param WorkbookRangeFill The instance to deserialize into.
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoWorkbookRangeFill(workbookRangeFill: Partial<WorkbookRangeFill> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoEntity(workbookRangeFill),
+        "color": n => { workbookRangeFill.color = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
+ * @param WorkbookRangeFont The instance to deserialize into.
+ * @returns {Record<string, (node: ParseNode) => void>}
+ */
+// @ts-ignore
+export function deserializeIntoWorkbookRangeFont(workbookRangeFont: Partial<WorkbookRangeFont> | undefined = {}) : Record<string, (node: ParseNode) => void> {
+    return {
+        ...deserializeIntoEntity(workbookRangeFont),
+        "bold": n => { workbookRangeFont.bold = n.getBooleanValue(); },
+        "color": n => { workbookRangeFont.color = n.getStringValue(); },
+        "italic": n => { workbookRangeFont.italic = n.getBooleanValue(); },
+        "name": n => { workbookRangeFont.name = n.getStringValue(); },
+        "size": n => { workbookRangeFont.size = n.getNumberValue(); },
+        "underline": n => { workbookRangeFont.underline = n.getStringValue(); },
+    }
+}
+/**
+ * The deserialization information for the current model
  * @param WorkbookRangeFormat The instance to deserialize into.
  * @returns {Record<string, (node: ParseNode) => void>}
  */
@@ -1277,6 +1424,15 @@ export function deserializeIntoWorkbookRange(workbookRange: Partial<WorkbookRang
 export function deserializeIntoWorkbookRangeFormat(workbookRangeFormat: Partial<WorkbookRangeFormat> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookRangeFormat),
+        "borders": n => { workbookRangeFormat.borders = n.getCollectionOfObjectValues<WorkbookRangeBorder>(createWorkbookRangeBorderFromDiscriminatorValue); },
+        "columnWidth": n => { workbookRangeFormat.columnWidth = n.getNumberValue(); },
+        "fill": n => { workbookRangeFormat.fill = n.getObjectValue<WorkbookRangeFill>(createWorkbookRangeFillFromDiscriminatorValue); },
+        "font": n => { workbookRangeFormat.font = n.getObjectValue<WorkbookRangeFont>(createWorkbookRangeFontFromDiscriminatorValue); },
+        "horizontalAlignment": n => { workbookRangeFormat.horizontalAlignment = n.getStringValue(); },
+        "protection": n => { workbookRangeFormat.protection = n.getObjectValue<WorkbookFormatProtection>(createWorkbookFormatProtectionFromDiscriminatorValue); },
+        "rowHeight": n => { workbookRangeFormat.rowHeight = n.getNumberValue(); },
+        "verticalAlignment": n => { workbookRangeFormat.verticalAlignment = n.getStringValue(); },
+        "wrapText": n => { workbookRangeFormat.wrapText = n.getBooleanValue(); },
     }
 }
 /**
@@ -1441,6 +1597,9 @@ export function deserializeIntoWorkbookTableRowCollectionResponse(workbookTableR
 export function deserializeIntoWorkbookTableSort(workbookTableSort: Partial<WorkbookTableSort> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookTableSort),
+        "fields": n => { workbookTableSort.fields = n.getCollectionOfObjectValues<WorkbookSortField>(createWorkbookSortFieldFromDiscriminatorValue); },
+        "matchCase": n => { workbookTableSort.matchCase = n.getBooleanValue(); },
+        "method": n => { workbookTableSort.method = n.getStringValue(); },
     }
 }
 /**
@@ -1452,6 +1611,14 @@ export function deserializeIntoWorkbookTableSort(workbookTableSort: Partial<Work
 export function deserializeIntoWorkbookWorksheet(workbookWorksheet: Partial<WorkbookWorksheet> | undefined = {}) : Record<string, (node: ParseNode) => void> {
     return {
         ...deserializeIntoEntity(workbookWorksheet),
+        "charts": n => { workbookWorksheet.charts = n.getCollectionOfObjectValues<WorkbookChart>(createWorkbookChartFromDiscriminatorValue); },
+        "name": n => { workbookWorksheet.name = n.getStringValue(); },
+        "names": n => { workbookWorksheet.names = n.getCollectionOfObjectValues<WorkbookNamedItem>(createWorkbookNamedItemFromDiscriminatorValue); },
+        "pivotTables": n => { workbookWorksheet.pivotTables = n.getCollectionOfObjectValues<WorkbookPivotTable>(createWorkbookPivotTableFromDiscriminatorValue); },
+        "position": n => { workbookWorksheet.position = n.getNumberValue(); },
+        "protection": n => { workbookWorksheet.protection = n.getObjectValue<WorkbookWorksheetProtection>(createWorkbookWorksheetProtectionFromDiscriminatorValue); },
+        "tables": n => { workbookWorksheet.tables = n.getCollectionOfObjectValues<WorkbookTable>(createWorkbookTableFromDiscriminatorValue); },
+        "visibility": n => { workbookWorksheet.visibility = n.getStringValue(); },
     }
 }
 /**
@@ -1618,6 +1785,9 @@ export function serializeEntity(writer: SerializationWriter, entity: Partial<Ent
         case "#microsoft.graph.workbookFilter":
             serializeWorkbookFilter(writer, entity, true);
         break;
+        case "#microsoft.graph.workbookFormatProtection":
+            serializeWorkbookFormatProtection(writer, entity, true);
+        break;
         case "#microsoft.graph.workbookFunctionResult":
             serializeWorkbookFunctionResult(writer, entity, true);
         break;
@@ -1635,6 +1805,15 @@ export function serializeEntity(writer: SerializationWriter, entity: Partial<Ent
         break;
         case "#microsoft.graph.workbookRange":
             serializeWorkbookRange(writer, entity, true);
+        break;
+        case "#microsoft.graph.workbookRangeBorder":
+            serializeWorkbookRangeBorder(writer, entity, true);
+        break;
+        case "#microsoft.graph.workbookRangeFill":
+            serializeWorkbookRangeFill(writer, entity, true);
+        break;
+        case "#microsoft.graph.workbookRangeFont":
+            serializeWorkbookRangeFont(writer, entity, true);
         break;
         case "#microsoft.graph.workbookRangeFormat":
             serializeWorkbookRangeFormat(writer, entity, true);
@@ -1675,6 +1854,13 @@ export function serializeEntity(writer: SerializationWriter, entity: Partial<Ent
 export function serializeWorkbook(writer: SerializationWriter, workbook: Partial<Workbook> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbook || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbook, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookApplication>("application", workbook.application, serializeWorkbookApplication);
+    writer.writeCollectionOfObjectValues<WorkbookComment>("comments", workbook.comments, serializeWorkbookComment);
+    writer.writeObjectValue<WorkbookFunctions>("functions", workbook.functions, serializeWorkbookFunctions);
+    writer.writeCollectionOfObjectValues<WorkbookNamedItem>("names", workbook.names, serializeWorkbookNamedItem);
+    writer.writeCollectionOfObjectValues<WorkbookOperation>("operations", workbook.operations, serializeWorkbookOperation);
+    writer.writeCollectionOfObjectValues<WorkbookTable>("tables", workbook.tables, serializeWorkbookTable);
+    writer.writeCollectionOfObjectValues<WorkbookWorksheet>("worksheets", workbook.worksheets, serializeWorkbookWorksheet);
 }
 /**
  * Serializes information the current object
@@ -1721,6 +1907,8 @@ export function serializeWorkbookChart(writer: SerializationWriter, workbookChar
 export function serializeWorkbookChartAreaFormat(writer: SerializationWriter, workbookChartAreaFormat: Partial<WorkbookChartAreaFormat> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartAreaFormat || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartAreaFormat, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartAreaFormat.fill, serializeWorkbookChartFill);
+    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAreaFormat.font, serializeWorkbookChartFont);
 }
 /**
  * Serializes information the current object
@@ -1732,6 +1920,9 @@ export function serializeWorkbookChartAreaFormat(writer: SerializationWriter, wo
 export function serializeWorkbookChartAxes(writer: SerializationWriter, workbookChartAxes: Partial<WorkbookChartAxes> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartAxes || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartAxes, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartAxis>("categoryAxis", workbookChartAxes.categoryAxis, serializeWorkbookChartAxis);
+    writer.writeObjectValue<WorkbookChartAxis>("seriesAxis", workbookChartAxes.seriesAxis, serializeWorkbookChartAxis);
+    writer.writeObjectValue<WorkbookChartAxis>("valueAxis", workbookChartAxes.valueAxis, serializeWorkbookChartAxis);
 }
 /**
  * Serializes information the current object
@@ -1762,6 +1953,8 @@ export function serializeWorkbookChartAxis(writer: SerializationWriter, workbook
 export function serializeWorkbookChartAxisFormat(writer: SerializationWriter, workbookChartAxisFormat: Partial<WorkbookChartAxisFormat> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartAxisFormat || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartAxisFormat, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartFont>("font", workbookChartAxisFormat.font, serializeWorkbookChartFont);
+    writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartAxisFormat.line, serializeWorkbookChartLineFormat);
 }
 /**
  * Serializes information the current object
@@ -1773,6 +1966,9 @@ export function serializeWorkbookChartAxisFormat(writer: SerializationWriter, wo
 export function serializeWorkbookChartAxisTitle(writer: SerializationWriter, workbookChartAxisTitle: Partial<WorkbookChartAxisTitle> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartAxisTitle || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartAxisTitle, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartAxisTitleFormat>("format", workbookChartAxisTitle.format, serializeWorkbookChartAxisTitleFormat);
+    writer.writeStringValue("text", workbookChartAxisTitle.text);
+    writer.writeBooleanValue("visible", workbookChartAxisTitle.visible);
 }
 /**
  * Serializes information the current object
@@ -1821,6 +2017,15 @@ export function serializeWorkbookChartDataLabelFormat(writer: SerializationWrite
 export function serializeWorkbookChartDataLabels(writer: SerializationWriter, workbookChartDataLabels: Partial<WorkbookChartDataLabels> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartDataLabels || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartDataLabels, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartDataLabelFormat>("format", workbookChartDataLabels.format, serializeWorkbookChartDataLabelFormat);
+    writer.writeStringValue("position", workbookChartDataLabels.position);
+    writer.writeStringValue("separator", workbookChartDataLabels.separator);
+    writer.writeBooleanValue("showBubbleSize", workbookChartDataLabels.showBubbleSize);
+    writer.writeBooleanValue("showCategoryName", workbookChartDataLabels.showCategoryName);
+    writer.writeBooleanValue("showLegendKey", workbookChartDataLabels.showLegendKey);
+    writer.writeBooleanValue("showPercentage", workbookChartDataLabels.showPercentage);
+    writer.writeBooleanValue("showSeriesName", workbookChartDataLabels.showSeriesName);
+    writer.writeBooleanValue("showValue", workbookChartDataLabels.showValue);
 }
 /**
  * Serializes information the current object
@@ -1843,6 +2048,12 @@ export function serializeWorkbookChartFill(writer: SerializationWriter, workbook
 export function serializeWorkbookChartFont(writer: SerializationWriter, workbookChartFont: Partial<WorkbookChartFont> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartFont || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartFont, isSerializingDerivedType)
+    writer.writeBooleanValue("bold", workbookChartFont.bold);
+    writer.writeStringValue("color", workbookChartFont.color);
+    writer.writeBooleanValue("italic", workbookChartFont.italic);
+    writer.writeStringValue("name", workbookChartFont.name);
+    writer.writeNumberValue("size", workbookChartFont.size);
+    writer.writeStringValue("underline", workbookChartFont.underline);
 }
 /**
  * Serializes information the current object
@@ -1854,6 +2065,8 @@ export function serializeWorkbookChartFont(writer: SerializationWriter, workbook
 export function serializeWorkbookChartGridlines(writer: SerializationWriter, workbookChartGridlines: Partial<WorkbookChartGridlines> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartGridlines || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartGridlines, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartGridlinesFormat>("format", workbookChartGridlines.format, serializeWorkbookChartGridlinesFormat);
+    writer.writeBooleanValue("visible", workbookChartGridlines.visible);
 }
 /**
  * Serializes information the current object
@@ -1877,6 +2090,10 @@ export function serializeWorkbookChartGridlinesFormat(writer: SerializationWrite
 export function serializeWorkbookChartLegend(writer: SerializationWriter, workbookChartLegend: Partial<WorkbookChartLegend> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartLegend || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartLegend, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartLegendFormat>("format", workbookChartLegend.format, serializeWorkbookChartLegendFormat);
+    writer.writeBooleanValue("overlay", workbookChartLegend.overlay);
+    writer.writeStringValue("position", workbookChartLegend.position);
+    writer.writeBooleanValue("visible", workbookChartLegend.visible);
 }
 /**
  * Serializes information the current object
@@ -1901,6 +2118,7 @@ export function serializeWorkbookChartLegendFormat(writer: SerializationWriter, 
 export function serializeWorkbookChartLineFormat(writer: SerializationWriter, workbookChartLineFormat: Partial<WorkbookChartLineFormat> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartLineFormat || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartLineFormat, isSerializingDerivedType)
+    writer.writeStringValue("color", workbookChartLineFormat.color);
 }
 /**
  * Serializes information the current object
@@ -1937,6 +2155,7 @@ export function serializeWorkbookChartPointCollectionResponse(writer: Serializat
 export function serializeWorkbookChartPointFormat(writer: SerializationWriter, workbookChartPointFormat: Partial<WorkbookChartPointFormat> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartPointFormat || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartPointFormat, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartPointFormat.fill, serializeWorkbookChartFill);
 }
 /**
  * Serializes information the current object
@@ -1974,6 +2193,8 @@ export function serializeWorkbookChartSeriesCollectionResponse(writer: Serializa
 export function serializeWorkbookChartSeriesFormat(writer: SerializationWriter, workbookChartSeriesFormat: Partial<WorkbookChartSeriesFormat> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartSeriesFormat || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartSeriesFormat, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartFill>("fill", workbookChartSeriesFormat.fill, serializeWorkbookChartFill);
+    writer.writeObjectValue<WorkbookChartLineFormat>("line", workbookChartSeriesFormat.line, serializeWorkbookChartLineFormat);
 }
 /**
  * Serializes information the current object
@@ -1985,6 +2206,10 @@ export function serializeWorkbookChartSeriesFormat(writer: SerializationWriter, 
 export function serializeWorkbookChartTitle(writer: SerializationWriter, workbookChartTitle: Partial<WorkbookChartTitle> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookChartTitle || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookChartTitle, isSerializingDerivedType)
+    writer.writeObjectValue<WorkbookChartTitleFormat>("format", workbookChartTitle.format, serializeWorkbookChartTitleFormat);
+    writer.writeBooleanValue("overlay", workbookChartTitle.overlay);
+    writer.writeStringValue("text", workbookChartTitle.text);
+    writer.writeBooleanValue("visible", workbookChartTitle.visible);
 }
 /**
  * Serializes information the current object
@@ -2081,6 +2306,19 @@ export function serializeWorkbookFilterCriteria(writer: SerializationWriter, wor
     writer.writeStringValue("operator", workbookFilterCriteria.operator);
     writer.writeObjectValue("values", workbookFilterCriteria.values);
     writer.writeAdditionalData(workbookFilterCriteria.additionalData);
+}
+/**
+ * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param WorkbookFormatProtection The instance to serialize from.
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeWorkbookFormatProtection(writer: SerializationWriter, workbookFormatProtection: Partial<WorkbookFormatProtection> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!workbookFormatProtection || isSerializingDerivedType) { return; }
+    serializeEntity(writer, workbookFormatProtection, isSerializingDerivedType)
+    writer.writeBooleanValue("formulaHidden", workbookFormatProtection.formulaHidden);
+    writer.writeBooleanValue("locked", workbookFormatProtection.locked);
 }
 /**
  * Serializes information the current object
@@ -2250,6 +2488,50 @@ export function serializeWorkbookRange(writer: SerializationWriter, workbookRang
 /**
  * Serializes information the current object
  * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param WorkbookRangeBorder The instance to serialize from.
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeWorkbookRangeBorder(writer: SerializationWriter, workbookRangeBorder: Partial<WorkbookRangeBorder> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!workbookRangeBorder || isSerializingDerivedType) { return; }
+    serializeEntity(writer, workbookRangeBorder, isSerializingDerivedType)
+    writer.writeStringValue("color", workbookRangeBorder.color);
+    writer.writeStringValue("sideIndex", workbookRangeBorder.sideIndex);
+    writer.writeStringValue("style", workbookRangeBorder.style);
+    writer.writeStringValue("weight", workbookRangeBorder.weight);
+}
+/**
+ * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param WorkbookRangeFill The instance to serialize from.
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeWorkbookRangeFill(writer: SerializationWriter, workbookRangeFill: Partial<WorkbookRangeFill> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!workbookRangeFill || isSerializingDerivedType) { return; }
+    serializeEntity(writer, workbookRangeFill, isSerializingDerivedType)
+    writer.writeStringValue("color", workbookRangeFill.color);
+}
+/**
+ * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
+ * @param WorkbookRangeFont The instance to serialize from.
+ * @param writer Serialization writer to use to serialize this model
+ */
+// @ts-ignore
+export function serializeWorkbookRangeFont(writer: SerializationWriter, workbookRangeFont: Partial<WorkbookRangeFont> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
+    if (!workbookRangeFont || isSerializingDerivedType) { return; }
+    serializeEntity(writer, workbookRangeFont, isSerializingDerivedType)
+    writer.writeBooleanValue("bold", workbookRangeFont.bold);
+    writer.writeStringValue("color", workbookRangeFont.color);
+    writer.writeBooleanValue("italic", workbookRangeFont.italic);
+    writer.writeStringValue("name", workbookRangeFont.name);
+    writer.writeNumberValue("size", workbookRangeFont.size);
+    writer.writeStringValue("underline", workbookRangeFont.underline);
+}
+/**
+ * Serializes information the current object
+ * @param isSerializingDerivedType A boolean indicating whether the serialization is for a derived type.
  * @param WorkbookRangeFormat The instance to serialize from.
  * @param writer Serialization writer to use to serialize this model
  */
@@ -2257,6 +2539,15 @@ export function serializeWorkbookRange(writer: SerializationWriter, workbookRang
 export function serializeWorkbookRangeFormat(writer: SerializationWriter, workbookRangeFormat: Partial<WorkbookRangeFormat> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookRangeFormat || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookRangeFormat, isSerializingDerivedType)
+    writer.writeCollectionOfObjectValues<WorkbookRangeBorder>("borders", workbookRangeFormat.borders, serializeWorkbookRangeBorder);
+    writer.writeNumberValue("columnWidth", workbookRangeFormat.columnWidth);
+    writer.writeObjectValue<WorkbookRangeFill>("fill", workbookRangeFormat.fill, serializeWorkbookRangeFill);
+    writer.writeObjectValue<WorkbookRangeFont>("font", workbookRangeFormat.font, serializeWorkbookRangeFont);
+    writer.writeStringValue("horizontalAlignment", workbookRangeFormat.horizontalAlignment);
+    writer.writeObjectValue<WorkbookFormatProtection>("protection", workbookRangeFormat.protection, serializeWorkbookFormatProtection);
+    writer.writeNumberValue("rowHeight", workbookRangeFormat.rowHeight);
+    writer.writeStringValue("verticalAlignment", workbookRangeFormat.verticalAlignment);
+    writer.writeBooleanValue("wrapText", workbookRangeFormat.wrapText);
 }
 /**
  * Serializes information the current object
@@ -2423,6 +2714,9 @@ export function serializeWorkbookTableRowCollectionResponse(writer: Serializatio
 export function serializeWorkbookTableSort(writer: SerializationWriter, workbookTableSort: Partial<WorkbookTableSort> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookTableSort || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookTableSort, isSerializingDerivedType)
+    writer.writeCollectionOfObjectValues<WorkbookSortField>("fields", workbookTableSort.fields, serializeWorkbookSortField);
+    writer.writeBooleanValue("matchCase", workbookTableSort.matchCase);
+    writer.writeStringValue("method", workbookTableSort.method);
 }
 /**
  * Serializes information the current object
@@ -2434,6 +2728,14 @@ export function serializeWorkbookTableSort(writer: SerializationWriter, workbook
 export function serializeWorkbookWorksheet(writer: SerializationWriter, workbookWorksheet: Partial<WorkbookWorksheet> | undefined | null = {}, isSerializingDerivedType: boolean = false) : void {
     if (!workbookWorksheet || isSerializingDerivedType) { return; }
     serializeEntity(writer, workbookWorksheet, isSerializingDerivedType)
+    writer.writeCollectionOfObjectValues<WorkbookChart>("charts", workbookWorksheet.charts, serializeWorkbookChart);
+    writer.writeStringValue("name", workbookWorksheet.name);
+    writer.writeCollectionOfObjectValues<WorkbookNamedItem>("names", workbookWorksheet.names, serializeWorkbookNamedItem);
+    writer.writeCollectionOfObjectValues<WorkbookPivotTable>("pivotTables", workbookWorksheet.pivotTables, serializeWorkbookPivotTable);
+    writer.writeNumberValue("position", workbookWorksheet.position);
+    writer.writeObjectValue<WorkbookWorksheetProtection>("protection", workbookWorksheet.protection, serializeWorkbookWorksheetProtection);
+    writer.writeCollectionOfObjectValues<WorkbookTable>("tables", workbookWorksheet.tables, serializeWorkbookTable);
+    writer.writeStringValue("visibility", workbookWorksheet.visibility);
 }
 /**
  * Serializes information the current object
@@ -2484,6 +2786,34 @@ export function serializeWorkbookWorksheetProtectionOptions(writer: Serializatio
     writer.writeAdditionalData(workbookWorksheetProtectionOptions.additionalData);
 }
 export interface Workbook extends Entity, Parsable {
+    /**
+     * The application property
+     */
+    application?: WorkbookApplication | null;
+    /**
+     * Represents a collection of comments in a workbook.
+     */
+    comments?: WorkbookComment[] | null;
+    /**
+     * The functions property
+     */
+    functions?: WorkbookFunctions | null;
+    /**
+     * Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
+     */
+    names?: WorkbookNamedItem[] | null;
+    /**
+     * The status of workbook operations. Getting an operation collection is not supported, but you can get the status of a long-running operation if the Location header is returned in the response. Read-only.
+     */
+    operations?: WorkbookOperation[] | null;
+    /**
+     * Represents a collection of tables associated with the workbook. Read-only.
+     */
+    tables?: WorkbookTable[] | null;
+    /**
+     * Represents a collection of worksheets associated with the workbook. Read-only.
+     */
+    worksheets?: WorkbookWorksheet[] | null;
 }
 export interface WorkbookApplication extends Entity, Parsable {
     /**
@@ -2542,8 +2872,28 @@ export interface WorkbookChart extends Entity, Parsable {
     worksheet?: WorkbookWorksheet | null;
 }
 export interface WorkbookChartAreaFormat extends Entity, Parsable {
+    /**
+     * Represents the fill format of an object, which includes background formatting information. Read-only.
+     */
+    fill?: WorkbookChartFill | null;
+    /**
+     * Represents the font attributes (font name, font size, color, etc.) for the current object. Read-only.
+     */
+    font?: WorkbookChartFont | null;
 }
 export interface WorkbookChartAxes extends Entity, Parsable {
+    /**
+     * Represents the category axis in a chart. Read-only.
+     */
+    categoryAxis?: WorkbookChartAxis | null;
+    /**
+     * Represents the series axis of a 3-dimensional chart. Read-only.
+     */
+    seriesAxis?: WorkbookChartAxis | null;
+    /**
+     * Represents the value axis in an axis. Read-only.
+     */
+    valueAxis?: WorkbookChartAxis | null;
 }
 export interface WorkbookChartAxis extends Entity, Parsable {
     /**
@@ -2580,8 +2930,28 @@ export interface WorkbookChartAxis extends Entity, Parsable {
     title?: WorkbookChartAxisTitle | null;
 }
 export interface WorkbookChartAxisFormat extends Entity, Parsable {
+    /**
+     * Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
+     */
+    font?: WorkbookChartFont | null;
+    /**
+     * Represents chart line formatting. Read-only.
+     */
+    line?: WorkbookChartLineFormat | null;
 }
 export interface WorkbookChartAxisTitle extends Entity, Parsable {
+    /**
+     * Represents the formatting of chart axis title. Read-only.
+     */
+    format?: WorkbookChartAxisTitleFormat | null;
+    /**
+     * Represents the axis title.
+     */
+    text?: string | null;
+    /**
+     * A Boolean that specifies the visibility of an axis title.
+     */
+    visible?: boolean | null;
 }
 export interface WorkbookChartAxisTitleFormat extends Entity, Parsable {
     /**
@@ -2606,12 +2976,80 @@ export interface WorkbookChartDataLabelFormat extends Entity, Parsable {
     font?: WorkbookChartFont | null;
 }
 export interface WorkbookChartDataLabels extends Entity, Parsable {
+    /**
+     * Represents the format of chart data labels, which includes fill and font formatting. Read-only.
+     */
+    format?: WorkbookChartDataLabelFormat | null;
+    /**
+     * DataLabelPosition value that represents the position of the data label. The possible values are: None, Center, InsideEnd, InsideBase, OutsideEnd, Left, Right, Top, Bottom, BestFit, Callout.
+     */
+    position?: string | null;
+    /**
+     * String that represents the separator used for the data labels on a chart.
+     */
+    separator?: string | null;
+    /**
+     * Boolean value that represents whether the data label bubble size is visible.
+     */
+    showBubbleSize?: boolean | null;
+    /**
+     * Boolean value that represents whether the data label category name is visible.
+     */
+    showCategoryName?: boolean | null;
+    /**
+     * Boolean value that represents whether the data label legend key is visible.
+     */
+    showLegendKey?: boolean | null;
+    /**
+     * Boolean value that represents whether the data label percentage is visible.
+     */
+    showPercentage?: boolean | null;
+    /**
+     * Boolean value that represents whether the data label series name is visible.
+     */
+    showSeriesName?: boolean | null;
+    /**
+     * Boolean value that represents whether the data label value is visible.
+     */
+    showValue?: boolean | null;
 }
 export interface WorkbookChartFill extends Entity, Parsable {
 }
 export interface WorkbookChartFont extends Entity, Parsable {
+    /**
+     * Indicates whether the fond is bold.
+     */
+    bold?: boolean | null;
+    /**
+     * The HTML color code representation of the text color. For example #FF0000 represents Red.
+     */
+    color?: string | null;
+    /**
+     * Indicates whether the fond is italic.
+     */
+    italic?: boolean | null;
+    /**
+     * The font name. For example 'Calibri'.
+     */
+    name?: string | null;
+    /**
+     * The size of the font. For example,  11.
+     */
+    size?: number | null;
+    /**
+     * The type of underlining applied to the font. The possible values are: None, Single.
+     */
+    underline?: string | null;
 }
 export interface WorkbookChartGridlines extends Entity, Parsable {
+    /**
+     * Represents the formatting of chart gridlines. Read-only.
+     */
+    format?: WorkbookChartGridlinesFormat | null;
+    /**
+     * Indicates whether the axis gridlines are visible.
+     */
+    visible?: boolean | null;
 }
 export interface WorkbookChartGridlinesFormat extends Entity, Parsable {
     /**
@@ -2620,6 +3058,22 @@ export interface WorkbookChartGridlinesFormat extends Entity, Parsable {
     line?: WorkbookChartLineFormat | null;
 }
 export interface WorkbookChartLegend extends Entity, Parsable {
+    /**
+     * Represents the formatting of a chart legend, which includes fill and font formatting. Read-only.
+     */
+    format?: WorkbookChartLegendFormat | null;
+    /**
+     * Indicates whether the chart legend should overlap with the main body of the chart.
+     */
+    overlay?: boolean | null;
+    /**
+     * Represents the position of the legend on the chart. The possible values are: Top, Bottom, Left, Right, Corner, Custom.
+     */
+    position?: string | null;
+    /**
+     * Indicates whether the chart legend is visible.
+     */
+    visible?: boolean | null;
 }
 export interface WorkbookChartLegendFormat extends Entity, Parsable {
     /**
@@ -2632,6 +3086,10 @@ export interface WorkbookChartLegendFormat extends Entity, Parsable {
     font?: WorkbookChartFont | null;
 }
 export interface WorkbookChartLineFormat extends Entity, Parsable {
+    /**
+     * The HTML color code that represents the color of lines in the chart.
+     */
+    color?: string | null;
 }
 export interface WorkbookChartPoint extends Entity, Parsable {
     /**
@@ -2650,6 +3108,10 @@ export interface WorkbookChartPointCollectionResponse extends BaseCollectionPagi
     value?: WorkbookChartPoint[] | null;
 }
 export interface WorkbookChartPointFormat extends Entity, Parsable {
+    /**
+     * Represents the fill format of a chart, which includes background formatting information. Read-only.
+     */
+    fill?: WorkbookChartFill | null;
 }
 export interface WorkbookChartSeries extends Entity, Parsable {
     /**
@@ -2672,8 +3134,32 @@ export interface WorkbookChartSeriesCollectionResponse extends BaseCollectionPag
     value?: WorkbookChartSeries[] | null;
 }
 export interface WorkbookChartSeriesFormat extends Entity, Parsable {
+    /**
+     * Represents the fill format of a chart series, which includes background formatting information. Read-only.
+     */
+    fill?: WorkbookChartFill | null;
+    /**
+     * Represents line formatting. Read-only.
+     */
+    line?: WorkbookChartLineFormat | null;
 }
 export interface WorkbookChartTitle extends Entity, Parsable {
+    /**
+     * The formatting of a chart title, which includes fill and font formatting. Read-only.
+     */
+    format?: WorkbookChartTitleFormat | null;
+    /**
+     * Indicates whether the chart title will overlay the chart or not.
+     */
+    overlay?: boolean | null;
+    /**
+     * The title text of the chart.
+     */
+    text?: string | null;
+    /**
+     * Indicates whether the chart title is visible.
+     */
+    visible?: boolean | null;
 }
 export interface WorkbookChartTitleFormat extends Entity, Parsable {
     /**
@@ -2764,6 +3250,16 @@ export interface WorkbookFilterCriteria extends AdditionalDataHolder, Parsable {
      * The values that appear in the cell.
      */
     values?: UntypedNode | null;
+}
+export interface WorkbookFormatProtection extends Entity, Parsable {
+    /**
+     * Indicates whether Excel hides the formula for the cells in the range. A null value indicates that the entire range doesn't have uniform formula hidden setting.
+     */
+    formulaHidden?: boolean | null;
+    /**
+     * Indicates whether Excel locks the cells in the object. A null value indicates that the entire range doesn't have uniform lock setting.
+     */
+    locked?: boolean | null;
 }
 export interface WorkbookFunctionResult extends Entity, Parsable {
     /**
@@ -2964,7 +3460,93 @@ export interface WorkbookRange extends Entity, Parsable {
      */
     worksheet?: WorkbookWorksheet | null;
 }
+export interface WorkbookRangeBorder extends Entity, Parsable {
+    /**
+     * The HTML color code that represents the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or a named HTML color, for example 'orange'.
+     */
+    color?: string | null;
+    /**
+     * Indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
+     */
+    sideIndex?: string | null;
+    /**
+     * Indicates the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
+     */
+    style?: string | null;
+    /**
+     * The weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
+     */
+    weight?: string | null;
+}
+export interface WorkbookRangeFill extends Entity, Parsable {
+    /**
+     * HTML color code representing the color of the border line. Can either be of the form #RRGGBB, for example 'FFA500', or be a named HTML color, for example 'orange'.
+     */
+    color?: string | null;
+}
+export interface WorkbookRangeFont extends Entity, Parsable {
+    /**
+     * Inidicates whether the font is bold.
+     */
+    bold?: boolean | null;
+    /**
+     * The HTML color code representation of the text color. For example, #FF0000 represents the color red.
+     */
+    color?: string | null;
+    /**
+     * Inidicates whether the font is italic.
+     */
+    italic?: boolean | null;
+    /**
+     * The font name. For example, 'Calibri'.
+     */
+    name?: string | null;
+    /**
+     * The font size.
+     */
+    size?: number | null;
+    /**
+     * The type of underlining applied to the font. The possible values are: None, Single, Double, SingleAccountant, DoubleAccountant.
+     */
+    underline?: string | null;
+}
 export interface WorkbookRangeFormat extends Entity, Parsable {
+    /**
+     * Collection of border objects that apply to the overall range selected Read-only.
+     */
+    borders?: WorkbookRangeBorder[] | null;
+    /**
+     * The width of all columns within the range. If the column widths aren't uniform, null will be returned.
+     */
+    columnWidth?: number | null;
+    /**
+     * Returns the fill object defined on the overall range. Read-only.
+     */
+    fill?: WorkbookRangeFill | null;
+    /**
+     * Returns the font object defined on the overall range selected Read-only.
+     */
+    font?: WorkbookRangeFont | null;
+    /**
+     * The horizontal alignment for the specified object. Possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
+     */
+    horizontalAlignment?: string | null;
+    /**
+     * Returns the format protection object for a range. Read-only.
+     */
+    protection?: WorkbookFormatProtection | null;
+    /**
+     * The height of all rows in the range. If the row heights aren't uniform null will be returned.
+     */
+    rowHeight?: number | null;
+    /**
+     * The vertical alignment for the specified object. Possible values are: Top, Center, Bottom, Justify, Distributed.
+     */
+    verticalAlignment?: string | null;
+    /**
+     * Indicates whether Excel wraps the text in the object. A null value indicates that the entire range doesn't have a uniform wrap setting.
+     */
+    wrapText?: boolean | null;
 }
 export interface WorkbookRangeSort extends Entity, Parsable {
 }
@@ -3167,8 +3749,52 @@ export interface WorkbookTableRowCollectionResponse extends BaseCollectionPagina
     value?: WorkbookTableRow[] | null;
 }
 export interface WorkbookTableSort extends Entity, Parsable {
+    /**
+     * The list of the current conditions last used to sort the table. Read-only.
+     */
+    fields?: WorkbookSortField[] | null;
+    /**
+     * Indicates whether the casing impacted the last sort of the table. Read-only.
+     */
+    matchCase?: boolean | null;
+    /**
+     * The Chinese character ordering method last used to sort the table. The possible values are: PinYin, StrokeCount. Read-only.
+     */
+    method?: string | null;
 }
 export interface WorkbookWorksheet extends Entity, Parsable {
+    /**
+     * The list of charts that are part of the worksheet. Read-only.
+     */
+    charts?: WorkbookChart[] | null;
+    /**
+     * The display name of the worksheet.
+     */
+    name?: string | null;
+    /**
+     * The list of names that are associated with the worksheet. Read-only.
+     */
+    names?: WorkbookNamedItem[] | null;
+    /**
+     * The list of piot tables that are part of the worksheet.
+     */
+    pivotTables?: WorkbookPivotTable[] | null;
+    /**
+     * The zero-based position of the worksheet within the workbook.
+     */
+    position?: number | null;
+    /**
+     * The sheet protection object for a worksheet. Read-only.
+     */
+    protection?: WorkbookWorksheetProtection | null;
+    /**
+     * The list of tables that are part of the worksheet. Read-only.
+     */
+    tables?: WorkbookTable[] | null;
+    /**
+     * The visibility of the worksheet. The possible values are: Visible, Hidden, VeryHidden.
+     */
+    visibility?: string | null;
 }
 export interface WorkbookWorksheetCollectionResponse extends BaseCollectionPaginationCountResponse, Parsable {
     /**
@@ -3188,47 +3814,47 @@ export interface WorkbookWorksheetProtection extends Entity, Parsable {
 }
 export interface WorkbookWorksheetProtectionOptions extends AdditionalDataHolder, Parsable {
     /**
-     * Indicates whether the worksheet protection option to allow the use of the autofilter feature is enabled.
+     * Represents the worksheet protection option of allowing using auto filter feature.
      */
     allowAutoFilter?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow deleting columns is enabled.
+     * Represents the worksheet protection option of allowing deleting columns.
      */
     allowDeleteColumns?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow deleting rows is enabled.
+     * Represents the worksheet protection option of allowing deleting rows.
      */
     allowDeleteRows?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow formatting cells is enabled.
+     * Represents the worksheet protection option of allowing formatting cells.
      */
     allowFormatCells?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow formatting columns is enabled.
+     * Represents the worksheet protection option of allowing formatting columns.
      */
     allowFormatColumns?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow formatting rows is enabled.
+     * Represents the worksheet protection option of allowing formatting rows.
      */
     allowFormatRows?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow inserting columns is enabled.
+     * Represents the worksheet protection option of allowing inserting columns.
      */
     allowInsertColumns?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow inserting hyperlinks is enabled.
+     * Represents the worksheet protection option of allowing inserting hyperlinks.
      */
     allowInsertHyperlinks?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow inserting rows is enabled.
+     * Represents the worksheet protection option of allowing inserting rows.
      */
     allowInsertRows?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow the use of the pivot table feature is enabled.
+     * Represents the worksheet protection option of allowing using pivot table feature.
      */
     allowPivotTables?: boolean | null;
     /**
-     * Indicates whether the worksheet protection option to allow the use of the sort feature is enabled.
+     * Represents the worksheet protection option of allowing using sort feature.
      */
     allowSort?: boolean | null;
     /**
