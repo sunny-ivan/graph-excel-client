@@ -2817,7 +2817,7 @@ export interface Workbook extends Entity, Parsable {
 }
 export interface WorkbookApplication extends Entity, Parsable {
     /**
-     * Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
+     * Returns the calculation mode used in the workbook. The possible values are: Automatic, AutomaticExceptTables, Manual.
      */
     calculationMode?: string | null;
 }
@@ -3301,7 +3301,7 @@ export interface WorkbookNamedItem extends Entity, Parsable {
      */
     scope?: string | null;
     /**
-     * The type of reference is associated with the name. Possible values are: String, Integer, Double, Boolean, Range. Read-only.
+     * The type of reference is associated with the name. The possible values are: String, Integer, Double, Boolean, Range. Read-only.
      */
     type?: string | null;
     /**
@@ -3528,7 +3528,7 @@ export interface WorkbookRangeFormat extends Entity, Parsable {
      */
     font?: WorkbookRangeFont | null;
     /**
-     * The horizontal alignment for the specified object. Possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
+     * The horizontal alignment for the specified object. The possible values are: General, Left, Center, Right, Fill, Justify, CenterAcrossSelection, Distributed.
      */
     horizontalAlignment?: string | null;
     /**
@@ -3540,7 +3540,7 @@ export interface WorkbookRangeFormat extends Entity, Parsable {
      */
     rowHeight?: number | null;
     /**
-     * The vertical alignment for the specified object. Possible values are: Top, Center, Bottom, Justify, Distributed.
+     * The vertical alignment for the specified object. The possible values are: Top, Center, Bottom, Justify, Distributed.
      */
     verticalAlignment?: string | null;
     /**
@@ -3694,7 +3694,7 @@ export interface WorkbookTable extends Entity, Parsable {
      */
     sort?: WorkbookTableSort | null;
     /**
-     * A constant value that represents the Table style. Possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
+     * A constant value that represents the Table style. The possible values are: TableStyleLight1 through TableStyleLight21, TableStyleMedium1 through TableStyleMedium28, TableStyleStyleDark1 through TableStyleStyleDark11. A custom user-defined style present in the workbook can also be specified.
      */
     style?: string | null;
     /**
